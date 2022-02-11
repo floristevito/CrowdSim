@@ -1,0 +1,23 @@
+{
+    "id" : -1,
+    "shape" : {
+      "type" : "POLYGON",
+      "points" : [ {
+        "x" : 29.9,
+        "y" : 69.3
+      }, {
+        "x" : 34.1,
+        "y" : 69.4
+      }, {
+        "x" : 34.4,
+        "y" : 67.6
+      }, {
+        "x" : 31.3,
+        "y" : 67.4
+      } ]
+    },
+    "reachDistance" : 0.0,
+    "changeAlgorithmType" : "SELECT_LIST",
+    "nextTarget" : [ ],
+    "probabilityToChangeTarget" : [ 1.0 ]
+  }

@@ -1,0 +1,1 @@
+area of created polygon is 350.73912168587736 square meters

@@ -1,0 +1,27 @@
+{
+  "id" : -1,
+  "absorbing" : true,
+  "shape" : {
+    "type" : "POLYGON",
+    "points" : [ {
+      "x" : 47.5,
+      "y" : 81.1
+    }, {
+      "x" : 51.7,
+      "y" : 80.7
+    }, {
+      "x" : 50.2,
+      "y" : 77.6
+    }, {
+      "x" : 47.8,
+      "y" : 79.6
+    } ]
+  },
+  "waitingTime" : 0.0,
+  "waitingTimeYellowPhase" : 0.0,
+  "parallelWaiters" : 0,
+  "individualWaiting" : true,
+  "deletionDistance" : 0.1,
+  "startingWithRedLight" : false,
+  "nextSpeed" : -1.0
+}

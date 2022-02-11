@@ -1,0 +1,1 @@
+{"id": 6002, "shape": {"type": "POLYGON", "points": [{"x": 25.9129993634487, "y": 69.53669809331744}, {"x": 20.348875473131194, "y": 68.53338621582836}, {"x": 19.835387819219612, "y": 61.98922844763845}, {"x": 27.186936981421663, "y": 63.33311123842746}]}, "reachDistance": 0.0, "changeAlgorithmType": "SELECT_LIST", "nextTarget": [], "probabilityToChangeTarget": [1.0]}

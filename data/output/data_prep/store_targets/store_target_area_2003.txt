@@ -1,0 +1,4 @@
+area of created polygon is 1.4699999999999949 square meters 
+ used store coordinates are 
+ left: {'x': 27.199936344870366, 'y': 63.26980933174491} 
+ right: {'x': 33.56502017751336, 'y': 64.60389505978674}
