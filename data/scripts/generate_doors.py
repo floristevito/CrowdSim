@@ -3,7 +3,7 @@ from shapely.geometry import LineString, Polygon
 
 
 """generate simple polygon for store doors,
-given original coordiantes of store front"""
+given original coordinates of store front"""
 
 
 def generate_door_target(left_xy, right_xy, width, length,
@@ -14,7 +14,7 @@ def generate_door_target(left_xy, right_xy, width, length,
         left_xy (dict): left point of store front xy coordinates
         right_xy (dict): right point of store front xy coordinates
         width (float): width of door in meter
-        length (float): the height of the door in meter
+        length (float): the length of the door on the street in meter (including offset)
         offset (float): the amount of meter the door
                         comes out of the store obstacle
         orientation_door (str): 'left' or 'right' depending on
