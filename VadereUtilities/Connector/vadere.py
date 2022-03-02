@@ -129,6 +129,8 @@ class BaseVadereModel(FileModel):
             '-jar',
             os.path.join(self.working_directory, self.vadere_jar),
             'scenario-run',
+            '-o',
+            os.path.join(self.working_directory, 'temp'),
             '-f',
             os.path.join(self.working_directory, self.model_file),
         ]
@@ -145,6 +147,9 @@ class BaseVadereModel(FileModel):
         # change the .vadere scenario model file depending on the passed experiment
         update_vadere_scenario(os.path.join(self.working_directory, self.model_file), experiment)
         
+        # make the temp dir for output
+        # os.mkdir(os.path.join(self.working_directory, 'temp'))
+
         # run the experiment
         process = run(
             self.vadere,
@@ -152,7 +157,16 @@ class BaseVadereModel(FileModel):
             stdout=PIPE,
             stderr=PIPE
             )
-
+        
+        # results are store inside a temp dir
+        # get path to nested result dir
+        for root, dirs, files in os.walk(os.path.join(self.working_directory, 'temp')):
+            # should only be one subdir
+            for subdir in dirs:
+                output_dir = os.path.join(root, subdir)
+        if not output_dir:
+            print('none found')
+            print(os.path.join(self.working_directory, 'temp'))
         # load results
         # .csv is assumed to be timeseries, .txt scaler
         # other file types are ignored
@@ -160,31 +174,36 @@ class BaseVadereModel(FileModel):
         scalar_res = []
         for file in self.processor_files:
             if file.endswith('.csv'):
-                timeseries_res[file] = pd.read_csv(os.path.join(self.working_directory, file))
+                timeseries_res[file] = pd.read_csv(os.path.join(output_dir, file))
             if file.endswith('.txt'):
-                scalar_res.append(os.path.join(self.working_directory, file)) 
-        
+                scalar_res.append(os.path.join(output_dir, file)) 
 
         # format data to EMA structure
         res = {}
         # handle timeseries
-        if len(timeseries_res) > 1:
-            timeseries_total = pd.concat([results[outcome] for outcome in timeseries_res])
-        else:
-            timeseries_total = timeseries_res[next(iter(timeseries_res))]
-        # drop the timestep column
-        timeseries_total.drop('timeStep', axis=1, inplace=True)
-        # format according to EMA preference
-        res = {col: series.values for col,
-                            series in timeseries_total.iteritems()}
+        if timeseries_res:
+            if len(timeseries_res) > 1:
+                timeseries_total = pd.concat([results[outcome] for outcome in timeseries_res])
+            else:
+                timeseries_total = timeseries_res[next(iter(timeseries_res))]
+            # drop the timestep column
+            timeseries_total.drop('timeStep', axis=1, inplace=True)
+            # format according to EMA preference
+            res = {col: series.values for col,
+                                series in timeseries_total.iteritems()}
 
         # handle scalar
         for file in scalar_res:
-            with open(file, 'r'):
-                name = file.readline().strip()
-                value = file.readline().strip()
+            with open(file, 'r') as f:
+                name = f.readline().strip()
+                value = float(f.readline().strip())
             res[name] = value
 
+        # remove temporal experiment output
+        try:
+            shutil.rmtree(os.path.join(self.working_directory, 'temp'))
+        except OSError:
+            pass
         return res
 
     def cleanup(self):
@@ -198,11 +217,8 @@ class BaseVadereModel(FileModel):
             directories.
 
             """
-            for file in self.processor_files:
-                try:
-                    shutil.rmtree(os.path.join(self.working_directory, file))
-                except OSError:
-                    pass
+            # cleanup moved to run_experiment, so temp dir is removed before new experiment starts
+            pass
 
 class VadereModel(SingleReplication, BaseVadereModel):
     pass
