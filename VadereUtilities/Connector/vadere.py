@@ -174,7 +174,7 @@ class BaseVadereModel(FileModel):
         scalar_res = []
         for file in self.processor_files:
             if file.endswith('.csv'):
-                timeseries_res[file] = pd.read_csv(os.path.join(output_dir, file))
+                timeseries_res[file] = pd.read_csv(os.path.join(output_dir, file), sep=' ')
             if file.endswith('.txt'):
                 scalar_res.append(os.path.join(output_dir, file)) 
 
@@ -183,7 +183,7 @@ class BaseVadereModel(FileModel):
         # handle timeseries
         if timeseries_res:
             if len(timeseries_res) > 1:
-                timeseries_total = pd.concat([results[outcome] for outcome in timeseries_res])
+                timeseries_total = pd.concat([timeseries_res[outcome] for outcome in timeseries_res])
             else:
                 timeseries_total = timeseries_res[next(iter(timeseries_res))]
             # drop the timestep column
