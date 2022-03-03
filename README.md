@@ -11,4 +11,4 @@ All Python related instances are tested with Python version 3.10.0. An overview 
 `pip install -r requirements.txt`
 
 ## Vadere
-This repository uses software from the Vadere library. This reposiotory is therefore released under the same license as the Vadere library. All orginal, unmodified, Vadere related software can be found in the [Vadere repository](https://gitlab.lrz.de/vadere/vadere). 
+This repository uses software from the Vadere library. This repository is therefore released under the same license as the Vadere library. All orginal, unmodified, Vadere related software can be found in the [Vadere repository](https://gitlab.lrz.de/vadere/vadere). 
