@@ -2,6 +2,7 @@
   "name" : "base_case_groups_terrace",
   "description" : "",
   "release" : "2.0",
+  "commithash" : "450efcd5672ead15dc6a7e6b18454492c54dcdd4",
   "processWriters" : {
     "files" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
@@ -131,7 +132,7 @@
       "digitsPerCoordinate" : 2,
       "useFixedSeed" : true,
       "fixedSeed" : -5190782782724114477,
-      "simulationSeed" : 0
+      "simulationSeed" : -5190782782724114477
     },
     "attributesPsychology" : {
       "usePsychologyLayer" : false,

@@ -2,6 +2,7 @@
   "name" : "base_case_groups_terrace",
   "description" : "",
   "release" : "2.0",
+  "commithash" : "450efcd5672ead15dc6a7e6b18454492c54dcdd4",
   "processWriters" : {
     "files" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
@@ -18,7 +19,7 @@
     }, {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
       "filename" : "density.txt",
-      "processors" : [ 6, 7 ]
+      "processors" : [ ]
     } ],
     "processors" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepProcessor",
@@ -35,27 +36,6 @@
       "attributesType" : "org.vadere.state.attributes.processor.AttributesNumberOverlapsProcessor",
       "attributes" : {
         "pedestrianOverlapProcessorId" : 3
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
-      "id" : 5,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
-      "attributes" : {
-        "measurementAreaId" : 9000
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
-      "id" : 6,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
-      "attributes" : {
-        "areaDensityCountingNormedProcessorId" : 5
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
-      "id" : 7,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
-      "attributes" : {
-        "areaDensityCountingNormedProcessorId" : 5
       }
     } ],
     "isTimestamped" : true,
@@ -131,7 +111,7 @@
       "digitsPerCoordinate" : 2,
       "useFixedSeed" : true,
       "fixedSeed" : -5190782782724114477,
-      "simulationSeed" : 0
+      "simulationSeed" : -5190782782724114477
     },
     "attributesPsychology" : {
       "usePsychologyLayer" : false,
