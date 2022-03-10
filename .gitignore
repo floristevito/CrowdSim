@@ -2,6 +2,9 @@
 .ipynb_checkpoints
 .vscode/
 
+# Vadere model output
+model/output/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
