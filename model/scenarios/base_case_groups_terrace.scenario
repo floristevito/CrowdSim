@@ -22,7 +22,7 @@
     }, {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
       "filename" : "speed.txt",
-      "processors" : [ ]
+      "processors" : [ 17, 11, 13, 15 ]
     } ],
     "processors" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepProcessor",
@@ -91,6 +91,54 @@
       "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
       "attributes" : {
         "areaSpeedProcessorId" : 10
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
+      "id" : 12,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
+      "attributes" : {
+        "measurementAreaId" : 9002,
+        "pedestrianPositionProcessorId" : 8,
+        "pedestrianVelocityProcessorId" : 9
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
+      "id" : 13,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
+      "attributes" : {
+        "areaSpeedProcessorId" : 12
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
+      "id" : 14,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
+      "attributes" : {
+        "measurementAreaId" : 9003,
+        "pedestrianPositionProcessorId" : 8,
+        "pedestrianVelocityProcessorId" : 9
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
+      "id" : 15,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
+      "attributes" : {
+        "areaSpeedProcessorId" : 14
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
+      "id" : 16,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
+      "attributes" : {
+        "measurementAreaId" : 9004,
+        "pedestrianPositionProcessorId" : 8,
+        "pedestrianVelocityProcessorId" : 9
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
+      "id" : 17,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
+      "attributes" : {
+        "areaSpeedProcessorId" : 16
       }
     } ],
     "isTimestamped" : true,
@@ -169,10 +217,10 @@
       "simulationSeed" : 0
     },
     "attributesPsychology" : {
-      "usePsychologyLayer" : false,
+      "usePsychologyLayer" : true,
       "psychologyLayer" : {
         "perception" : "SimplePerceptionModel",
-        "cognition" : "SimpleCognitionModel"
+        "cognition" : "CooperativeCognitionModel"
       }
     },
     "topography" : {
