@@ -13,12 +13,14 @@ from ema_workbench.em_framework.model import Replicator, SingleReplication
 from ema_workbench.em_framework.outcomes import TimeSeriesOutcome
 from ..em_framework.model import FileModel
 from ..util.ema_logging import method_logger
+from ..util import EMAError
 
 __all__ = ['VadereModel']
 
+
 def change_vadere_scenario(model_file, variable, value):
     """
-    Change variable in vadere .scenario file structure. Note that a vadere scenario takes the format of a nested directory. 
+    Change variable in vadere .scenario file structure. Note that a vadere scenario takes the format of a nested directory.
     This function enables to modify any variable in the .scenario file, given the exact level of nesting.
 
     Parameters
@@ -26,7 +28,7 @@ def change_vadere_scenario(model_file, variable, value):
     model_file : dict
                 loaded Vadere .scenario file, use json.load to load the file as dict
     variable : tuple
-                the level of the nested variable that needs to be updates. This should be 
+                the level of the nested variable that needs to be updates. This should be
                 provided as tuple. So for example, dict['x']['y'][5]['z'] should be provided as
                 ('x', 'y', 5, 'z').
     value : float
@@ -35,6 +37,7 @@ def change_vadere_scenario(model_file, variable, value):
     """
     index = literal_eval(variable)
     reduce(operator.getitem, index[:-1], model_file)[index[-1]] = value
+
 
 def update_vadere_scenario(model_file, experiment):
     """
@@ -50,10 +53,10 @@ def update_vadere_scenario(model_file, experiment):
     """
     with open(model_file, 'r') as file:
         v_model = json.load(file)
-    
+
     for key, value in experiment.items():
         change_vadere_scenario(v_model, key, value)
-    
+
     with open(model_file, 'w') as file:
         json.dump(v_model, file)
 
@@ -134,6 +137,7 @@ class BaseVadereModel(FileModel):
             '-f',
             os.path.join(self.working_directory, self.model_file),
         ]
+
     @method_logger(__name__)
     def run_experiment(self, experiment):
         """
@@ -144,9 +148,14 @@ class BaseVadereModel(FileModel):
         experiment : dict like
 
         """
-        # change the .vadere scenario model file depending on the passed experiment
-        update_vadere_scenario(os.path.join(self.working_directory, self.model_file), experiment)
-        
+        # change the .vadere scenario model file depending on the passed
+        # experiment
+        update_vadere_scenario(
+            os.path.join(
+                self.working_directory,
+                self.model_file),
+            experiment)
+
         # make the temp dir for output
         # os.mkdir(os.path.join(self.working_directory, 'temp'))
 
@@ -156,17 +165,22 @@ class BaseVadereModel(FileModel):
             stdin=PIPE,
             stdout=PIPE,
             stderr=PIPE
-            )
-        
+        )
+
         # results are store inside a temp dir
         # get path to nested result dir
-        for root, dirs, files in os.walk(os.path.join(self.working_directory, 'temp')):
+        output_dir = ''
+        for root, dirs, files in os.walk(
+                os.path.join(self.working_directory, 'temp')):
             # should only be one subdir
+            # if for any reason multiple subdirs exist, only one will be
+            # selected
             for subdir in dirs:
                 output_dir = os.path.join(root, subdir)
         if not output_dir:
-            print('none found')
-            print(os.path.join(self.working_directory, 'temp'))
+            raise EMAError(
+                'Vadere model run resulted in no output files. Please check model. \n Vadere run error error: {}'.format(
+                    process.stderr))
         # load results
         # .csv is assumed to be timeseries, .txt scaler
         # other file types are ignored
@@ -174,30 +188,32 @@ class BaseVadereModel(FileModel):
         scalar_res = []
         for file in self.processor_files:
             if file.endswith('.csv'):
-                timeseries_res[file] = pd.read_csv(os.path.join(output_dir, file), sep=' ')
+                timeseries_res[file] = pd.read_csv(
+                    os.path.join(output_dir, file), sep=' ')
             if file.endswith('.txt'):
-                scalar_res.append(os.path.join(output_dir, file)) 
+                scalar_res.append(os.path.join(output_dir, file))
 
         # format data to EMA structure
         res = {}
         # handle timeseries
         if timeseries_res:
             if len(timeseries_res) > 1:
-                timeseries_total = pd.concat([timeseries_res[outcome] for outcome in timeseries_res])
+                timeseries_total = pd.concat(
+                    [timeseries_res[outcome] for outcome in timeseries_res])
             else:
                 timeseries_total = timeseries_res[next(iter(timeseries_res))]
             # drop the timestep column
             timeseries_total.drop('timeStep', axis=1, inplace=True)
             # format according to EMA preference
             res = {col: series.values for col,
-                                series in timeseries_total.iteritems()}
+                   series in timeseries_total.iteritems()}
 
         # handle scalar
-        for file in scalar_res:
-            with open(file, 'r') as f:
-                name = f.readline().strip()
-                value = float(f.readline().strip())
-            res[name] = value
+        if scalar_res:
+            for file in scalar_res:
+                s = pd.read_csv(file, sep=' ')
+                for column, data in s.iteritems():
+                    res[column] = data.item()
 
         # remove temporal experiment output
         try:
@@ -207,18 +223,20 @@ class BaseVadereModel(FileModel):
         return res
 
     def cleanup(self):
-            """
-            This model is called after finishing all the experiments, but
-            just prior to returning the results. This method gives a hook for
-            doing any cleanup, such as closing applications.
+        """
+        This model is called after finishing all the experiments, but
+        just prior to returning the results. This method gives a hook for
+        doing any cleanup, such as closing applications.
 
-            In case of running in parallel, this method is called during
-            the cleanup of the pool, just prior to removing the temporary
-            directories.
+        In case of running in parallel, this method is called during
+        the cleanup of the pool, just prior to removing the temporary
+        directories.
 
-            """
-            # cleanup moved to run_experiment, so temp dir is removed before new experiment starts
-            pass
+        """
+        # cleanup moved to run_experiment, so temp dir is removed before new
+        # experiment starts
+        pass
+
 
 class VadereModel(SingleReplication, BaseVadereModel):
     pass
