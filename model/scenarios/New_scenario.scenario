@@ -2,7 +2,6 @@
   "name" : "New_scenario",
   "description" : "",
   "release" : "2.0",
-  "commithash" : "aa03ad94d541ba1c99846a6a46772b1491e8d81e",
   "processWriters" : {
     "files" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
