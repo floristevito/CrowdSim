@@ -1,12 +1,12 @@
 {
-  "name" : "New_scenario",
+  "name" : "base_case_ver",
   "description" : "",
   "release" : "2.0",
   "processWriters" : {
     "files" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
       "filename" : "postvis.traj",
-      "processors" : [ 1, 2 ]
+      "processors" : [ 1, 2, 5, 6 ]
     }, {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.TimestepPedestrianIdOverlapOutputFile",
       "filename" : "overlaps.csv",
@@ -15,14 +15,6 @@
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
       "filename" : "overlapCount.txt",
       "processors" : [ 4 ]
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
-      "filename" : "density.txt",
-      "processors" : [ 6, 7 ]
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
-      "filename" : "speed.txt",
-      "processors" : [ 17, 11, 13, 15 ]
     } ],
     "processors" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepProcessor",
@@ -41,105 +33,11 @@
         "pedestrianOverlapProcessorId" : 3
       }
     }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
-      "id" : 5,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
-      "attributes" : {
-        "measurementAreaId" : 9000
-      }
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupIDProcessor",
+      "id" : 5
     }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
-      "id" : 6,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
-      "attributes" : {
-        "areaDensityCountingNormedProcessorId" : 5
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
-      "id" : 7,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
-      "attributes" : {
-        "areaDensityCountingNormedProcessorId" : 5
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianPositionProcessor",
-      "id" : 8,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesPedestrianPositionProcessor",
-      "attributes" : {
-        "interpolate" : true
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianVelocityProcessor",
-      "id" : 9,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesPedestrianVelocityProcessor",
-      "attributes" : {
-        "pedestrianPositionProcessorId" : 8,
-        "backSteps" : 1
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
-      "id" : 10,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
-      "attributes" : {
-        "measurementAreaId" : 9001,
-        "pedestrianPositionProcessorId" : 8,
-        "pedestrianVelocityProcessorId" : 9
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
-      "id" : 11,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
-      "attributes" : {
-        "areaSpeedProcessorId" : 10
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
-      "id" : 12,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
-      "attributes" : {
-        "measurementAreaId" : 9002,
-        "pedestrianPositionProcessorId" : 8,
-        "pedestrianVelocityProcessorId" : 9
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
-      "id" : 13,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
-      "attributes" : {
-        "areaSpeedProcessorId" : 12
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
-      "id" : 14,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
-      "attributes" : {
-        "measurementAreaId" : 9003,
-        "pedestrianPositionProcessorId" : 8,
-        "pedestrianVelocityProcessorId" : 9
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
-      "id" : 15,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
-      "attributes" : {
-        "areaSpeedProcessorId" : 14
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
-      "id" : 16,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
-      "attributes" : {
-        "measurementAreaId" : 9004,
-        "pedestrianPositionProcessorId" : 8,
-        "pedestrianVelocityProcessorId" : 9
-      }
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
-      "id" : 17,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
-      "attributes" : {
-        "areaSpeedProcessorId" : 16
-      }
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupSizeProcessor",
+      "id" : 6
     } ],
     "isTimestamped" : true,
     "isWriteMetaData" : false
@@ -1684,28 +1582,34 @@
       } ],
       "measurementAreas" : [ {
         "shape" : {
-          "x" : 9.8,
-          "y" : 10.6,
-          "width" : 110.6,
-          "height" : 89.7,
-          "type" : "RECTANGLE"
-        },
-        "id" : 9000
-      }, {
-        "shape" : {
           "type" : "POLYGON",
           "points" : [ {
-            "x" : 49.5,
-            "y" : 63.9
+            "x" : 40.8,
+            "y" : 72.4
           }, {
-            "x" : 74.2,
-            "y" : 64.9
+            "x" : 42.4,
+            "y" : 72.9
           }, {
-            "x" : 75.7,
-            "y" : 44.7
+            "x" : 50.8,
+            "y" : 75.8
           }, {
-            "x" : 53.4,
-            "y" : 44.3
+            "x" : 58.0,
+            "y" : 78.2
+          }, {
+            "x" : 65.3,
+            "y" : 60.3
+          }, {
+            "x" : 68.1,
+            "y" : 55.5
+          }, {
+            "x" : 55.3,
+            "y" : 50.3
+          }, {
+            "x" : 48.6,
+            "y" : 47.9
+          }, {
+            "x" : 45.4,
+            "y" : 57.6
           } ]
         },
         "id" : 9001
@@ -1713,17 +1617,38 @@
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
-            "x" : 36.6,
-            "y" : 70.0
+            "x" : 97.7,
+            "y" : 58.9
           }, {
-            "x" : 37.6,
-            "y" : 66.6
+            "x" : 96.6,
+            "y" : 62.4
           }, {
-            "x" : 52.9,
-            "y" : 69.1
+            "x" : 79.8,
+            "y" : 58.8
           }, {
-            "x" : 51.6,
-            "y" : 73.5
+            "x" : 79.0,
+            "y" : 62.7
+          }, {
+            "x" : 78.7,
+            "y" : 64.1
+          }, {
+            "x" : 76.9,
+            "y" : 65.0
+          }, {
+            "x" : 75.4,
+            "y" : 64.4
+          }, {
+            "x" : 66.0,
+            "y" : 60.6
+          }, {
+            "x" : 68.2,
+            "y" : 55.5
+          }, {
+            "x" : 70.5,
+            "y" : 49.8
+          }, {
+            "x" : 73.7,
+            "y" : 50.9
           } ]
         },
         "id" : 9002
@@ -1731,717 +1656,35 @@
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
-            "x" : 83.8,
-            "y" : 61.9
+            "x" : 67.4,
+            "y" : 20.1
           }, {
-            "x" : 88.1,
-            "y" : 51.2
+            "x" : 57.8,
+            "y" : 18.4
           }, {
-            "x" : 104.1,
-            "y" : 57.6
+            "x" : 48.8,
+            "y" : 47.3
           }, {
-            "x" : 101.0,
-            "y" : 65.0
+            "x" : 55.5,
+            "y" : 49.5
+          }, {
+            "x" : 67.4,
+            "y" : 20.2
           } ]
         },
         "id" : 9003
       }, {
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 57.3,
-            "y" : 35.1
-          }, {
-            "x" : 74.9,
-            "y" : 37.2
-          }, {
-            "x" : 77.5,
-            "y" : 23.9
-          }, {
-            "x" : 61.4,
-            "y" : 22.6
-          } ]
+          "x" : 19.9,
+          "y" : 10.5,
+          "width" : 96.7,
+          "height" : 89.5,
+          "type" : "RECTANGLE"
         },
-        "id" : 9004
+        "id" : 9000
       } ],
       "stairs" : [ ],
       "targets" : [ {
-        "id" : 2002,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 40.382228694307095,
-            "y" : 76.90546846904789
-          }, {
-            "x" : 41.34206244508959,
-            "y" : 74.0631596943264
-          }, {
-            "x" : 40.4135749120139,
-            "y" : 73.74961400240413
-          }, {
-            "x" : 39.453741161231406,
-            "y" : 76.59192277712562
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2003,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 28.711292740046563,
-            "y" : 64.59809266179487
-          }, {
-            "x" : 31.64749255716062,
-            "y" : 65.21350360903206
-          }, {
-            "x" : 31.84852679992477,
-            "y" : 64.25434500210814
-          }, {
-            "x" : 28.91232698281071,
-            "y" : 63.638934054870944
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2017,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 100.77897998050834,
-            "y" : 53.11612835867302
-          }, {
-            "x" : 103.59437394241338,
-            "y" : 54.152254238703364
-          }, {
-            "x" : 103.93284172988996,
-            "y" : 53.232558877814384
-          }, {
-            "x" : 101.11744776798491,
-            "y" : 52.19643299778404
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2016,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 95.953773116135,
-            "y" : 51.35052734765247
-          }, {
-            "x" : 98.77156135794137,
-            "y" : 52.38012407663807
-          }, {
-            "x" : 99.10789628941,
-            "y" : 51.459646584314655
-          }, {
-            "x" : 96.29010804760362,
-            "y" : 50.43004985532906
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2015,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 89.1980487835951,
-            "y" : 48.9945964505644
-          }, {
-            "x" : 92.03841039954311,
-            "y" : 49.96017704826154
-          }, {
-            "x" : 92.35383339479084,
-            "y" : 49.03232558705185
-          }, {
-            "x" : 89.51347177884283,
-            "y" : 48.06674498935471
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2013,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 75.61383341795806,
-            "y" : 38.55400235590727
-          }, {
-            "x" : 74.53092517679909,
-            "y" : 41.351735320510926
-          }, {
-            "x" : 75.44485127856962,
-            "y" : 41.70548534595619
-          }, {
-            "x" : 76.52775951972859,
-            "y" : 38.90775238135254
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2004,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 44.547129293925344,
-            "y" : 63.78009456976539
-          }, {
-            "x" : 45.43356991564563,
-            "y" : 60.91404798532819
-          }, {
-            "x" : 44.497328031396144,
-            "y" : 60.6244773822329
-          }, {
-            "x" : 43.61088740967586,
-            "y" : 63.4905239666701
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2011,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 79.83246676896893,
-            "y" : 28.46854126379038
-          }, {
-            "x" : 78.5725110260977,
-            "y" : 31.191134058536928
-          }, {
-            "x" : 79.46189133904824,
-            "y" : 31.602719601208197
-          }, {
-            "x" : 80.72184708191946,
-            "y" : 28.88012680646165
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2010,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 81.94521623989138,
-            "y" : 23.153134986777598
-          }, {
-            "x" : 80.9018633852034,
-            "y" : 25.96585872376537
-          }, {
-            "x" : 81.82068647261941,
-            "y" : 26.306687322963445
-          }, {
-            "x" : 82.8640393273074,
-            "y" : 23.493963585975674
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2005,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 47.207558015010484,
-            "y" : 55.36731572549892
-          }, {
-            "x" : 48.13046979208766,
-            "y" : 52.51280458491245
-          }, {
-            "x" : 47.19799615282941,
-            "y" : 52.21132007106724
-          }, {
-            "x" : 46.275084375752236,
-            "y" : 55.06583121165371
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2018,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 105.64782356563003,
-            "y" : 54.90379271722842
-          }, {
-            "x" : 108.46668114577179,
-            "y" : 55.93045816559873
-          }, {
-            "x" : 108.80205852557276,
-            "y" : 55.009631356085755
-          }, {
-            "x" : 105.98320094543101,
-            "y" : 53.982965907715446
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2014,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 83.39547323262435,
-            "y" : 47.01505658632689
-          }, {
-            "x" : 86.23439585542248,
-            "y" : 47.9848598353238
-          }, {
-            "x" : 86.5511982500948,
-            "y" : 47.057478445209746
-          }, {
-            "x" : 83.71227562729668,
-            "y" : 46.087675196212835
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2012,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 77.40019171072667,
-            "y" : 33.91393326949444
-          }, {
-            "x" : 76.3233303523618,
-            "y" : 36.713999271370206
-          }, {
-            "x" : 77.2380185796412,
-            "y" : 37.0657739817694
-          }, {
-            "x" : 78.31487993800609,
-            "y" : 34.265707979893634
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2009,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 56.38084972741641,
-            "y" : 26.147595086898182
-          }, {
-            "x" : 57.26871113751829,
-            "y" : 23.281988324543672
-          }, {
-            "x" : 56.332612928482476,
-            "y" : 22.991953597243725
-          }, {
-            "x" : 55.4447515183806,
-            "y" : 25.857560359598235
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2008,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 53.09197307873996,
-            "y" : 36.78773388355409
-          }, {
-            "x" : 53.976331665910145,
-            "y" : 33.92104417427296
-          }, {
-            "x" : 53.03987969421164,
-            "y" : 33.63215370246403
-          }, {
-            "x" : 52.15552110704146,
-            "y" : 36.49884341174516
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2006,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 49.01007343948348,
-            "y" : 49.79202655883794
-          }, {
-            "x" : 49.932839301505,
-            "y" : 46.93746824556289
-          }, {
-            "x" : 49.00035025250182,
-            "y" : 46.636031397302524
-          }, {
-            "x" : 48.0775843904803,
-            "y" : 49.490589710577574
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2007,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 50.81386916114726,
-            "y" : 44.1492290600933
-          }, {
-            "x" : 51.70245758666639,
-            "y" : 41.28384765266541
-          }, {
-            "x" : 50.76643299357328,
-            "y" : 40.99357543366249
-          }, {
-            "x" : 49.87784456805415,
-            "y" : 43.85895684109038
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2026,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 67.51940005111709,
-            "y" : 85.72065225045603
-          }, {
-            "x" : 66.3316626640669,
-            "y" : 88.47551702016855
-          }, {
-            "x" : 67.23158515550632,
-            "y" : 88.86351123327161
-          }, {
-            "x" : 68.41932254255651,
-            "y" : 86.10864646355908
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2024,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 72.99660749713547,
-            "y" : 72.44786270985959
-          }, {
-            "x" : 71.93879440139335,
-            "y" : 75.2551801935932
-          }, {
-            "x" : 72.85585144607967,
-            "y" : 75.60073247153564
-          }, {
-            "x" : 73.91366454182179,
-            "y" : 72.79341498780202
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2025,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 70.22825252529411,
-            "y" : 79.42229495909129
-          }, {
-            "x" : 69.04336042896931,
-            "y" : 82.17838471090764
-          }, {
-            "x" : 69.94368308122931,
-            "y" : 82.56544946237373
-          }, {
-            "x" : 71.12857517755411,
-            "y" : 79.80935971055739
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2023,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 83.13454720747424,
-            "y" : 65.17754143633186
-          }, {
-            "x" : 80.21424581824084,
-            "y" : 64.49063547767273
-          }, {
-            "x" : 80.43863509806948,
-            "y" : 63.536670357189806
-          }, {
-            "x" : 83.35893648730288,
-            "y" : 64.22357631584894
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2022,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 88.35592612389539,
-            "y" : 66.39726742954947
-          }, {
-            "x" : 85.43414751199671,
-            "y" : 65.71667229068093
-          }, {
-            "x" : 85.65647525736044,
-            "y" : 64.76222461079404
-          }, {
-            "x" : 88.57825386925911,
-            "y" : 65.44281974966258
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2021,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 94.24359226062178,
-            "y" : 67.7013407376449
-          }, {
-            "x" : 91.3135033806886,
-            "y" : 67.05746252269128
-          }, {
-            "x" : 91.52383693090678,
-            "y" : 66.10030015524644
-          }, {
-            "x" : 94.45392581083996,
-            "y" : 66.74417837020006
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2020,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 102.70268410804849,
-            "y" : 69.43513842385333
-          }, {
-            "x" : 99.75597656011004,
-            "y" : 68.87218671462541
-          }, {
-            "x" : 99.93987411845784,
-            "y" : 67.90959558229885
-          }, {
-            "x" : 102.88658166639628,
-            "y" : 68.47254729152677
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2019,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 108.20835202524832,
-            "y" : 70.6229046515918
-          }, {
-            "x" : 105.28605382647517,
-            "y" : 69.94454395296077
-          }, {
-            "x" : 105.50765165469464,
-            "y" : 68.98992654136154
-          }, {
-            "x" : 108.42994985346779,
-            "y" : 69.66828723999257
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
-        "id" : 2001,
-        "absorbing" : true,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 38.579595084032,
-            "y" : 82.25229451393437
-          }, {
-            "x" : 39.537524045831965,
-            "y" : 79.40934321218035
-          }, {
-            "x" : 38.608826620592325,
-            "y" : 79.0964197513257
-          }, {
-            "x" : 37.65089765879236,
-            "y" : 81.93937105307973
-          } ]
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
-      }, {
         "id" : 1001,
         "absorbing" : true,
         "shape" : {
@@ -2566,7 +1809,7 @@
         },
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1002, 1003, 1004, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 ],
+        "nextTarget" : [ 1002, 1003, 1004 ],
         "probabilityToChangeTarget" : [ ]
       }, {
         "id" : 6002,
@@ -2588,7 +1831,7 @@
         },
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1001, 1003, 1004, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 ],
+        "nextTarget" : [ 1003, 1004, 1001 ],
         "probabilityToChangeTarget" : [ ]
       }, {
         "id" : 6003,
@@ -2610,7 +1853,7 @@
         },
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1001, 1002, 1004, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 ],
+        "nextTarget" : [ 1004, 1001, 1002 ],
         "probabilityToChangeTarget" : [ ]
       }, {
         "id" : 6004,
@@ -2632,14 +1875,14 @@
         },
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1001, 1002, 1003, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 ],
+        "nextTarget" : [ 1001, 1002, 1003 ],
         "probabilityToChangeTarget" : [ ]
       } ],
       "absorbingAreas" : [ ],
       "aerosolClouds" : [ ],
       "droplets" : [ ],
       "sources" : [ {
-        "id" : 5101,
+        "id" : 5001,
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
@@ -2660,151 +1903,19 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 32,
-        "maxSpawnNumberTotal" : -1,
+        "spawnNumber" : 75,
+        "maxSpawnNumberTotal" : 75,
         "startTime" : 0.0,
         "endTime" : 0.0,
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
         "targetIds" : [ 1002 ],
-        "groupSizeDistribution" : [ 1.0 ],
+        "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
       }, {
-        "id" : 5201,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 37.55735825342475,
-            "y" : 83.13096624274738
-          }, {
-            "x" : 33.27686959641753,
-            "y" : 95.80059294926002
-          }, {
-            "x" : 62.229190244369676,
-            "y" : 100.1679459031485
-          }, {
-            "x" : 66.56539705439587,
-            "y" : 89.68055844551884
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 5,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1002 ],
-        "groupSizeDistribution" : [ 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5301,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 37.55735825342475,
-            "y" : 83.13096624274738
-          }, {
-            "x" : 33.27686959641753,
-            "y" : 95.80059294926002
-          }, {
-            "x" : 62.229190244369676,
-            "y" : 100.1679459031485
-          }, {
-            "x" : 66.56539705439587,
-            "y" : 89.68055844551884
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1002 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5501,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 37.55735825342475,
-            "y" : 83.13096624274738
-          }, {
-            "x" : 33.27686959641753,
-            "y" : 95.80059294926002
-          }, {
-            "x" : 62.229190244369676,
-            "y" : 100.1679459031485
-          }, {
-            "x" : 66.56539705439587,
-            "y" : 89.68055844551884
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1002 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5401,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 37.55735825342475,
-            "y" : 83.13096624274738
-          }, {
-            "x" : 33.27686959641753,
-            "y" : 95.80059294926002
-          }, {
-            "x" : 62.229190244369676,
-            "y" : 100.1679459031485
-          }, {
-            "x" : 66.56539705439587,
-            "y" : 89.68055844551884
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1002 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5102,
+        "id" : 5002,
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
@@ -2825,151 +1936,19 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 10,
-        "maxSpawnNumberTotal" : -1,
+        "spawnNumber" : 20,
+        "maxSpawnNumberTotal" : 20,
         "startTime" : 0.0,
         "endTime" : 0.0,
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
         "targetIds" : [ 1003 ],
-        "groupSizeDistribution" : [ 1.0 ],
+        "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
       }, {
-        "id" : 5202,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 25.9129993634487,
-            "y" : 69.53669809331744
-          }, {
-            "x" : 20.348875473131194,
-            "y" : 68.53338621582836
-          }, {
-            "x" : 19.835387819219612,
-            "y" : 61.98922844763845
-          }, {
-            "x" : 27.186936981421663,
-            "y" : 63.33311123842746
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 5,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1003 ],
-        "groupSizeDistribution" : [ 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5302,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 25.9129993634487,
-            "y" : 69.53669809331744
-          }, {
-            "x" : 20.348875473131194,
-            "y" : 68.53338621582836
-          }, {
-            "x" : 19.835387819219612,
-            "y" : 61.98922844763845
-          }, {
-            "x" : 27.186936981421663,
-            "y" : 63.33311123842746
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1003 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5402,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 25.9129993634487,
-            "y" : 69.53669809331744
-          }, {
-            "x" : 20.348875473131194,
-            "y" : 68.53338621582836
-          }, {
-            "x" : 19.835387819219612,
-            "y" : 61.98922844763845
-          }, {
-            "x" : 27.186936981421663,
-            "y" : 63.33311123842746
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1003 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5502,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 25.9129993634487,
-            "y" : 69.53669809331744
-          }, {
-            "x" : 20.348875473131194,
-            "y" : 68.53338621582836
-          }, {
-            "x" : 19.835387819219612,
-            "y" : 61.98922844763845
-          }, {
-            "x" : 27.186936981421663,
-            "y" : 63.33311123842746
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1003 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5503,
+        "id" : 5003,
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
@@ -2990,151 +1969,19 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "spawnNumber" : 75,
+        "maxSpawnNumberTotal" : 75,
         "startTime" : 0.0,
         "endTime" : 0.0,
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
         "targetIds" : [ 1004 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 0.0, 0.0, 1.0 ],
+        "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
       }, {
-        "id" : 5403,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 58.070116051165385,
-            "y" : 18.2142923173029
-          }, {
-            "x" : 60.52063828599639,
-            "y" : 10.328711625486612
-          }, {
-            "x" : 86.78592136725783,
-            "y" : 12.362791960760951
-          }, {
-            "x" : 82.99122052717023,
-            "y" : 22.451076244330032
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1004 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5303,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 58.070116051165385,
-            "y" : 18.2142923173029
-          }, {
-            "x" : 60.52063828599639,
-            "y" : 10.328711625486612
-          }, {
-            "x" : 86.78592136725783,
-            "y" : 12.362791960760951
-          }, {
-            "x" : 82.99122052717023,
-            "y" : 22.451076244330032
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1004 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5203,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 58.070116051165385,
-            "y" : 18.2142923173029
-          }, {
-            "x" : 60.52063828599639,
-            "y" : 10.328711625486612
-          }, {
-            "x" : 86.78592136725783,
-            "y" : 12.362791960760951
-          }, {
-            "x" : 82.99122052717023,
-            "y" : 22.451076244330032
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 5,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1004 ],
-        "groupSizeDistribution" : [ 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5103,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 58.070116051165385,
-            "y" : 18.2142923173029
-          }, {
-            "x" : 60.52063828599639,
-            "y" : 10.328711625486612
-          }, {
-            "x" : 86.78592136725783,
-            "y" : 12.362791960760951
-          }, {
-            "x" : 82.99122052717023,
-            "y" : 22.451076244330032
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 10,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1004 ],
-        "groupSizeDistribution" : [ 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5504,
+        "id" : 5004,
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
@@ -3155,147 +2002,15 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "spawnNumber" : 20,
+        "maxSpawnNumberTotal" : 20,
         "startTime" : 0.0,
         "endTime" : 0.0,
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
         "targetIds" : [ 1001 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5304,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 108.60516074328567,
-            "y" : 70.56901335750706
-          }, {
-            "x" : 114.80353877493297,
-            "y" : 72.01943094546907
-          }, {
-            "x" : 116.30854988868697,
-            "y" : 57.891307026306166
-          }, {
-            "x" : 109.88722551759915,
-            "y" : 55.552218355825175
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1001 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5204,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 108.60516074328567,
-            "y" : 70.56901335750706
-          }, {
-            "x" : 114.80353877493297,
-            "y" : 72.01943094546907
-          }, {
-            "x" : 116.30854988868697,
-            "y" : 57.891307026306166
-          }, {
-            "x" : 109.88722551759915,
-            "y" : 55.552218355825175
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 5,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1001 ],
-        "groupSizeDistribution" : [ 0.0, 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5104,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 108.60516074328567,
-            "y" : 70.56901335750706
-          }, {
-            "x" : 114.80353877493297,
-            "y" : 72.01943094546907
-          }, {
-            "x" : 116.30854988868697,
-            "y" : 57.891307026306166
-          }, {
-            "x" : 109.88722551759915,
-            "y" : 55.552218355825175
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 10,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1001 ],
-        "groupSizeDistribution" : [ 1.0 ],
-        "dynamicElementType" : "PEDESTRIAN",
-        "attributesPedestrian" : null
-      }, {
-        "id" : 5404,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 108.60516074328567,
-            "y" : 70.56901335750706
-          }, {
-            "x" : 114.80353877493297,
-            "y" : 72.01943094546907
-          }, {
-            "x" : 116.30854988868697,
-            "y" : 57.891307026306166
-          }, {
-            "x" : 109.88722551759915,
-            "y" : 55.552218355825175
-          } ]
-        },
-        "interSpawnTimeDistribution" : "constant",
-        "distributionParameters" : {
-          "updateFrequency" : 1.0
-        },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
-        "startTime" : 0.0,
-        "endTime" : 0.0,
-        "spawnAtRandomPositions" : true,
-        "spawnAtGridPositionsCA" : false,
-        "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1001 ],
-        "groupSizeDistribution" : [ 0.0, 0.0, 0.0, 1.0 ],
+        "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
       } ],

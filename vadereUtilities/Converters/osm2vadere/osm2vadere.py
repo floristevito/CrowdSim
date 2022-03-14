@@ -231,9 +231,9 @@ def convert_buildings_as_cartesian_to_buildings_as_vadere_obstacles(buildings_as
 
 
 if __name__ == "__main__":
-    args = parse_command_line_arguments()
-
-    xml_tree = etree.parse(args.filename)
+    #args = parse_command_line_arguments()
+    filename = '../../../data/input/files/OSM/Breda_Grote_Markt.osm'
+    xml_tree = etree.parse(filename)
 
     nodes_dictionary_with_lat_and_lon = extract_latitude_and_longitude_for_each_xml_node(xml_tree)
 
@@ -241,7 +241,7 @@ if __name__ == "__main__":
     complex_buildings = filter_for_buildings_in_relations(xml_tree)
     extracted_base_point = extract_base_point(xml_tree)
 
-    print_xml_parsing_statistics(args.filename, nodes_dictionary_with_lat_and_lon, simple_buildings, complex_buildings, extracted_base_point)
+    print_xml_parsing_statistics(filename, nodes_dictionary_with_lat_and_lon, simple_buildings, complex_buildings, extracted_base_point)
 
     buildings_as_cartesian = convert_buildings_to_cartesian(simple_buildings + complex_buildings)
 
@@ -255,4 +255,7 @@ if __name__ == "__main__":
     obstacles_joined = ",\n".join(list_of_vadere_obstacles_as_strings)
 
     vadere_topography_output = build_vadere_topography_input_with_obstacles(obstacles_joined, width_topography, height_topography)
-    print_output(args.output, vadere_topography_output)
+
+    # save output to txt file
+    with open('../../../data/output/osm/topo.txt', 'w') as file:
+        file.write(vadere_topography_output)
