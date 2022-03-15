@@ -1,7 +1,5 @@
 from concurrent.futures import process
 import os
-import numpy
-import suqc
 import pandas as pd
 from functools import reduce
 import operator
