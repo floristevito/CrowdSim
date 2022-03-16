@@ -2,6 +2,7 @@
   "name" : "base_case_control",
   "description" : "",
   "release" : "2.0",
+  "commithash" : "aa03ad94d541ba1c99846a6a46772b1491e8d81e",
   "processWriters" : {
     "files" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
@@ -112,13 +113,13 @@
       "digitsPerCoordinate" : 2,
       "useFixedSeed" : true,
       "fixedSeed" : -5190782782724114477,
-      "simulationSeed" : 0
+      "simulationSeed" : -5190782782724114477
     },
     "attributesPsychology" : {
       "usePsychologyLayer" : true,
       "psychologyLayer" : {
         "perception" : "SimplePerceptionModel",
-        "cognition" : "CooperativeCognitionModel"
+        "cognition" : "SimpleCognitionModel"
       }
     },
     "topography" : {
@@ -1580,7 +1581,16 @@
         },
         "id" : 8005
       } ],
-      "measurementAreas" : [ ],
+      "measurementAreas" : [ {
+        "shape" : {
+          "x" : 37.1,
+          "y" : 65.9,
+          "width" : 6.4,
+          "height" : 6.0,
+          "type" : "RECTANGLE"
+        },
+        "id" : 4001
+      } ],
       "stairs" : [ ],
       "targets" : [ {
         "id" : 1001,
@@ -1948,7 +1958,28 @@
         }
       }
     },
-    "stimulusInfos" : [ ],
-    "reactionProbabilities" : [ ]
+    "stimulusInfos" : [ {
+      "timeframe" : {
+        "startTime" : 0.0,
+        "endTime" : 10.0,
+        "repeat" : false,
+        "waitTimeBetweenRepetition" : 0.0
+      },
+      "stimuli" : [ {
+        "type" : "WaitInArea",
+        "id" : 4001,
+        "area" : {
+          "x" : 37.1,
+          "y" : 65.9,
+          "width" : 6.4,
+          "height" : 6.0,
+          "type" : "RECTANGLE"
+        }
+      } ]
+    } ],
+    "reactionProbabilities" : [ {
+      "stimulusId" : 4001,
+      "reactionProbability" : 1.0
+    } ]
   }
 }

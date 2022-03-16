@@ -40,7 +40,7 @@
       "id" : 6
     } ],
     "isTimestamped" : true,
-    "isWriteMetaData" : false
+    "isWriteMetaData" : true
   },
   "scenario" : {
     "mainModel" : "org.vadere.simulator.models.osm.OptimalStepsModel",
@@ -112,7 +112,7 @@
       "digitsPerCoordinate" : 2,
       "useFixedSeed" : true,
       "fixedSeed" : -5190782782724114477,
-      "simulationSeed" : 0
+      "simulationSeed" : -5190782782724114477
     },
     "attributesPsychology" : {
       "usePsychologyLayer" : true,
@@ -1579,6 +1579,78 @@
           } ]
         },
         "id" : 8005
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : -1.0E-4,
+            "y" : -1.0E-4
+          }, {
+            "x" : 128.0001,
+            "y" : -1.0E-4
+          }, {
+            "x" : 128.0001,
+            "y" : 0.5001
+          }, {
+            "x" : -1.0E-4,
+            "y" : 0.5001
+          } ]
+        },
+        "id" : 8006
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 128.0001,
+            "y" : -1.0E-4
+          }, {
+            "x" : 128.0001,
+            "y" : 108.0001
+          }, {
+            "x" : 127.4999,
+            "y" : 108.0001
+          }, {
+            "x" : 127.4999,
+            "y" : -1.0E-4
+          } ]
+        },
+        "id" : 8007
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 128.0001,
+            "y" : 108.0001
+          }, {
+            "x" : -1.0E-4,
+            "y" : 108.0001
+          }, {
+            "x" : -1.0E-4,
+            "y" : 107.4999
+          }, {
+            "x" : 128.0001,
+            "y" : 107.4999
+          } ]
+        },
+        "id" : 8008
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : -1.0E-4,
+            "y" : 108.0001
+          }, {
+            "x" : -1.0E-4,
+            "y" : -1.0E-4
+          }, {
+            "x" : 0.5001,
+            "y" : -1.0E-4
+          }, {
+            "x" : 0.5001,
+            "y" : 108.0001
+          } ]
+        },
+        "id" : 8009
       } ],
       "measurementAreas" : [ {
         "shape" : {
@@ -1673,15 +1745,6 @@
           } ]
         },
         "id" : 9003
-      }, {
-        "shape" : {
-          "x" : 19.9,
-          "y" : 10.5,
-          "width" : 96.7,
-          "height" : 89.5,
-          "type" : "RECTANGLE"
-        },
-        "id" : 9000
       } ],
       "stairs" : [ ],
       "targets" : [ {
