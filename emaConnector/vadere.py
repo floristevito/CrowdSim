@@ -148,6 +148,10 @@ class BaseVadereModel(FileModel):
         Parameters
         ----------
         experiment : dict like
+        
+        Raises
+        ------
+        EMAError if the Vadere run returns no results
 
         """
         # change the .vadere scenario model file depending on the passed
