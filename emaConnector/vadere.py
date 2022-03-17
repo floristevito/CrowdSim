@@ -1,5 +1,7 @@
 from concurrent.futures import process
 import os
+import numpy
+import suqc
 import pandas as pd
 from functools import reduce
 import operator
@@ -92,6 +94,10 @@ class BaseVadereModel(FileModel):
                     on set processors. A .csv file is assumed for timeseries output,
                     and a .txt for a scaler output.
 
+        Raises
+        ------
+        EMAError if name contains non alpha-numerical characters
+
         Note
         ----
         Anything that is relative to `self.working_directory`should be
@@ -125,6 +131,8 @@ class BaseVadereModel(FileModel):
             'java',
             '-jar',
             os.path.join(self.working_directory, self.vadere_jar),
+            '--loglevel',
+            'OFF'
             'scenario-run',
             '-o',
             os.path.join(self.working_directory, 'temp'),
@@ -140,11 +148,6 @@ class BaseVadereModel(FileModel):
         Parameters
         ----------
         experiment : dict like
-        
-        Raises
-        ------
-        EMAError
-            if Vadere run returns no results
 
         """
         # change the .vadere scenario model file depending on the passed
@@ -173,7 +176,7 @@ class BaseVadereModel(FileModel):
                 os.path.join(self.working_directory, 'temp')):
             # should only be one subdir
             # if for any reason multiple subdirs exist, only one will be
-            # selected to gather results
+            # selected
             for subdir in dirs:
                 output_dir = os.path.join(root, subdir)
         if not output_dir:
