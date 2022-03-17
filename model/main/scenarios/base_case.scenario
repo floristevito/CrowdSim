@@ -178,7 +178,7 @@
       "visualizationEnabled" : true,
       "printFPS" : false,
       "digitsPerCoordinate" : 2,
-      "useFixedSeed" : true,
+      "useFixedSeed" : false,
       "fixedSeed" : -5190782782724114477,
       "simulationSeed" : 0
     },
