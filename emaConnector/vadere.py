@@ -1,7 +1,4 @@
-from concurrent.futures import process
 import os
-import numpy
-import suqc
 import pandas as pd
 from functools import reduce
 import operator
@@ -9,13 +6,16 @@ from ast import literal_eval
 import json
 from subprocess import PIPE, run
 import shutil
-from ema_workbench.em_framework.model import Replicator, SingleReplication
-from ema_workbench.em_framework.outcomes import TimeSeriesOutcome
+from ema_workbench.em_framework.model import SingleReplication
 from ..em_framework.model import FileModel
 from ..util.ema_logging import method_logger
 from ..util import EMAError
 
-__all__ = ['VadereModel']
+__all__ = [
+    'change_vadere_scenario',
+    'update_vadere_scenario'
+    'VadereModel',
+]
 
 
 def change_vadere_scenario(model_file, variable, value):
@@ -148,7 +148,7 @@ class BaseVadereModel(FileModel):
         Parameters
         ----------
         experiment : dict like
-        
+
         Raises
         ------
         EMAError if the Vadere run returns no results

@@ -15,6 +15,10 @@
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
       "filename" : "overlapCount.txt",
       "processors" : [ 4 ]
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.PedestrianIdOutputFile",
+      "filename" : "reachTime.txt",
+      "processors" : [ 7 ]
     } ],
     "processors" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepProcessor",
@@ -38,6 +42,9 @@
     }, {
       "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupSizeProcessor",
       "id" : 6
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianTargetReachTimeProcessor",
+      "id" : 7
     } ],
     "isTimestamped" : true,
     "isWriteMetaData" : false
@@ -103,7 +110,7 @@
       }
     },
     "attributesSimulation" : {
-      "finishTime" : 120.0,
+      "finishTime" : 200.0,
       "simTimeStepLength" : 0.4,
       "realTimeSimTimeRatio" : 0.0,
       "writeSimulationData" : true,
