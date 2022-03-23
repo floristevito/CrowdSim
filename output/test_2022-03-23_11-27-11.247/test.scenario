@@ -1,7 +1,8 @@
 {
-  "name" : "base_case_control_test",
+  "name" : "test",
   "description" : "",
   "release" : "2.0",
+  "commithash" : "c2453c70548a29dd92fe0a84f81139bfda5b2b0b",
   "processWriters" : {
     "files" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
@@ -119,7 +120,7 @@
       "digitsPerCoordinate" : 2,
       "useFixedSeed" : true,
       "fixedSeed" : -5190782782724114477,
-      "simulationSeed" : 0
+      "simulationSeed" : -5190782782724114477
     },
     "attributesPsychology" : {
       "usePsychologyLayer" : true,

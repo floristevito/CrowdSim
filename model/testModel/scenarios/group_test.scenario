@@ -1,5 +1,5 @@
 {
-  "name" : "test_groups",
+  "name" : "group_test",
   "description" : "",
   "release" : "2.0",
   "processWriters" : {
