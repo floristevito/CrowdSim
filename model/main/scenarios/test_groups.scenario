@@ -160,6 +160,15 @@
           "type" : "RECTANGLE"
         },
         "id" : 6
+      }, {
+        "shape" : {
+          "x" : 0.4,
+          "y" : 6.5,
+          "width" : 4.5,
+          "height" : 1.6,
+          "type" : "RECTANGLE"
+        },
+        "id" : 9
       } ],
       "measurementAreas" : [ ],
       "stairs" : [ ],
@@ -180,38 +189,8 @@
         "deletionDistance" : 0.1,
         "startingWithRedLight" : false,
         "nextSpeed" : -1.0
-      }, {
-        "id" : 3,
-        "absorbing" : true,
-        "shape" : {
-          "x" : 8.0,
-          "y" : 8.0,
-          "width" : 1.0,
-          "height" : 1.0,
-          "type" : "RECTANGLE"
-        },
-        "waitingTime" : 0.0,
-        "waitingTimeYellowPhase" : 0.0,
-        "parallelWaiters" : 0,
-        "individualWaiting" : true,
-        "deletionDistance" : 0.1,
-        "startingWithRedLight" : false,
-        "nextSpeed" : -1.0
       } ],
-      "targetChangers" : [ {
-        "id" : 9,
-        "shape" : {
-          "x" : 6.3,
-          "y" : 4.6,
-          "width" : 0.5,
-          "height" : 0.4,
-          "type" : "RECTANGLE"
-        },
-        "reachDistance" : 0.0,
-        "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 3 ],
-        "probabilityToChangeTarget" : [ ]
-      } ],
+      "targetChangers" : [ ],
       "absorbingAreas" : [ ],
       "aerosolClouds" : [ ],
       "droplets" : [ ],
@@ -439,7 +418,7 @@
           "walkingDirectionSameIfAngleLessOrEqual" : 45.0
         },
         "source" : null,
-        "targetIds" : [ 3 ],
+        "targetIds" : [ 2 ],
         "nextTargetListIndex" : 0,
         "isCurrentTargetAnAgent" : false,
         "position" : {
