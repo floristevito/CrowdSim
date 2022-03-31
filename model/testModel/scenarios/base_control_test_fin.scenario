@@ -1,5 +1,5 @@
 {
-  "name" : "base_case_control_test",
+  "name" : "base_control_test_fin",
   "description" : "",
   "release" : "2.0",
   "processWriters" : {
@@ -64,7 +64,7 @@
         "movementThreshold" : 0.0,
         "minStepLength" : 0.1,
         "minimumStepLength" : true,
-        "maxStepDuration" : 1.7976931348623157E308,
+        "maxStepDuration" : 60.0,
         "dynamicStepLength" : true,
         "updateType" : "EVENT_DRIVEN",
         "seeSmallWalls" : false,
