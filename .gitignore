@@ -3,7 +3,7 @@
 .vscode/
 
 # Vadere model output
-# model/*/output/*
+model/*/output/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
