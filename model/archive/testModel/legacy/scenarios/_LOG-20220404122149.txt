@@ -1,0 +1,15 @@
+Info:Analyzing scenario file scenarios/base_control_test
+Info:<base_control_test> Transform to: 2.1
+Info:Migration successful. Move copy of old version to "legacy" directory
+Info:Analyzing scenario file scenarios/target_test
+Info:<target_test> Transform to: 2.1
+Info:Migration successful. Move copy of old version to "legacy" directory
+Info:Analyzing scenario file scenarios/group_test
+Info:<group_test> Transform to: 2.1
+Info:Migration successful. Move copy of old version to "legacy" directory
+Info:Analyzing scenario file scenarios/base_control_test_fin
+Info:<base_control_test_fin> Transform to: 2.1
+Info:Migration successful. Move copy of old version to "legacy" directory
+Info:Analyzing scenario file scenarios/speed
+Info:<speed> Transform to: 2.1
+Info:Migration successful. Move copy of old version to "legacy" directory

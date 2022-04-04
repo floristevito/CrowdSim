@@ -1,8 +1,8 @@
 {
   "name" : "target_test",
   "description" : "",
-  "release" : "2.0",
-  "commithash" : "1ce56089ceae0e6831889b62d2c12875a549912b",
+  "release" : "2.1",
+  "commithash" : "b2b0b4b79d636e0845a74101f9b9f3eff87dc398",
   "processWriters" : {
     "files" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",

@@ -1,7 +1,8 @@
 {
   "name" : "base_control_test",
   "description" : "",
-  "release" : "2.0",
+  "release" : "2.1",
+  "commithash" : "b2b0b4b79d636e0845a74101f9b9f3eff87dc398",
   "processWriters" : {
     "files" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
