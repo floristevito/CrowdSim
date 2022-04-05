@@ -892,7 +892,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1002, 1003, 1004 ],
-        "probabilityToChangeTarget" : [ ]
+        "probabilityToChangeTarget" : [ 10.0, 10.0, 10.0 ]
       }, {
         "id" : 6002,
         "shape" : {
@@ -914,7 +914,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1003, 1004, 1001 ],
-        "probabilityToChangeTarget" : [ ]
+        "probabilityToChangeTarget" : [ 10.0, 10.0, 10.0 ]
       }, {
         "id" : 6003,
         "shape" : {
@@ -936,7 +936,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1004, 1001, 1002 ],
-        "probabilityToChangeTarget" : [ ]
+        "probabilityToChangeTarget" : [ 10.0, 10.0, 10.0 ]
       }, {
         "id" : 6004,
         "shape" : {
@@ -958,7 +958,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1001, 1002, 1003 ],
-        "probabilityToChangeTarget" : [ ]
+        "probabilityToChangeTarget" : [ 10.0, 10.0, 10.0 ]
       } ],
       "absorbingAreas" : [ ],
       "aerosolClouds" : [ ],
