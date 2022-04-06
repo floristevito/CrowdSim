@@ -132,7 +132,7 @@ class BaseVadereModel(FileModel):
             '-jar',
             os.path.join(self.working_directory, self.vadere_jar),
             '--loglevel',
-            'OFF'
+            'OFF',
             'scenario-run',
             '-o',
             os.path.join(self.working_directory, 'temp'),
@@ -162,8 +162,16 @@ class BaseVadereModel(FileModel):
                 self.model_file),
             experiment)
 
-        # make the temp dir for output
-        # os.mkdir(os.path.join(self.working_directory, 'temp'))
+        # make the temp dir for output, if one already exists (due to interrupted runs)
+        # remove and create a new, empty, one
+        try:
+            shutil.rmtree(os.path.join(self.working_directory, 'temp'))
+        except OSError:
+            pass
+        try:
+            os.mkdir(os.path.join(self.working_directory, 'temp'))
+        except OSError:
+            pass
 
         # run the experiment
         process = run(
