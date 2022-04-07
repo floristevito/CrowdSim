@@ -40,7 +40,7 @@ def change_vadere_scenario(model_file, variable, value):
     reduce(operator.getitem, index[:-1], model_file)[index[-1]] = value
 
 
-def update_vadere_scenario(model_file, experiment):
+def update_vadere_scenario(model_file, experiment, output_file):
     """
     Load a vadere .scenario file, change it depending on the passed experiment, and save it again as .scenario file.
 
@@ -50,6 +50,8 @@ def update_vadere_scenario(model_file, experiment):
                 path to the vadere .scenario file
     experiment : dict
                 EMA experiment object
+    output_file : str
+                desired path to save the modified vadere .scenario file
 
     """
     with open(model_file, 'r') as file:
@@ -58,7 +60,7 @@ def update_vadere_scenario(model_file, experiment):
     for key, value in experiment.items():
         change_vadere_scenario(v_model, key, value)
 
-    with open(model_file, 'w') as file:
+    with open(output_file, 'w') as file:
         json.dump(v_model, file)
 
 
@@ -133,12 +135,12 @@ class BaseVadereModel(FileModel):
             '-jar',
             os.path.join(self.working_directory, self.vadere_jar),
             '--loglevel',
-            'OFF',
+            'ALL',
             'scenario-run',
             '-o',
             os.path.join(self.working_directory, 'temp'),
             '-f',
-            os.path.join(self.working_directory, self.model_file),
+            os.path.join(self.working_directory, 'EMA.scenario'),
         ]
 
     @method_logger(__name__)
@@ -156,12 +158,16 @@ class BaseVadereModel(FileModel):
 
         """
         # change the .vadere scenario model file depending on the passed
-        # experiment
+        # experiment, and save to new "EMA.scenario" file
         update_vadere_scenario(
             os.path.join(
                 self.working_directory,
                 self.model_file),
-            experiment)
+            experiment,
+            os.path.join(
+                self.working_directory,
+                'EMA.scenario')
+        )
 
         # make the temp dir for output, if one already exists (due to interrupted runs)
         # remove and create a new, empty, one
@@ -255,6 +261,7 @@ class BaseVadereModel(FileModel):
 
 class VadereModel(Replicator, BaseVadereModel):
     pass
+
 
 class SingleReplicationVadereModel(SingleReplication, BaseVadereModel):
     pass
