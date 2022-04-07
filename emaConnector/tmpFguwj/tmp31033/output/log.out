@@ -1,0 +1,29 @@
+16:00:50,141   INFO STDOUTERR:15 - Redirect StdOut and StdErr
+16:00:50,144   INFO ScenarioRunSubCommand:55 - Use output directory: /home/tevito/Documents/EPA/Year2/thesis/thesis-drive/model/connector/output/temp
+16:00:50,540 STDOUT STDOUTERR:22 - Topography Warning:
+   Target contains an obstacle. This setup works but reduces the actual size of the target. 
+   Target contains an obstacle. This setup works but reduces the actual size of the target. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+
+16:00:50,570   INFO VadereConfig:66 - Use config file from path /home/tevito/.config/vadere.conf
+16:00:50,661   INFO ScenarioCache:85 - Cache search location: /home/tevito/Documents/EPA/Year2/thesis/thesis-drive/model/connector/output/__cache__
+16:00:50,675   INFO ScenarioRun:147 - Initializing scenario: baseCaseData...
+16:00:50,679   INFO ScenarioRun:128 - scenario context initialized.
+16:00:52,164   INFO ScenarioRun:249 - write mesh to baseCaseData.poly.
+16:00:52,182   INFO ScenarioRun:249 - write mesh to baseCaseData_background.poly.
+16:00:52,672   INFO Topography:428 - Set PedestrianIdCount to start value: 1
+16:00:53,722   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:839[ms]
+16:00:54,621   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:721[ms]
+16:00:55,502   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:740[ms]
+16:00:56,301   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:633[ms]
+16:00:56,302   INFO Simulation:278 - preLoop finished.
+16:01:03,801   INFO OutputFile:109 - Absolute file name/home/tevito/Documents/EPA/Year2/thesis/thesis-drive/model/connector/output/temp/baseCaseData_2022-04-06_16-00-50.673/density.txt
+16:01:03,804   INFO OutputFile:109 - Absolute file name/home/tevito/Documents/EPA/Year2/thesis/thesis-drive/model/connector/output/temp/baseCaseData_2022-04-06_16-00-50.673/speed.txt
+16:01:03,805   INFO Simulation:252 - Finished writing all output files
+16:01:03,805   INFO Simulation:255 - Post-loop: before waitForTraci
+16:01:03,805   INFO Simulation:262 - Post-loop: finished.
+16:01:03,805   INFO ScenarioRun:207 - Simulation run finished.
+16:01:03,805   INFO ScenarioRun:265 - Simulation of scenario baseCaseData finished.

@@ -6,7 +6,7 @@ from ast import literal_eval
 import json
 from subprocess import PIPE, run
 import shutil
-from ema_workbench.em_framework.model import SingleReplication
+from ema_workbench.em_framework.model import Replicator, SingleReplication
 from ..em_framework.model import FileModel
 from ..util.ema_logging import method_logger
 from ..util import EMAError
@@ -15,6 +15,7 @@ __all__ = [
     'change_vadere_scenario',
     'update_vadere_scenario'
     'VadereModel',
+    'SingleReplicationVadereModel'
 ]
 
 
@@ -252,5 +253,8 @@ class BaseVadereModel(FileModel):
         pass
 
 
-class VadereModel(SingleReplication, BaseVadereModel):
+class VadereModel(Replicator, BaseVadereModel):
+    pass
+
+class SingleReplicationVadereModel(SingleReplication, BaseVadereModel):
     pass
