@@ -1121,7 +1121,7 @@
         "id" : -1,
         "radius" : 0.2,
         "densityDependentSpeed" : false,
-        "speedDistributionMean" : 1.34,
+        "speedDistributionMean" : 1.0,
         "speedDistributionStandardDeviation" : 0.26,
         "minimumSpeed" : 0.5,
         "maximumSpeed" : 2.2,

@@ -14,14 +14,8 @@ model = get_vadere_formulation(
 )
 
 with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
-        results = evaluator.perform_experiments(
-                scenarios=6,
-                uncertainty_sampling='lhs'
-)
-
-with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
     sa_results = evaluator.perform_experiments(
-        scenarios = 5000, 
+        scenarios = 100, 
         uncertainty_sampling='sobol'
 )
 
