@@ -1,2 +1,0 @@
-mean_density_counting_normed_processor-PID2 max_density_counting_normed_processor-PID7
-0.35325247525626513 0.7266282676118777
