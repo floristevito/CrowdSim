@@ -135,7 +135,7 @@ class BaseVadereModel(FileModel):
             '-jar',
             os.path.join(self.working_directory, self.vadere_jar),
             '--loglevel',
-            'ALL',
+            'OFF',
             'scenario-run',
             '-o',
             os.path.join(self.working_directory, 'temp'),

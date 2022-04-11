@@ -5,6 +5,9 @@
 # Vadere model output
 model/*/output/*
 
+# jar files
+.jar
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
