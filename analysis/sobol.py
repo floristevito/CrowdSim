@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from vadere_ema_formulations import get_vadere_formulation
 
+
 # enable EMA logging
 ema_logging.log_to_stderr(ema_logging.INFO)
 
@@ -13,11 +14,12 @@ model = get_vadere_formulation(
     model_file='baseCaseData.scenario'
 )
 
-with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
-    sa_results = evaluator.perform_experiments(
-        scenarios = 100, 
-        uncertainty_sampling='sobol'
-)
+if __name__ == '__main__':
+    with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
+        sa_results = evaluator.perform_experiments(
+            scenarios = 100, 
+            uncertainty_sampling='sobol'
+    )
 
-# store results
-save_results(sa_results, '../data/output/EMA/sobolTest01.tar.gz')
+    # store results
+    save_results(sa_results, '../data/output/EMA/sobolTest01.tar.gz')

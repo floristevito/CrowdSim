@@ -46,6 +46,15 @@ def get_vadere_formulation(id, replications, model_file):
         # set the number of replications to handle model stochasticity
         model.replications = replications
 
+    # make list with categories of group vector distribution
+    groups = [
+        Category(
+            str(50 + num),
+            [[round(0.5 - num/100, 2), round(0.38 + num/100, 2), 0.075, 0.03, 0.015]])
+            for num in range(0, 36)
+    ]
+
+
     # id 1 described a configuration with all 10 uncertainties and single
     # speed outcome + 6 density based outcomes
     if id == 1:
@@ -75,19 +84,33 @@ def get_vadere_formulation(id, replications, model_file):
                 ]
             ),
             IntegerParameter(
-                name='spawnFrequencyA',
+                name='spawnFrequencyD',
                 lower_bound=1,
                 upper_bound=5,
                 variable_name=[
                     '("scenario", "topography", "sources", 3, "distributionParameters", "updateFrequency")',
                 ]
             ),
+            CategoricalParameter(
+                name='groupForming',
+                categories=groups,
+                variable_name='("scenario", "topography", "sources", 0, "groupSizeDistribution")',
+                multivalue=True
+            ),
             RealParameter(
-                name='μFreeFlowSpeed',
+                name='meanFreeFlowSpeed',
                 lower_bound=0.66,
                 upper_bound=1.16,
                 variable_name=[
                     '("scenario", "topography", "attributesPedestrian", "speedDistributionMean")',
+                ]
+            ),
+            RealParameter(
+                name='sdFreeFlowSpeed',
+                lower_bound=0.15,
+                upper_bound=0.30,
+                variable_name=[
+                    '("scenario", "topography", "attributesPedestrian", "speedDistributionStandardDeviation")',
                 ]
             ),
             RealParameter(
@@ -96,6 +119,14 @@ def get_vadere_formulation(id, replications, model_file):
                 upper_bound=50.0,
                 variable_name=[
                     '("scenario", "attributesModel", "org.vadere.state.attributes.models.AttributesPotentialCompactSoftshell", "pedPotentialHeight")',
+                ]
+            ),
+            RealParameter(
+                name='obstPotentialHeight',
+                lower_bound=2.0,
+                upper_bound=10.0,
+                variable_name=[
+                    '("scenario", "attributesModel", "org.vadere.state.attributes.models.AttributesPotentialCompactSoftshell", "obstPotentialHeight")',
                 ]
             )
         ]
@@ -116,27 +147,27 @@ def get_vadere_formulation(id, replications, model_file):
                     variable_name='max_density_counting_normed_processor-PID7',
                 ),
                 ScalarOutcome(
-                    name='meanDensityArea1',
+                    name='meanDensityArea2',
                     variable_name='mean_density_counting_normed_processor-PID9',
                 ),
                 ScalarOutcome(
-                    name='maxDensityArea1',
+                    name='maxDensityArea2',
                     variable_name='max_density_counting_normed_processor-PID10',
                 ),
                 ScalarOutcome(
-                    name='meanDensityArea1',
+                    name='meanDensityArea3',
                     variable_name='mean_density_counting_normed_processor-PID12',
                 ),
                 ScalarOutcome(
-                    name='maxDensityArea1',
+                    name='maxDensityArea3',
                     variable_name='max_density_counting_normed_processor-PID13',
                 ),
                 ScalarOutcome(
-                    name='meanDensityArea1',
+                    name='meanDensityArea4',
                     variable_name='mean_density_counting_normed_processor-PID15',
                 ),
                 ScalarOutcome(
-                    name='maxDensityArea1',
+                    name='maxDensityArea4',
                     variable_name='max_density_counting_normed_processor-PID16',
                 ),
             ]
@@ -158,34 +189,236 @@ def get_vadere_formulation(id, replications, model_file):
                     function=np.mean
                 ),
                 ScalarOutcome(
-                    name='meanDensityArea1',
+                    name='meanDensityArea2',
                     variable_name='mean_density_counting_normed_processor-PID9',
                     function=np.mean
                 ),
                 ScalarOutcome(
-                    name='maxDensityArea1',
+                    name='maxDensityArea2',
                     variable_name='max_density_counting_normed_processor-PID10',
                     function=np.mean
                 ),
                 ScalarOutcome(
-                    name='meanDensityArea1',
+                    name='meanDensityArea3',
                     variable_name='mean_density_counting_normed_processor-PID12',
                     function=np.mean
                 ),
                 ScalarOutcome(
-                    name='maxDensityArea1',
+                    name='maxDensityArea3',
                     variable_name='max_density_counting_normed_processor-PID13',
                     function=np.mean
                 ),
                 ScalarOutcome(
-                    name='meanDensityArea1',
+                    name='meanDensityArea4',
                     variable_name='mean_density_counting_normed_processor-PID15',
                     function=np.mean
                 ),
                 ScalarOutcome(
-                    name='maxDensityArea1',
+                    name='maxDensityArea4',
                     variable_name='max_density_counting_normed_processor-PID16',
                     function=np.mean
+                ),
+            ]
+
+    # id 2 describes a configuration to find the worst case(s)
+    # with all 10 uncertainties and single
+    # speed outcome + 6 density based outcomes
+    elif id == 2:
+        model.uncertainties = [
+            IntegerParameter(
+                name='spawnFrequencyA',
+                lower_bound=1,
+                upper_bound=5,
+                variable_name=[
+                    '("scenario", "topography", "sources", 0, "distributionParameters", "updateFrequency")',
+                ]
+            ),
+            IntegerParameter(
+                name='spawnFrequencyB',
+                lower_bound=1,
+                upper_bound=5,
+                variable_name=[
+                    '("scenario", "topography", "sources", 1, "distributionParameters", "updateFrequency")',
+                ]
+            ),
+            IntegerParameter(
+                name='spawnFrequencyC',
+                lower_bound=1,
+                upper_bound=5,
+                variable_name=[
+                    '("scenario", "topography", "sources", 2, "distributionParameters", "updateFrequency")',
+                ]
+            ),
+            IntegerParameter(
+                name='spawnFrequencyD',
+                lower_bound=1,
+                upper_bound=5,
+                variable_name=[
+                    '("scenario", "topography", "sources", 3, "distributionParameters", "updateFrequency")',
+                ]
+            ),
+            CategoricalParameter(
+                name='groupForming',
+                categories=groups,
+                variable_name='("scenario", "topography", "sources", 0, "groupSizeDistribution")',
+                multivalue=True
+            ),
+            RealParameter(
+                name='meanFreeFlowSpeed',
+                lower_bound=0.66,
+                upper_bound=1.16,
+                variable_name=[
+                    '("scenario", "topography", "attributesPedestrian", "speedDistributionMean")',
+                ]
+            ),
+            RealParameter(
+                name='sdFreeFlowSpeed',
+                lower_bound=0.15,
+                upper_bound=0.30,
+                variable_name=[
+                    '("scenario", "topography", "attributesPedestrian", "speedDistributionStandardDeviation")',
+                ]
+            ),
+            RealParameter(
+                name='pedPotentialHeight',
+                lower_bound=5.0,
+                upper_bound=50.0,
+                variable_name=[
+                    '("scenario", "attributesModel", "org.vadere.state.attributes.models.AttributesPotentialCompactSoftshell", "pedPotentialHeight")',
+                ]
+            ),
+            RealParameter(
+                name='obstPotentialHeight',
+                lower_bound=2.0,
+                upper_bound=10.0,
+                variable_name=[
+                    '("scenario", "attributesModel", "org.vadere.state.attributes.models.AttributesPotentialCompactSoftshell", "obstPotentialHeight")',
+                ]
+            )
+        ]
+        # if single replication model, no function on outcomes is needed
+        # multiple replications are instead averaged by np.mean
+        if replications == 1:
+            model.outcomes = [
+                ScalarOutcome(
+                    name='meanSpeed',
+                    variable_name='mean_area_speed_processor-PID4',
+                    kind=ScalarOutcome.MINIMIZE,
+                    expected_range=(0,2.2)
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea1',
+                    variable_name='mean_density_counting_normed_processor-PID6',
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea1',
+                    variable_name='max_density_counting_normed_processor-PID7',
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea2',
+                    variable_name='mean_density_counting_normed_processor-PID9',
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea2',
+                    variable_name='max_density_counting_normed_processor-PID10',
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea3',
+                    variable_name='mean_density_counting_normed_processor-PID12',
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea3',
+                    variable_name='max_density_counting_normed_processor-PID13',
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea4',
+                    variable_name='mean_density_counting_normed_processor-PID15',
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea4',
+                    variable_name='max_density_counting_normed_processor-PID16',
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+            ]
+        else:
+            model.outcomes = [
+                ScalarOutcome(
+                    name='meanSpeed',
+                    variable_name='mean_area_speed_processor-PID4',
+                    function=np.mean,
+                    kind=ScalarOutcome.MINIMIZE,
+                    expected_range=(0, 2.2)
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea1',
+                    variable_name='mean_density_counting_normed_processor-PID6',
+                    function=np.mean,
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea1',
+                    variable_name='max_density_counting_normed_processor-PID7',
+                    function=np.mean,
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea2',
+                    variable_name='mean_density_counting_normed_processor-PID9',
+                    function=np.mean,
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea2',
+                    variable_name='max_density_counting_normed_processor-PID10',
+                    function=np.mean,
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea3',
+                    variable_name='mean_density_counting_normed_processor-PID12',
+                    function=np.mean,
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea3',
+                    variable_name='max_density_counting_normed_processor-PID13',
+                    function=np.mean,
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea4',
+                    variable_name='mean_density_counting_normed_processor-PID15',
+                    function=np.mean,
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea4',
+                    variable_name='max_density_counting_normed_processor-PID16',
+                    function=np.mean,
+                    kind=ScalarOutcome.MAXIMIZE,
+                    expected_range=(0,1)
                 ),
             ]
     else:

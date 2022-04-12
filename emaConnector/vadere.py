@@ -129,19 +129,7 @@ class BaseVadereModel(FileModel):
 
         """
         super(BaseVadereModel, self).model_init(policy)
-        # set up the run command for Vadere
-        self.vadere = [
-            'java',
-            '-jar',
-            os.path.join(self.working_directory, self.vadere_jar),
-            '--loglevel',
-            'OFF',
-            'scenario-run',
-            '-o',
-            os.path.join(self.working_directory, 'temp'),
-            '-f',
-            os.path.join(self.working_directory, 'EMA.scenario'),
-        ]
+        
 
     @method_logger(__name__)
     def run_experiment(self, experiment):
@@ -180,6 +168,20 @@ class BaseVadereModel(FileModel):
         except OSError:
             pass
 
+        # set up the run command for Vadere
+        self.vadere = [
+            'java',
+            '-jar',
+            os.path.join(self.working_directory, self.vadere_jar),
+            '--loglevel',
+            'OFF',
+            'scenario-run',
+            '-o',
+            os.path.join(self.working_directory, 'temp'),
+            '-f',
+            os.path.join(self.working_directory, 'EMA.scenario'),
+        ]
+
         # run the experiment
         process = run(
             self.vadere,
@@ -188,7 +190,7 @@ class BaseVadereModel(FileModel):
             stderr=PIPE
         )
 
-        # results are store inside a temp dir
+        # results are stored inside a temp dir
         # get path to nested result dir
         output_dir = ''
         for root, dirs, files in os.walk(

@@ -1,45 +1,32 @@
-from ema_workbench import (TimeSeriesOutcome, perform_experiments,
-                           RealParameter, ema_logging, CategoricalParameter,
-                           MultiprocessingEvaluator, SequentialEvaluator,
-                           ScalarOutcome, IntegerParameter, Scenario)
-from ema_workbench.em_framework.parameters import (Category)
-from ema_workbench.connectors.vadere import VadereModel
+from ema_workbench import (perform_experiments, ema_logging,
+                           MultiprocessingEvaluator, save_results,
+                           Scenario)
+import pandas as pd
+import numpy as np
+from vadere_ema_formulations import get_vadere_formulation
 
-model = VadereModel('model', 
-                    vadere_jar='vadere-console.jar',
-                    processor_files=[
-                        'density.txt',
-                        'speed.txt'
-                    ],
-                    model_file='base_case.scenario',
-                    wd='/home/tevito/Documents/EPA/Year2/thesis/git/CrowdSim/analysis/emaWorkingDirectory')
+# enable EMA logging
+ema_logging.log_to_stderr(ema_logging.INFO)
 
-# set up base case values
+# set the right vadere formulations
+model = get_vadere_formulation(
+    id=1,
+    replications=1,
+    model_file='baseCaseData.scenario'
+)
+
+# set up base case values (note that group size vector is already set in the model)
 base = {
-    '("scenario", "topography", "sources", 0, "spawnNumber")': 75,
-    '("scenario", "topography", "sources", 0, "maxSpawnNumberTotal")': 75,
-    '("scenario", "topography", "sources", 1, "spawnNumber")': 20,
-    '("scenario", "topography", "sources", 1, "maxSpawnNumberTotal")': 20,
-    '("scenario", "topography", "sources", 2, "spawnNumber")': 75,
-    '("scenario", "topography", "sources", 2, "maxSpawnNumberTotal")': 75,
-    '("scenario", "topography", "sources", 3, "spawnNumber")': 20,
-    '("scenario", "topography", "sources", 3, "maxSpawnNumberTotal")': 20,
-    '("scenario", "topography", "attributesPedestrian", "speedDistributionMean")': 1.34,
-    '("scenario", "topography", "attributesPedestrian", "speedDistributionStandardDeviation")': 0.26
+    'spawnFrequencyA': 1,
+    'spawnFrequencyB': 1,
+    'spawnFrequencyC': 1,
+    'spawnFrequencyD': 1,
+    'meanFreeFlowSpeed': 1,
+    'sdFreeFlowSpeed': 0.26,
+    'pedPotentialHeight': 50,
+    'obstPotentialHeight': 6.0
 }
 
-# set one uncertainty 
-base_case = Scenario('base_case', **base)
-
-model.outcomes = [
-    ScalarOutcome('mean_area_speed_processor-PID4'),
-    ScalarOutcome('mean_density_counting_normed_processor-PID6'),
-    ScalarOutcome('mean_density_counting_normed_processor-PID8'),
-    ScalarOutcome('mean_density_counting_normed_processor-PID10'),
-    ScalarOutcome('max_density_counting_normed_processor-PID11'),
-    ScalarOutcome('max_density_counting_normed_processor-PID12'),
-    ScalarOutcome('max_density_counting_normed_processor-PID13'),
-]
 def get_base_scenarios(n):
     return [Scenario('base_case', **base) for i in range(n)]
 
@@ -47,5 +34,9 @@ if __name__ == '__main__':
 
     ema_logging.log_to_stderr(ema_logging.INFO)
 
-    with MultiprocessingEvaluator(model, n_processes=8) as evaluator:
-        results = evaluator.perform_experiments(get_base_scenarios(25))
+    # base case
+    with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
+        results = evaluator.perform_experiments(get_base_scenarios(100))
+
+    # store results
+    save_results(results, '../data/output/EMA/seedAnalysis01.tar.gz')
