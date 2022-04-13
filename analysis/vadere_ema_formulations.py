@@ -499,35 +499,17 @@ def get_vadere_formulation(id, replications, model_file):
         ]
         model.outcomes = [
             ScalarOutcome(
-                name='averageMeanSpeed',
-                variable_name='mean_area_speed_processor-PID4',
-                function=np.mean
-            ),
-            ScalarOutcome(
-                name='sdMeanSpeed',
-                variable_name='mean_area_speed_processor-PID4',
-                function=np.std
-            ),
-            ScalarOutcome(
-                name='averageMeanDensityArea1',
-                variable_name='mean_density_counting_normed_processor-PID6',
-                function=np.mean
-            ),
-            ScalarOutcome(
-                name='sdMeanDensityArea1',
-                variable_name='mean_density_counting_normed_processor-PID6',
-                function=np.std
-            ),
-            ScalarOutcome(
-                name='averageMaxDensityArea2',
-                variable_name='max_density_counting_normed_processor-PID7',
-                function=np.mean
-            ),
-            ScalarOutcome(
-                name='stdMaxDensityArea2',
-                variable_name='max_density_counting_normed_processor-PID7',
-                function=np.std
-            ),
+                    name='meanSpeed',
+                    variable_name='mean_area_speed_processor-PID4',
+                ),
+                ScalarOutcome(
+                    name='meanDensityArea1',
+                    variable_name='mean_density_counting_normed_processor-PID6',
+                ),
+                ScalarOutcome(
+                    name='maxDensityArea1',
+                    variable_name='max_density_counting_normed_processor-PID7',
+                )
         ]
     else:
         raise ValueError('no valid id specified')
