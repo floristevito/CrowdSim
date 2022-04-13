@@ -42,7 +42,7 @@ def get_vadere_formulation(id, replications, model_file):
                                 'speed.txt'
                             ],
                             model_file=model_file,
-                            wd='/home/tevito/Documents/EPA/Year2/thesis/thesis-drive/model/connector/output')
+                            wd='/home/tevito/Documents/EPA/Year2/thesis/git/CrowdSim/analysis/emaWorkingDirectory')
         # set the number of replications to handle model stochasticity
         model.replications = replications
 
@@ -55,7 +55,7 @@ def get_vadere_formulation(id, replications, model_file):
     ]
 
 
-    # id 1 described a configuration with all 10 uncertainties and single
+    # id 1 describes a configuration with all 10 uncertainties and single
     # speed outcome + 6 density based outcomes
     if id == 1:
         model.uncertainties = [
@@ -421,6 +421,114 @@ def get_vadere_formulation(id, replications, model_file):
                     expected_range=(0,1)
                 ),
             ]
+    # id 3 is for seed analysis
+    # speed outcome + 2 density based outcomes for area 1
+    elif id == 3:
+        model.uncertainties = [
+            IntegerParameter(
+                name='spawnFrequencyA',
+                lower_bound=1,
+                upper_bound=5,
+                variable_name=[
+                    '("scenario", "topography", "sources", 0, "distributionParameters", "updateFrequency")',
+                ]
+            ),
+            IntegerParameter(
+                name='spawnFrequencyB',
+                lower_bound=1,
+                upper_bound=5,
+                variable_name=[
+                    '("scenario", "topography", "sources", 1, "distributionParameters", "updateFrequency")',
+                ]
+            ),
+            IntegerParameter(
+                name='spawnFrequencyC',
+                lower_bound=1,
+                upper_bound=5,
+                variable_name=[
+                    '("scenario", "topography", "sources", 2, "distributionParameters", "updateFrequency")',
+                ]
+            ),
+            IntegerParameter(
+                name='spawnFrequencyD',
+                lower_bound=1,
+                upper_bound=5,
+                variable_name=[
+                    '("scenario", "topography", "sources", 3, "distributionParameters", "updateFrequency")',
+                ]
+            ),
+            # groups are removed as uncertainty, default value implemented in .scenario file
+            # CategoricalParameter(
+            #     name='groupForming',
+            #     categories=groups,
+            #     variable_name='("scenario", "topography", "sources", 0, "groupSizeDistribution")',
+            #     multivalue=True
+            # ),
+            RealParameter(
+                name='meanFreeFlowSpeed',
+                lower_bound=0.66,
+                upper_bound=1.16,
+                variable_name=[
+                    '("scenario", "topography", "attributesPedestrian", "speedDistributionMean")',
+                ]
+            ),
+            RealParameter(
+                name='sdFreeFlowSpeed',
+                lower_bound=0.15,
+                upper_bound=0.30,
+                variable_name=[
+                    '("scenario", "topography", "attributesPedestrian", "speedDistributionStandardDeviation")',
+                ]
+            ),
+            RealParameter(
+                name='pedPotentialHeight',
+                lower_bound=5.0,
+                upper_bound=50.0,
+                variable_name=[
+                    '("scenario", "attributesModel", "org.vadere.state.attributes.models.AttributesPotentialCompactSoftshell", "pedPotentialHeight")',
+                ]
+            ),
+            RealParameter(
+                name='obstPotentialHeight',
+                lower_bound=2.0,
+                upper_bound=10.0,
+                variable_name=[
+                    '("scenario", "attributesModel", "org.vadere.state.attributes.models.AttributesPotentialCompactSoftshell", "obstPotentialHeight")',
+                ]
+            )
+        ]
+        model.outcomes = [
+            ScalarOutcome(
+                name='averageMeanSpeed',
+                variable_name='mean_area_speed_processor-PID4',
+                function=np.mean
+            ),
+            ScalarOutcome(
+                name='sdMeanSpeed',
+                variable_name='mean_area_speed_processor-PID4',
+                function=np.std
+            ),
+            ScalarOutcome(
+                name='averageMeanDensityArea1',
+                variable_name='mean_density_counting_normed_processor-PID6',
+                function=np.mean
+            ),
+            ScalarOutcome(
+                name='sdMeanDensityArea1',
+                variable_name='mean_density_counting_normed_processor-PID6',
+                function=np.std
+            ),
+            ScalarOutcome(
+                name='averageMaxDensityArea2',
+                variable_name='max_density_counting_normed_processor-PID7',
+                function=np.mean
+            ),
+            ScalarOutcome(
+                name='stdMaxDensityArea2',
+                variable_name='max_density_counting_normed_processor-PID7',
+                function=np.std
+            ),
+        ]
     else:
         raise ValueError('no valid id specified')
 
