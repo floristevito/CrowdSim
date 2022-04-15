@@ -85,7 +85,7 @@ class BaseVadereModel(FileModel):
         Parameters
         ----------
         wd   : str
-                working directory for the model.
+                working directory for the model. Note that a Vadere modelel currently needs an absolute path to work correctly.
         name : str
                 name of the modelInterface. The name should contain only
                 alpha-numerical characters.
@@ -129,7 +129,6 @@ class BaseVadereModel(FileModel):
 
         """
         super(BaseVadereModel, self).model_init(policy)
-        
 
     @method_logger(__name__)
     def run_experiment(self, experiment):
@@ -225,8 +224,6 @@ class BaseVadereModel(FileModel):
                     [timeseries_res[outcome] for outcome in timeseries_res])
             else:
                 timeseries_total = timeseries_res[next(iter(timeseries_res))]
-            # drop the timestep column
-            timeseries_total.drop('timeStep', axis=1, inplace=True)
             # format according to EMA preference
             res = {col: series.values for col,
                    series in timeseries_total.iteritems()}
