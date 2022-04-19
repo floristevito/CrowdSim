@@ -17,9 +17,9 @@ model = get_vadere_formulation(
 )
 
 if __name__ == '__main__':
-    with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
-        sa_results = evaluator.perform_experiments(
-            scenarios=1500, 
+    with MultiprocessingEvaluator(model, n_processes=25) as evaluator:
+        results = evaluator.perform_experiments(
+            scenarios=1000, 
             uncertainty_sampling='lhs'
     )
     
@@ -29,4 +29,4 @@ if __name__ == '__main__':
     # )
 
     # store results
-    save_results(results, '../data/output/EMA/results.tar.gz')
+    save_results(results, '../data/output/EMA/resultsPrim.tar.gz')

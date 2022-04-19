@@ -18,13 +18,14 @@ model = get_vadere_formulation(
 
 if __name__ == '__main__':
     # with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
-    #     sa_results = evaluator.perform_experiments(
-    #         scenarios = 100, 
+    #     results = evaluator.perform_experiments(
+    #         scenarios=6, 
     #         uncertainty_sampling='lhs'
     # )
     
     results = perform_experiments(
-        scenarios = 2, 
+        model,
+        scenarios = 1, 
         uncertainty_sampling='lhs'
     )
 

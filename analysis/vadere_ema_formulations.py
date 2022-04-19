@@ -50,7 +50,7 @@ def get_vadere_formulation(id, replications, model_file):
     groups = [
         Category(
             str(50 + num),
-            [[round(0.5 - num/100, 2), round(0.38 + num/100, 2), 0.075, 0.03, 0.015]])
+            [[round(0.5 - num/100, 2), round(0.38 + num/100, 2), 0.075, 0.03, 0.015] for i in range(4) ])
             for num in range(0, 36)
     ]
 
