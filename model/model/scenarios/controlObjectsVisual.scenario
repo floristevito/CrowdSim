@@ -1237,7 +1237,7 @@
           "updateFrequency" : 1.0
         },
         "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "maxSpawnNumberTotal" : 160,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
@@ -1270,7 +1270,7 @@
           "updateFrequency" : 1.0
         },
         "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "maxSpawnNumberTotal" : 160,
         "startTime" : 0.0,
         "endTime" : 10000.0,
         "spawnAtRandomPositions" : true,
@@ -1303,7 +1303,7 @@
           "updateFrequency" : 1.0
         },
         "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "maxSpawnNumberTotal" : 160,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
@@ -1336,7 +1336,7 @@
           "updateFrequency" : 1.0
         },
         "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "maxSpawnNumberTotal" : 160,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,

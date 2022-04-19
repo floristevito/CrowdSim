@@ -11,6 +11,10 @@
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
       "filename" : "speed.txt",
       "processors" : [ 4 ]
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.TimestepOutputFile",
+      "filename" : "generated.csv",
+      "processors" : [ ]
     } ],
     "processors" : [ {
       "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
@@ -1204,7 +1208,7 @@
           "updateFrequency" : 1.0
         },
         "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "maxSpawnNumberTotal" : 160,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
@@ -1237,7 +1241,7 @@
           "updateFrequency" : 1.0
         },
         "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "maxSpawnNumberTotal" : 160,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
@@ -1270,7 +1274,7 @@
           "updateFrequency" : 1.0
         },
         "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "maxSpawnNumberTotal" : 160,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
@@ -1303,7 +1307,7 @@
           "updateFrequency" : 1.0
         },
         "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : -1,
+        "maxSpawnNumberTotal" : 160,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,

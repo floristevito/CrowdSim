@@ -5,6 +5,9 @@ import pandas as pd
 import numpy as np
 from vadere_ema_formulations import get_vadere_formulation
 
+
+"""Test regarding model outcome convergence"""
+
 # enable EMA logging
 ema_logging.log_to_stderr(ema_logging.INFO)
 
@@ -12,12 +15,13 @@ ema_logging.log_to_stderr(ema_logging.INFO)
 # since we do additional sample calculations in the
 # visualization notebook
 model = get_vadere_formulation(
-            id=3,
-            replications=1,
-            model_file='baseCaseData.scenario'
-        )
+    id=3,
+    replications=1,
+    model_file='baseCaseData.scenario'
+)
 
-# set up base case values (note that group size vector is already set in the model)
+# set up base case values (note that group size vector is already set in
+# the model)
 base_case = {
     'spawnFrequencyA': 1,
     'spawnFrequencyB': 1,
@@ -29,7 +33,8 @@ base_case = {
     'obstPotentialHeight': 6.0
 }
 
-# set up bad case values (note that group size vector is already set in the model)
+# set up bad case values (note that group size vector is already set in
+# the model)
 bad_case = {
     'spawnFrequencyA': 1,
     'spawnFrequencyB': 1,
@@ -41,19 +46,21 @@ bad_case = {
     'obstPotentialHeight': 10.0
 }
 
+
 def get_scenarios(name, n, values):
     return [Scenario(name, **values) for i in range(n)]
+
 
 if __name__ == '__main__':
     # enable logging
     ema_logging.log_to_stderr(ema_logging.INFO)
 
     # base case
-    # generate enough runs for seperate samples up to n = 50
-    with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
+    # generate enough runs for seperate samples up to n = 50 - 1275
+    with MultiprocessingEvaluator(model, n_processes=8) as evaluator:
         results = evaluator.perform_experiments(get_scenarios(
             name='baseCase',
-            n=1275,
+            n=150,
             values=base_case
         ))
 
@@ -62,10 +69,10 @@ if __name__ == '__main__':
 
     # bad case
     # generate enough runs for seperate samples up to n = 50
-    with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
+    with MultiprocessingEvaluator(model, n_processes=8) as evaluator:
         results = evaluator.perform_experiments(get_scenarios(
             name='baseCase',
-            n=1275,
+            n=150,
             values=bad_case
         ))
 
