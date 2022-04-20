@@ -1,4 +1,4 @@
-from ema_workbench import perform_experiments, ema_logging, MultiprocessingEvaluator, save_results
+from ema_workbench import Samplers, perform_experiments, ema_logging, MultiprocessingEvaluator, save_results
 import pandas as pd
 import numpy as np
 from vadere_ema_formulations import get_vadere_formulation
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
         sa_results = evaluator.perform_experiments(
             scenarios = 100, 
-            uncertainty_sampling='sobol'
+            uncertainty_sampling=Samplers.SOBOL
     )
 
     # store results

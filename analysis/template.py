@@ -1,4 +1,4 @@
-from ema_workbench import perform_experiments, ema_logging, MultiprocessingEvaluator, save_results
+from ema_workbench import Samplers, perform_experiments, ema_logging, MultiprocessingEvaluator, save_results
 import pandas as pd
 import numpy as np
 from vadere_ema_formulations import get_vadere_formulation
@@ -17,17 +17,17 @@ model = get_vadere_formulation(
 )
 
 if __name__ == '__main__':
-    # with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
-    #     results = evaluator.perform_experiments(
-    #         scenarios=6, 
-    #         uncertainty_sampling='lhs'
-    # )
-    
-    results = perform_experiments(
-        model,
-        scenarios = 1, 
-        uncertainty_sampling='lhs'
+    with MultiprocessingEvaluator(model, n_processes=3) as evaluator:
+        results = evaluator.perform_experiments(
+            scenarios=3, 
+            uncertainty_sampling=Samplers.LHS
     )
+    
+    # results = perform_experiments(
+    #     model,
+    #     scenarios = 1, 
+    #     uncertainty_sampling=Samplers.LHS
+    # )
 
     # store results
     # save_results(results, '../data/output/EMA/results.tar.gz')
