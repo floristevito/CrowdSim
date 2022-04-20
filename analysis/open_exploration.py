@@ -12,14 +12,14 @@ ema_logging.log_to_stderr(ema_logging.INFO)
 # set the right vadere formulations
 model = get_vadere_formulation(
     id=1,
-    replications=2,
+    replications=60,
     model_file='baseCaseData.scenario'
 )
 
 if __name__ == '__main__':
-    with MultiprocessingEvaluator(model, n_processes=4) as evaluator:
+    with MultiprocessingEvaluator(model, n_processes=16) as evaluator:
         results = evaluator.perform_experiments(
-            scenarios=8, 
+            scenarios=1000, 
             uncertainty_sampling=Samplers.LHS
     )
     

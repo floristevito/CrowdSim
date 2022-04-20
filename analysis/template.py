@@ -17,17 +17,17 @@ model = get_vadere_formulation(
 )
 
 if __name__ == '__main__':
-    with MultiprocessingEvaluator(model, n_processes=3) as evaluator:
-        results = evaluator.perform_experiments(
-            scenarios=3, 
-            uncertainty_sampling=Samplers.LHS
-    )
-    
-    # results = perform_experiments(
-    #     model,
-    #     scenarios = 1, 
-    #     uncertainty_sampling=Samplers.LHS
+    # with MultiprocessingEvaluator(model, n_processes=3) as evaluator:
+    #     results = evaluator.perform_experiments(
+    #         scenarios=3, 
+    #         uncertainty_sampling=Samplers.LHS
     # )
+    
+    results = perform_experiments(
+        model,
+        scenarios = 3, 
+        uncertainty_sampling=Samplers.LHS
+    )
 
     # store results
     # save_results(results, '../data/output/EMA/results.tar.gz')
