@@ -33,7 +33,7 @@ def get_vadere_formulation(id, replications, model_file):
                                                 'speed.txt'
                                             ],
                                             model_file=model_file,
-                                            wd='/home/tevito/Documents/EPA/Year2/thesis/git/CrowdSim/analysis/emaWorkingDirectory')
+                                            wd='emaWorkingDirectory/')
     else:
         model = VadereModel('model',
                             vadere_jar='vadere-console.jar',
@@ -42,7 +42,7 @@ def get_vadere_formulation(id, replications, model_file):
                                 'speed.txt'
                             ],
                             model_file=model_file,
-                            wd='/home/tevito/Documents/EPA/Year2/thesis/git/CrowdSim/analysis/emaWorkingDirectory')
+                            wd='emaWorkingDirectory/')
         # set the number of replications to handle model stochasticity
         model.replications = replications
 

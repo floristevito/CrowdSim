@@ -4,7 +4,7 @@ import numpy as np
 from vadere_ema_formulations import get_vadere_formulation
 
 
-"""Template for doing EMA based model runs"""
+"""Model run for open exploration"""
 
 # enable EMA logging
 ema_logging.log_to_stderr(ema_logging.INFO)
@@ -29,4 +29,4 @@ if __name__ == '__main__':
     # )
 
     # store results
-    save_results(results, '../data/output/EMA/resultsPrim.tar.gz')
+    save_results(results, '../data/output/EMA/resultsOpenExploration.tar.gz')

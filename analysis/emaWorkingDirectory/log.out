@@ -1,0 +1,91 @@
+09:57:10,951   INFO STDOUTERR:15 - Redirect StdOut and StdErr
+09:57:10,954   INFO ScenarioRunSubCommand:52 - Created output directory: /home/geodan-florisb/Documents/git/CrowdSim/analysis/emaWorkingDirectory/output
+09:57:11,381 STDOUT STDOUTERR:22 - Topography Warning:
+   Target contains an obstacle. This setup works but reduces the actual size of the target. 
+   Target contains an obstacle. This setup works but reduces the actual size of the target. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+
+09:57:11,438   INFO VadereConfig:66 - Use config file from path /home/geodan-florisb/.config/vadere.conf
+09:57:11,620   INFO ScenarioCache:85 - Cache search location: /home/geodan-florisb/Documents/git/CrowdSim/analysis/emaWorkingDirectory/__cache__
+09:57:11,636   INFO ScenarioRun:147 - Initializing scenario: baseCaseData...
+09:57:11,641   INFO ScenarioRun:128 - scenario context initialized.
+09:57:11,642  ERROR ScenarioRun:203 - Simulation failed
+java.lang.NullPointerException: null
+	at org.vadere.simulator.control.simulation.ScenarioRun.loadMesh(ScenarioRun.java:226) ~[vadere-console.jar:?]
+	at org.vadere.simulator.control.simulation.ScenarioRun.loadFloorFieldMesh(ScenarioRun.java:215) ~[vadere-console.jar:?]
+	at org.vadere.simulator.control.simulation.ScenarioRun.run(ScenarioRun.java:152) [vadere-console.jar:?]
+	at org.vadere.simulator.entrypoints.cmd.commands.ScenarioRunSubCommand.run(ScenarioRunSubCommand.java:69) [vadere-console.jar:?]
+	at org.vadere.simulator.entrypoints.cmd.VadereConsole.main(VadereConsole.java:40) [vadere-console.jar:?]
+09:57:11,652   INFO ScenarioRun:207 - Simulation run finished.
+09:57:11,652   INFO ScenarioRun:265 - Simulation of scenario baseCaseData finished.
+09:57:11,653 STDERR STDOUTERR:32 - java.lang.RuntimeException: Simulation failed.
+09:57:11,653 STDERR STDOUTERR:32 - 	at org.vadere.simulator.control.simulation.ScenarioRun.run(ScenarioRun.java:204)
+09:57:11,653 STDERR STDOUTERR:32 - 	at org.vadere.simulator.entrypoints.cmd.commands.ScenarioRunSubCommand.run(ScenarioRunSubCommand.java:69)
+09:57:11,653 STDERR STDOUTERR:32 - 	at org.vadere.simulator.entrypoints.cmd.VadereConsole.main(VadereConsole.java:40)
+09:57:11,654 STDERR STDOUTERR:32 - Caused by: java.lang.NullPointerException
+09:57:11,654 STDERR STDOUTERR:32 - 	at org.vadere.simulator.control.simulation.ScenarioRun.loadMesh(ScenarioRun.java:226)
+09:57:11,654 STDERR STDOUTERR:32 - 	at org.vadere.simulator.control.simulation.ScenarioRun.loadFloorFieldMesh(ScenarioRun.java:215)
+09:57:11,655 STDERR STDOUTERR:32 - 	at org.vadere.simulator.control.simulation.ScenarioRun.run(ScenarioRun.java:152)
+09:57:11,655 STDERR STDOUTERR:32 - 	... 2 more
+09:57:11,655  ERROR ScenarioRunSubCommand:75 - java.lang.RuntimeException: Simulation failed.
+09:57:45,705   INFO STDOUTERR:15 - Redirect StdOut and StdErr
+09:57:45,707   INFO ScenarioRunSubCommand:55 - Use output directory: /home/geodan-florisb/Documents/git/CrowdSim/analysis/emaWorkingDirectory/output
+09:57:46,101 STDOUT STDOUTERR:22 - Topography Warning:
+   Target contains an obstacle. This setup works but reduces the actual size of the target. 
+   Target contains an obstacle. This setup works but reduces the actual size of the target. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+
+09:57:46,137   INFO VadereConfig:66 - Use config file from path /home/geodan-florisb/.config/vadere.conf
+09:57:46,235   INFO ScenarioCache:85 - Cache search location: /home/geodan-florisb/Documents/git/CrowdSim/analysis/emaWorkingDirectory/__cache__
+09:57:46,246   INFO ScenarioRun:147 - Initializing scenario: baseCaseData...
+09:57:46,251   INFO ScenarioRun:128 - scenario context initialized.
+09:57:48,312   INFO ScenarioRun:249 - write mesh to baseCaseData.poly.
+09:57:48,330   INFO ScenarioRun:249 - write mesh to baseCaseData_background.poly.
+09:57:49,147   INFO Topography:428 - Set PedestrianIdCount to start value: 1
+09:57:50,424   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:1010[ms]
+09:57:51,577   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:909[ms]
+09:57:52,661   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:919[ms]
+09:57:53,761   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:890[ms]
+09:57:53,761   INFO Simulation:278 - preLoop finished.
+09:57:57,726   INFO OutputFile:109 - Absolute file nameoutput/baseCaseData_2022-04-20_09-57-46.245/density.txt
+09:57:57,728   INFO OutputFile:109 - Absolute file nameoutput/baseCaseData_2022-04-20_09-57-46.245/speed.txt
+09:57:57,728   INFO Simulation:252 - Finished writing all output files
+09:57:57,728   INFO Simulation:255 - Post-loop: before waitForTraci
+09:57:57,729   INFO Simulation:262 - Post-loop: finished.
+09:57:57,729   INFO ScenarioRun:207 - Simulation run finished.
+09:57:57,729   INFO ScenarioRun:265 - Simulation of scenario baseCaseData finished.
+09:58:43,318   INFO STDOUTERR:15 - Redirect StdOut and StdErr
+09:58:43,320   INFO ScenarioRunSubCommand:55 - Use output directory: /home/geodan-florisb/Documents/git/CrowdSim/analysis/emaWorkingDirectory/temp
+09:58:43,734 STDOUT STDOUTERR:22 - Topography Warning:
+   Target contains an obstacle. This setup works but reduces the actual size of the target. 
+   Target contains an obstacle. This setup works but reduces the actual size of the target. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+   A source and a target element overlap in scenario. 
+
+09:58:43,769   INFO VadereConfig:66 - Use config file from path /home/geodan-florisb/.config/vadere.conf
+09:58:43,873   INFO ScenarioCache:85 - Cache search location: /home/geodan-florisb/Documents/git/CrowdSim/analysis/emaWorkingDirectory/__cache__
+09:58:43,888   INFO ScenarioRun:147 - Initializing scenario: baseCaseData...
+09:58:43,894   INFO ScenarioRun:128 - scenario context initialized.
+09:58:45,834   INFO ScenarioRun:249 - write mesh to baseCaseData.poly.
+09:58:45,851   INFO ScenarioRun:249 - write mesh to baseCaseData_background.poly.
+09:58:46,632   INFO Topography:428 - Set PedestrianIdCount to start value: 1
+09:58:48,150   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:1189[ms]
+09:58:49,439   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:1049[ms]
+09:58:50,630   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:985[ms]
+09:58:51,836   INFO EikonalSolverDefaultProvider:23 - floor field initialization time:990[ms]
+09:58:51,837   INFO Simulation:278 - preLoop finished.
+09:58:55,719   INFO OutputFile:109 - Absolute file nametemp/baseCaseData_2022-04-20_09-58-43.886/density.txt
+09:58:55,721   INFO OutputFile:109 - Absolute file nametemp/baseCaseData_2022-04-20_09-58-43.886/speed.txt
+09:58:55,721   INFO Simulation:252 - Finished writing all output files
+09:58:55,721   INFO Simulation:255 - Post-loop: before waitForTraci
+09:58:55,721   INFO Simulation:262 - Post-loop: finished.
+09:58:55,722   INFO ScenarioRun:207 - Simulation run finished.
+09:58:55,722   INFO ScenarioRun:265 - Simulation of scenario baseCaseData finished.
