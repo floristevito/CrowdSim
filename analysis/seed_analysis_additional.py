@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     # base case
     # generate enough runs for seperate samples up to n = 50 - 1275
-    with MultiprocessingEvaluator(model, n_processes=8) as evaluator:
+    with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
         results = evaluator.perform_experiments(
             get_scenarios(name="baseCase", n=10, values=base_case)
         )
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
     # bad case
     # generate enough runs for seperate samples up to n = 50
-    with MultiprocessingEvaluator(model, n_processes=8) as evaluator:
+    with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
         results = evaluator.perform_experiments(
             get_scenarios(name="baseCase", n=10, values=bad_case)
         )
