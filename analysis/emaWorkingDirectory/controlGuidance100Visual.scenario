@@ -1057,8 +1057,8 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 504,
-        "maxSpawnNumberTotal" : 192,
+        "spawnNumber" : 3,
+        "maxSpawnNumberTotal" : 504,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
