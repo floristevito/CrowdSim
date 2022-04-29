@@ -1,37 +1,43 @@
 {
-  "name" : "baseCaseDataTimeSeriesTest",
+  "name" : "microvalidationBottleneck",
   "description" : "",
   "release" : "2.1",
   "processWriters" : {
     "files" : [ {
-      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.TimestepOutputFile",
-      "filename" : "speeds.csv",
-      "processors" : [ 1 ]
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
+      "filename" : "postvis.traj",
+      "processors" : [ 1, 2, 5, 6 ]
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.TimestepPedestrianIdOverlapOutputFile",
+      "filename" : "overlaps.csv",
+      "processors" : [ 3 ]
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
+      "filename" : "overlapCount.txt",
+      "processors" : [ 4 ]
     } ],
     "processors" : [ {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
-      "id" : 1,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepProcessor",
+      "id" : 1
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepTargetIDProcessor",
+      "id" : 2
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianOverlapProcessor",
+      "id" : 3
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.NumberOverlapsProcessor",
+      "id" : 4,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesNumberOverlapsProcessor",
       "attributes" : {
-        "measurementAreaId" : 8000,
-        "pedestrianPositionProcessorId" : 2,
-        "pedestrianVelocityProcessorId" : 3
+        "pedestrianOverlapProcessorId" : 3
       }
     }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianPositionProcessor",
-      "id" : 2,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesPedestrianPositionProcessor",
-      "attributes" : {
-        "interpolate" : true
-      }
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupIDProcessor",
+      "id" : 5
     }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianVelocityProcessor",
-      "id" : 3,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesPedestrianVelocityProcessor",
-      "attributes" : {
-        "pedestrianPositionProcessorId" : 2,
-        "backSteps" : 1
-      }
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupSizeProcessor",
+      "id" : 6
     } ],
     "isTimestamped" : true,
     "isWriteMetaData" : false
@@ -104,7 +110,7 @@
       "visualizationEnabled" : true,
       "printFPS" : false,
       "digitsPerCoordinate" : 2,
-      "useFixedSeed" : false,
+      "useFixedSeed" : true,
       "fixedSeed" : -5190782782724114477,
       "simulationSeed" : -5190782782724114477
     },
@@ -764,130 +770,7 @@
         },
         "id" : 9
       } ],
-      "measurementAreas" : [ {
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 35.7,
-            "y" : 71.4
-          }, {
-            "x" : 40.9,
-            "y" : 72.4
-          }, {
-            "x" : 44.1,
-            "y" : 73.5
-          }, {
-            "x" : 46.6,
-            "y" : 67.4
-          }, {
-            "x" : 42.6,
-            "y" : 66.5
-          }, {
-            "x" : 37.4,
-            "y" : 65.4
-          } ]
-        },
-        "id" : 8001
-      }, {
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 79.2,
-            "y" : 28.4
-          }, {
-            "x" : 80.8,
-            "y" : 28.8
-          }, {
-            "x" : 78.7,
-            "y" : 33.3
-          }, {
-            "x" : 75.1,
-            "y" : 42.5
-          }, {
-            "x" : 76.1,
-            "y" : 43.8
-          }, {
-            "x" : 83.0,
-            "y" : 45.8
-          }, {
-            "x" : 92.8,
-            "y" : 49.2
-          }, {
-            "x" : 92.2,
-            "y" : 50.8
-          }, {
-            "x" : 75.5,
-            "y" : 45.2
-          }, {
-            "x" : 72.8,
-            "y" : 44.2
-          } ]
-        },
-        "id" : 8003
-      }, {
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 48.5,
-            "y" : 48.2
-          }, {
-            "x" : 55.3,
-            "y" : 50.3
-          }, {
-            "x" : 67.3,
-            "y" : 55.2
-          }, {
-            "x" : 65.3,
-            "y" : 60.4
-          }, {
-            "x" : 64.2,
-            "y" : 63.4
-          }, {
-            "x" : 45.7,
-            "y" : 56.5
-          } ]
-        },
-        "id" : 8002
-      }, {
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 70.5,
-            "y" : 76.7
-          }, {
-            "x" : 72.3,
-            "y" : 77.2
-          }, {
-            "x" : 76.8,
-            "y" : 65.0
-          }, {
-            "x" : 78.7,
-            "y" : 64.2
-          }, {
-            "x" : 89.2,
-            "y" : 66.6
-          }, {
-            "x" : 89.7,
-            "y" : 65.1
-          }, {
-            "x" : 79.0,
-            "y" : 62.7
-          }, {
-            "x" : 75.4,
-            "y" : 64.5
-          } ]
-        },
-        "id" : 8004
-      }, {
-        "shape" : {
-          "x" : 0.3,
-          "y" : 0.5,
-          "width" : 131.0,
-          "height" : 108.9,
-          "type" : "RECTANGLE"
-        },
-        "id" : 8000
-      } ],
+      "measurementAreas" : [ ],
       "stairs" : [ ],
       "targets" : [ {
         "id" : 1001,
@@ -1015,7 +898,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1002, 1003, 1004 ],
-        "probabilityToChangeTarget" : [ 10.0, 20.0, 30.0 ]
+        "probabilityToChangeTarget" : [ 10.0, 10.0, 10.0 ]
       }, {
         "id" : 6002,
         "shape" : {
@@ -1037,7 +920,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1003, 1004, 1001 ],
-        "probabilityToChangeTarget" : [ 20.0, 30.0, 10.0 ]
+        "probabilityToChangeTarget" : [ 10.0, 10.0, 10.0 ]
       }, {
         "id" : 6003,
         "shape" : {
@@ -1059,7 +942,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1004, 1001, 1002 ],
-        "probabilityToChangeTarget" : [ 30.0, 10.0, 20.0 ]
+        "probabilityToChangeTarget" : [ 10.0, 10.0, 10.0 ]
       }, {
         "id" : 6004,
         "shape" : {
@@ -1080,8 +963,8 @@
         },
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1001, 1002, 1003 ],
-        "probabilityToChangeTarget" : [ 10.0, 20.0, 30.0 ]
+        "nextTarget" : [ 1003 ],
+        "probabilityToChangeTarget" : [ 1.0 ]
       } ],
       "absorbingAreas" : [ ],
       "aerosolClouds" : [ ],
@@ -1108,15 +991,15 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 2,
-        "maxSpawnNumberTotal" : 336,
+        "spawnNumber" : 0,
+        "maxSpawnNumberTotal" : 1,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1002 ],
-        "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
+        "targetIds" : [ 1004 ],
+        "groupSizeDistribution" : [ 1.0 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
       }, {
@@ -1141,8 +1024,8 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 1,
-        "maxSpawnNumberTotal" : 168,
+        "spawnNumber" : 0,
+        "maxSpawnNumberTotal" : 0,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
@@ -1174,8 +1057,8 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 3,
-        "maxSpawnNumberTotal" : 504,
+        "spawnNumber" : 0,
+        "maxSpawnNumberTotal" : 0,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
@@ -1207,15 +1090,15 @@
         "distributionParameters" : {
           "updateFrequency" : 1.0
         },
-        "spawnNumber" : 4,
-        "maxSpawnNumberTotal" : 672,
+        "spawnNumber" : 150,
+        "maxSpawnNumberTotal" : 150,
         "startTime" : 0.0,
         "endTime" : 1000.0,
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1001 ],
-        "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
+        "targetIds" : [ 1003 ],
+        "groupSizeDistribution" : [ 1.0 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
       } ],
