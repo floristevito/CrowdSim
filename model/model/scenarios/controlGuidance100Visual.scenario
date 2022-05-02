@@ -965,6 +965,72 @@
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1001, 1002, 1003 ],
         "probabilityToChangeTarget" : [ 10.0, 20.0, 30.0 ]
+      }, {
+        "id" : 10,
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 26.5,
+            "y" : 70.0
+          }, {
+            "x" : 27.4,
+            "y" : 70.2
+          }, {
+            "x" : 29.2,
+            "y" : 63.4
+          }, {
+            "x" : 28.1,
+            "y" : 63.3
+          } ]
+        },
+        "reachDistance" : 0.0,
+        "changeAlgorithmType" : "SELECT_ELEMENT",
+        "nextTarget" : [ 1003 ],
+        "probabilityToChangeTarget" : [ 1.0 ]
+      }, {
+        "id" : 11,
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 56.5,
+            "y" : 19.8
+          }, {
+            "x" : 56.9,
+            "y" : 18.4
+          }, {
+            "x" : 83.5,
+            "y" : 23.2
+          }, {
+            "x" : 83.2,
+            "y" : 24.5
+          } ]
+        },
+        "reachDistance" : 0.0,
+        "changeAlgorithmType" : "SELECT_ELEMENT",
+        "nextTarget" : [ 1002 ],
+        "probabilityToChangeTarget" : [ 1.0 ]
+      }, {
+        "id" : 12,
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 109.6,
+            "y" : 54.6
+          }, {
+            "x" : 108.4,
+            "y" : 54.2
+          }, {
+            "x" : 105.7,
+            "y" : 71.5
+          }, {
+            "x" : 107.7,
+            "y" : 71.8
+          } ]
+        },
+        "reachDistance" : 0.0,
+        "changeAlgorithmType" : "SELECT_ELEMENT",
+        "nextTarget" : [ 1003 ],
+        "probabilityToChangeTarget" : [ 1.0 ]
       } ],
       "absorbingAreas" : [ ],
       "aerosolClouds" : [ ],
