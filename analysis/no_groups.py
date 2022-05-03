@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     # base case
     # 1275
-    with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
+    with MultiprocessingEvaluator(model, n_processes=10) as evaluator:
         results = evaluator.perform_experiments(
             get_scenarios(name="baseCaseNoGroups", n=150, values=base_case)
         )
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     save_results(results, "../data/output/EMA/noGroupsBaseCase.tar.gz")
 
     # bad case
-    with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
+    with MultiprocessingEvaluator(model, n_processes=10) as evaluator:
         results = evaluator.perform_experiments(
             get_scenarios(name="baseCaseNoGroups", n=150, values=bad_case)
         )
