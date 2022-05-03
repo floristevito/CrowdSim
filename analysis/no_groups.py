@@ -19,7 +19,9 @@ ema_logging.log_to_stderr(ema_logging.INFO)
 # formulate model, set replications to 1
 # since we do additional sample calculations in the
 # visualization notebook
-model = get_vadere_formulation(id=3, replications=1, model_file="noGroupsData.scenario")
+model = get_vadere_formulation(
+    id=1, replications=60, model_file="noGroupsData.scenario"
+)
 
 # set up base case values (note that group size vector is already set in
 # the model)
@@ -60,7 +62,7 @@ if __name__ == "__main__":
     # 1275
     with MultiprocessingEvaluator(model, n_processes=10) as evaluator:
         results = evaluator.perform_experiments(
-            get_scenarios(name="baseCaseNoGroups", n=150, values=base_case)
+            get_scenarios(name="baseCaseNoGroups", n=1, values=base_case)
         )
 
     # save
@@ -69,7 +71,7 @@ if __name__ == "__main__":
     # bad case
     with MultiprocessingEvaluator(model, n_processes=10) as evaluator:
         results = evaluator.perform_experiments(
-            get_scenarios(name="baseCaseNoGroups", n=150, values=bad_case)
+            get_scenarios(name="baseCaseNoGroups", n=1, values=bad_case)
         )
 
     # save
