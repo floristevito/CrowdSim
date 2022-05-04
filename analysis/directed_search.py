@@ -22,28 +22,18 @@ if __name__ == "__main__":
     convergence_metrics = [HyperVolume.from_outcomes(model.outcomes), EpsilonProgress()]
 
     # search for worst cases(s)
-    with MultiprocessingEvaluator(model, n_processes=8) as evaluator:
+    with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
         results, convergence = evaluator.optimize(
-            nfe=500,
+            nfe=10000,
             searchover="uncertainties",
             epsilons=[
                 0.25,
             ]
             * len(model.outcomes),
             convergence=convergence_metrics,
+            convergence_freq=100,
         )
 
-    # plot convergence
-    fig, (ax1, ax2) = plt.subplots(ncols=2, sharex=True, figsize=(8, 4))
-    ax1.plot(convergence.nfe, convergence.epsilon_progress)
-    ax1.set_ylabel("$\epsilon$-progress")
-    ax2.plot(convergence.nfe, convergence.hypervolume)
-    ax2.set_ylabel("hypervolume")
-
-    ax1.set_xlabel("number of function evaluations")
-    ax2.set_xlabel("number of function evaluations")
-
     # save results
-    plt.savefig("../data/output/EMA/directedSearchConvergence.png")
     convergence.to_csv("../data/output/EMA/directedSearchConvergence.csv")
     results.to_csv("../data/output/EMA/directedSearch.csv")
