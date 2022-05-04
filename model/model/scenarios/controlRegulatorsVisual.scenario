@@ -730,6 +730,42 @@
           } ]
         },
         "id" : 118
+      }, {
+        "shape" : {
+          "x" : 124.8,
+          "y" : 17.2,
+          "width" : 5.7,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
+        },
+        "id" : 119
+      }, {
+        "shape" : {
+          "x" : 2.5,
+          "y" : 0.1,
+          "width" : 5.2,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
+        },
+        "id" : 120
+      }, {
+        "shape" : {
+          "x" : -0.4,
+          "y" : 86.0,
+          "width" : 2.9,
+          "height" : 5.0,
+          "type" : "RECTANGLE"
+        },
+        "id" : 121
+      }, {
+        "shape" : {
+          "x" : 83.8,
+          "y" : 106.0,
+          "width" : 5.8,
+          "height" : 4.7,
+          "type" : "RECTANGLE"
+        },
+        "id" : 122
       } ],
       "measurementAreas" : [ ],
       "stairs" : [ ],
