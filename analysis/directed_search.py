@@ -19,7 +19,12 @@ model = get_vadere_formulation(id=2, replications=1, model_file="baseCaseData.sc
 
 if __name__ == "__main__":
     # set convergence matrics
-    convergence_metrics = [HyperVolume.from_outcomes(model.outcomes), EpsilonProgress()]
+    convergence_metrics = [
+        HyperVolume(
+            minimum=[0, 0, 0, 0, 0, 0, 0, 0, 0], maximum=[2.2, 1, 1, 1, 1, 1, 1, 1, 1]
+        ),
+        EpsilonProgress(),
+    ]
 
     # search for worst cases(s)
     with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
@@ -27,11 +32,11 @@ if __name__ == "__main__":
             nfe=10000,
             searchover="uncertainties",
             epsilons=[
-                0.25,
+                0.1,
             ]
             * len(model.outcomes),
             convergence=convergence_metrics,
-            convergence_freq=100,
+            convergence_freq=10,
         )
 
     # save results
