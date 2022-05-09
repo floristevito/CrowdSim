@@ -45,9 +45,66 @@ def calculate_robustness_averted(results):
     }
 
 
+def calculate_robustness_mean_variance(results):
+    """calculation of the mean variance robustness metric
+
+    Args:
+        results (df): pd DataFrame with experimental results
+
+    Returns:
+        dict: metric score for all 9 outcomes,
+            speed is maximised, density values are minimised
+    """
+    # make copy of results
+    r = results.copy()
+
+    # maximize speed, so deviding the mean by the std
+    r_meanSpeed = results["meanSpeed"].mean() / results["meanSpeed"].std()
+
+    # minimizing density values, so multipying the mean with the std
+    r_meanDensityArea1 = (
+        results["meanDensityArea1"].mean() * results["meanDensityArea1"].std()
+    )
+    r_maxDensityArea1 = (
+        results["maxDensityArea1"].mean() * results["maxDensityArea1"].std()
+    )
+    r_meanDensityArea2 = (
+        results["meanDensityArea2"].mean() * results["meanDensityArea2"].std()
+    )
+    r_maxDensityArea2 = (
+        results["maxDensityArea2"].mean() * results["maxDensityArea2"].std()
+    )
+    r_meanDensityArea3 = (
+        results["meanDensityArea3"].mean() * results["meanDensityArea3"].std()
+    )
+    r_maxDensityArea3 = (
+        results["maxDensityArea3"].mean() * results["maxDensityArea3"].std()
+    )
+    r_meanDensityArea4 = (
+        results["meanDensityArea4"].mean() * results["meanDensityArea4"].std()
+    )
+    r_maxDensityArea4 = (
+        results["maxDensityArea4"].mean() * results["maxDensityArea4"].std()
+    )
+
+    # return final scores in a dict
+    return {
+        "r_meanSpeed": r_meanSpeed,
+        "r_meanDensityArea1": r_meanDensityArea1,
+        "r_maxDensityArea1": r_maxDensityArea1,
+        "r_meanDensityArea2": r_meanDensityArea2,
+        "r_maxDensityArea2": r_maxDensityArea2,
+        "r_meanDensityArea3": r_meanDensityArea3,
+        "r_maxDensityArea3": r_maxDensityArea3,
+        "r_meanDensityArea4": r_meanDensityArea4,
+        "r_maxDensityArea4": r_maxDensityArea4,
+    }
+
+
 if __name__ == "__main__":
     # load results PRIM problematic scenarios
     scenarios_prim = pd.read_csv("../data/output/EMA/scenariosPrim.csv")
     rp = pd.read_csv("../data/output/EMA/resultsScenariosPrim.csv")
 
     print(calculate_robustness_averted(rp))
+    print(calculate_robustness_mean_variance(rp))
