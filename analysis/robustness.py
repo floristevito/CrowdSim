@@ -1,8 +1,5 @@
-import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
 from ema_workbench import load_results
-from SALib.analyze import sobol
 
 
 def calculate_robustness_averted(results):

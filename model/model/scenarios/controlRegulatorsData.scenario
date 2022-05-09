@@ -1,43 +1,136 @@
 {
-  "name" : "controlGuidance100Visual",
+  "name" : "controlRegulatorsData",
   "description" : "",
   "release" : "2.1",
   "processWriters" : {
     "files" : [ {
-      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
-      "filename" : "postvis.traj",
-      "processors" : [ 1, 2, 5, 6 ]
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.TimestepPedestrianIdOverlapOutputFile",
-      "filename" : "overlaps.csv",
-      "processors" : [ 3 ]
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
+      "filename" : "density.txt",
+      "processors" : [ 16, 6, 7, 9, 10, 12, 13, 15 ]
     }, {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
-      "filename" : "overlapCount.txt",
+      "filename" : "speed.txt",
       "processors" : [ 4 ]
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.TimestepOutputFile",
+      "filename" : "generated.csv",
+      "processors" : [ ]
     } ],
     "processors" : [ {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepProcessor",
-      "id" : 1
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepTargetIDProcessor",
-      "id" : 2
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianOverlapProcessor",
-      "id" : 3
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.NumberOverlapsProcessor",
-      "id" : 4,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesNumberOverlapsProcessor",
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
+      "id" : 1,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
       "attributes" : {
-        "pedestrianOverlapProcessorId" : 3
+        "measurementAreaId" : 8000,
+        "pedestrianPositionProcessorId" : 2,
+        "pedestrianVelocityProcessorId" : 3
       }
     }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupIDProcessor",
-      "id" : 5
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianPositionProcessor",
+      "id" : 2,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesPedestrianPositionProcessor",
+      "attributes" : {
+        "interpolate" : true
+      }
     }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupSizeProcessor",
-      "id" : 6
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianVelocityProcessor",
+      "id" : 3,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesPedestrianVelocityProcessor",
+      "attributes" : {
+        "pedestrianPositionProcessorId" : 2,
+        "backSteps" : 1
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
+      "id" : 4,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
+      "attributes" : {
+        "areaSpeedProcessorId" : 1
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
+      "id" : 5,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
+      "attributes" : {
+        "measurementAreaId" : 8001
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
+      "id" : 6,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 5
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
+      "id" : 7,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 5
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
+      "id" : 8,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
+      "attributes" : {
+        "measurementAreaId" : 8002
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
+      "id" : 9,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 8
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
+      "id" : 10,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 8
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
+      "id" : 11,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
+      "attributes" : {
+        "measurementAreaId" : 8003
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
+      "id" : 12,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 11
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
+      "id" : 13,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 11
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
+      "id" : 14,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
+      "attributes" : {
+        "measurementAreaId" : 8004
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
+      "id" : 15,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 14
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
+      "id" : 16,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 14
+      }
     } ],
     "isTimestamped" : true,
     "isWriteMetaData" : false
@@ -137,27 +230,6 @@
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
-            "x" : 35.34739171923138,
-            "y" : 10.926762271672487
-          }, {
-            "x" : 37.10206765739713,
-            "y" : 6.318369795568287
-          }, {
-            "x" : 36.80608981160913,
-            "y" : 6.23329081851989
-          }, {
-            "x" : 37.81764528353233,
-            "y" : 2.541499343700707
-          }, {
-            "x" : 60.25262519333046,
-            "y" : 10.307955703698099
-          }, {
-            "x" : 59.0942325348733,
-            "y" : 14.051809416152537
-          }, {
-            "x" : 57.81581906671636,
-            "y" : 18.1710598282516
-          }, {
             "x" : 53.94244133506436,
             "y" : 30.672535052523017
           }, {
@@ -292,82 +364,130 @@
           }, {
             "x" : 31.401891158428043,
             "y" : 9.851742952130735
+          }, {
+            "x" : 35.34739171923138,
+            "y" : 10.926762271672487
+          }, {
+            "x" : 37.10206765739713,
+            "y" : 6.318369795568287
+          }, {
+            "x" : 36.80608981160913,
+            "y" : 6.23329081851989
+          }, {
+            "x" : 37.81764528353233,
+            "y" : 2.541499343700707
+          }, {
+            "x" : 60.25262519333046,
+            "y" : 10.307955703698099
+          }, {
+            "x" : 59.0942325348733,
+            "y" : 14.051809416152537
+          }, {
+            "x" : 57.81581906671636,
+            "y" : 18.1710598282516
           } ]
         },
-        "id" : 1
+        "id" : 115
       }, {
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
-            "x" : 118.96168664423749,
-            "y" : 34.77867557387799
+            "x" : 15.38649839302525,
+            "y" : 91.91263373941183
           }, {
-            "x" : 119.67454022006132,
-            "y" : 35.10755871608853
+            "x" : 5.5222894854377955,
+            "y" : 90.24878302309662
           }, {
-            "x" : 122.38321073399857,
-            "y" : 29.465335241518915
+            "x" : 1.0,
+            "y" : 88.74604573100805
           }, {
-            "x" : 126.46431348158512,
-            "y" : 31.2335889916867
+            "x" : 1.002489885664545,
+            "y" : 86.56727936211973
           }, {
-            "x" : 121.47476535150781,
-            "y" : 42.02772534545511
+            "x" : 6.484935737447813,
+            "y" : 87.71299065370113
           }, {
-            "x" : 116.35729307984002,
-            "y" : 57.51429014466703
+            "x" : 7.5281026508891955,
+            "y" : 85.00112474430352
           }, {
-            "x" : 116.32390714494977,
-            "y" : 57.74714249651879
+            "x" : 7.994762068497948,
+            "y" : 83.76625305972993
           }, {
-            "x" : 109.90030781121459,
-            "y" : 55.39898575376719
+            "x" : 9.128229074995033,
+            "y" : 77.90768244955689
           }, {
-            "x" : 104.89179609611165,
-            "y" : 53.5748191261664
+            "x" : 8.258657249622047,
+            "y" : 77.75303766597062
           }, {
-            "x" : 100.1654009076301,
-            "y" : 51.83540345635265
+            "x" : 8.619075986091048,
+            "y" : 76.32642891909927
           }, {
-            "x" : 95.23946740757674,
-            "y" : 50.03550772834569
+            "x" : 16.91813651425764,
+            "y" : 78.50860562175512
           }, {
-            "x" : 93.96849039336666,
-            "y" : 49.570666008628905
+            "x" : 18.11084988922812,
+            "y" : 78.7712435182184
           }, {
-            "x" : 87.90525198425166,
-            "y" : 47.50946882367134
+            "x" : 18.04561151145026,
+            "y" : 79.45952342730016
           }, {
-            "x" : 82.36468724813312,
-            "y" : 45.61675866693258
+            "x" : 19.96962424227968,
+            "y" : 79.86232238542289
           }, {
-            "x" : 76.06078211113345,
-            "y" : 43.76113685965538
+            "x" : 21.184295786195435,
+            "y" : 79.79168893583119
           }, {
-            "x" : 75.16362598678097,
-            "y" : 42.45974432956427
+            "x" : 21.72959255077876,
+            "y" : 74.46404770575464
           }, {
-            "x" : 76.82763636461459,
-            "y" : 38.16071278601885
+            "x" : 19.129964278894477,
+            "y" : 73.91131329908967
           }, {
-            "x" : 78.74392925971188,
-            "y" : 33.177948251366615
+            "x" : 20.354115143069066,
+            "y" : 68.60016333591193
           }, {
-            "x" : 81.45795977988746,
-            "y" : 27.313297861255705
+            "x" : 40.86895393487066,
+            "y" : 72.36986694578081
           }, {
-            "x" : 83.24551751161925,
-            "y" : 22.49430873338133
+            "x" : 40.81296227933881,
+            "y" : 72.53567229873846
           }, {
-            "x" : 87.05393445992377,
-            "y" : 12.383547882549465
+            "x" : 42.24366082779741,
+            "y" : 72.98747184035714
           }, {
-            "x" : 84.52662476361729,
-            "y" : 11.420845109969378
+            "x" : 42.290261557244435,
+            "y" : 72.84932981460614
           }, {
-            "x" : 86.32615247031208,
-            "y" : 6.6800357811152935
+            "x" : 50.81810729148707,
+            "y" : 75.72610702755811
           }, {
+            "x" : 47.210511214112884,
+            "y" : 86.42037375102701
+          }, {
+            "x" : 38.68266547987025,
+            "y" : 83.54359653807504
+          }, {
+            "x" : 38.78602347879266,
+            "y" : 83.2372046957586
+          }, {
+            "x" : 37.30298348884685,
+            "y" : 82.94059669776946
+          }, {
+            "x" : 37.26135785749648,
+            "y" : 83.06413366924971
+          }, {
+            "x" : 34.41545298625715,
+            "y" : 91.5070307329297
+          }, {
+            "x" : 32.98143775307108,
+            "y" : 95.75602812319994
+          } ]
+        },
+        "id" : 116
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
             "x" : 88.85346428083722,
             "y" : 7.642739416100085
           }, {
@@ -427,106 +547,157 @@
           }, {
             "x" : 120.8687938414514,
             "y" : 31.03078325651586
+          }, {
+            "x" : 118.96168664423749,
+            "y" : 34.77867557387799
+          }, {
+            "x" : 119.67454022006132,
+            "y" : 35.10755871608853
+          }, {
+            "x" : 122.38321073399857,
+            "y" : 29.465335241518915
+          }, {
+            "x" : 126.46431348158512,
+            "y" : 31.2335889916867
+          }, {
+            "x" : 121.47476535150781,
+            "y" : 42.02772534545511
+          }, {
+            "x" : 116.35729307984002,
+            "y" : 57.51429014466703
+          }, {
+            "x" : 116.32390714494977,
+            "y" : 57.74714249651879
+          }, {
+            "x" : 109.90030781121459,
+            "y" : 55.39898575376719
+          }, {
+            "x" : 104.89179609611165,
+            "y" : 53.5748191261664
+          }, {
+            "x" : 100.1654009076301,
+            "y" : 51.83540345635265
+          }, {
+            "x" : 100.13741177217253,
+            "y" : 51.825176455655324
+          }, {
+            "x" : 99.45955770486285,
+            "y" : 53.18088459027511
+          }, {
+            "x" : 99.68896774175082,
+            "y" : 53.25772952250283
+          }, {
+            "x" : 97.78323507823367,
+            "y" : 58.94703378710354
+          }, {
+            "x" : 73.67861628173702,
+            "y" : 50.87276719040627
+          }, {
+            "x" : 75.58434894525416,
+            "y" : 45.18346292580556
+          }, {
+            "x" : 75.96020165939126,
+            "y" : 45.30936141192792
+          }, {
+            "x" : 76.41608695706397,
+            "y" : 43.865724635964355
+          }, {
+            "x" : 76.06078211113345,
+            "y" : 43.76113685965538
+          }, {
+            "x" : 75.16362598678097,
+            "y" : 42.45974432956427
+          }, {
+            "x" : 75.24303024427255,
+            "y" : 42.254600532268526
+          }, {
+            "x" : 73.79060298675202,
+            "y" : 41.792464586693725
+          }, {
+            "x" : 68.21020217165176,
+            "y" : 55.535675628456005
+          }, {
+            "x" : 55.238755773734894,
+            "y" : 50.268648160712004
+          }, {
+            "x" : 68.88427328535415,
+            "y" : 16.662956894093334
+          }, {
+            "x" : 81.85571968327102,
+            "y" : 21.92998436183733
+          }, {
+            "x" : 81.64046117652913,
+            "y" : 22.46011529413235
+          }, {
+            "x" : 83.12091152970518,
+            "y" : 22.830227882426406
+          }, {
+            "x" : 83.24551751161925,
+            "y" : 22.49430873338133
+          }, {
+            "x" : 87.05393445992377,
+            "y" : 12.383547882549465
+          }, {
+            "x" : 84.52662476361729,
+            "y" : 11.420845109969378
+          }, {
+            "x" : 86.32615247031208,
+            "y" : 6.6800357811152935
           } ]
         },
-        "id" : 2
+        "id" : 117
       }, {
         "shape" : {
           "type" : "POLYGON",
           "points" : [ {
-            "x" : 7.5281026508891955,
-            "y" : 85.00112474430352
+            "x" : 75.4711619985368,
+            "y" : 64.41570299877458
           }, {
-            "x" : 7.994762068497948,
-            "y" : 83.76625305972993
+            "x" : 75.38296193413177,
+            "y" : 64.63416079640754
           }, {
-            "x" : 9.128229074995033,
-            "y" : 77.90768244955689
+            "x" : 76.77556521927006,
+            "y" : 65.20758567852309
           }, {
-            "x" : 8.258657249622047,
-            "y" : 77.75303766597062
+            "x" : 76.86207620729692,
+            "y" : 64.97727014869452
           }, {
-            "x" : 8.619075986091048,
-            "y" : 76.32642891909927
+            "x" : 78.69140309083741,
+            "y" : 64.14270914811641
           }, {
-            "x" : 16.91813651425764,
-            "y" : 78.50860562175512
+            "x" : 79.04334342073993,
+            "y" : 64.22549166864441
           }, {
-            "x" : 18.11084988922812,
-            "y" : 78.7712435182184
+            "x" : 79.27859281250211,
+            "y" : 62.73557885415118
           }, {
-            "x" : 18.04561151145026,
-            "y" : 79.45952342730016
+            "x" : 79.01137869791366,
+            "y" : 62.67723461375009
           }, {
-            "x" : 19.96962424227968,
-            "y" : 79.86232238542289
+            "x" : 79.8646469834503,
+            "y" : 58.76930252210656
           }, {
-            "x" : 21.184295786195435,
-            "y" : 79.79168893583119
+            "x" : 106.07104889000861,
+            "y" : 64.49127800696948
           }, {
-            "x" : 21.72959255077876,
-            "y" : 74.46404770575464
+            "x" : 105.21778060447197,
+            "y" : 68.39921009861301
           }, {
-            "x" : 19.129964278894477,
-            "y" : 73.91131329908967
+            "x" : 105.06073333790837,
+            "y" : 68.36491998078456
           }, {
-            "x" : 20.354115143069066,
-            "y" : 68.60016333591193
+            "x" : 104.71209390806565,
+            "y" : 69.82920558612453
           }, {
-            "x" : 40.86895393487066,
-            "y" : 72.36986694578081
+            "x" : 104.89780499739572,
+            "y" : 69.86468463297933
           }, {
-            "x" : 38.97941341320984,
-            "y" : 77.96527094207704
+            "x" : 108.59207844967023,
+            "y" : 70.72224595956504
           }, {
-            "x" : 37.26135785749648,
-            "y" : 83.06413366924971
+            "x" : 114.78818151867017,
+            "y" : 72.16359547525644
           }, {
-            "x" : 34.41545298625715,
-            "y" : 91.5070307329297
-          }, {
-            "x" : 32.98143775307108,
-            "y" : 95.75602812319994
-          }, {
-            "x" : 15.38649839302525,
-            "y" : 91.91263373941183
-          }, {
-            "x" : 5.5222894854377955,
-            "y" : 90.24878302309662
-          }, {
-            "x" : 1.0,
-            "y" : 88.74604573100805
-          }, {
-            "x" : 1.002489885664545,
-            "y" : 86.56727936211973
-          }, {
-            "x" : 6.484935737447813,
-            "y" : 87.71299065370113
-          } ]
-        },
-        "id" : 3
-      }, {
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 50.81810729148707,
-            "y" : 75.72610702755811
-          }, {
-            "x" : 47.210511214112884,
-            "y" : 86.42037375102701
-          }, {
-            "x" : 38.68266547987025,
-            "y" : 83.54359653807504
-          }, {
-            "x" : 42.290261557244435,
-            "y" : 72.84932981460614
-          } ]
-        },
-        "id" : 4
-      }, {
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
             "x" : 122.04932965221815,
             "y" : 73.98690667934716
           }, {
@@ -635,92 +806,11 @@
             "x" : 66.86139745032415,
             "y" : 89.7473910190165
           }, {
-            "x" : 68.80787601287011,
-            "y" : 85.2326849270612
+            "x" : 67.10316936186622,
+            "y" : 89.18661981767572
           }, {
-            "x" : 72.28275617759209,
-            "y" : 77.15002352651209
-          }, {
-            "x" : 74.50547526020091,
-            "y" : 71.25117602013052
-          }, {
-            "x" : 76.86207620729692,
-            "y" : 64.97727014869452
-          }, {
-            "x" : 78.69140309083741,
-            "y" : 64.14270914811641
-          }, {
-            "x" : 84.65281056181993,
-            "y" : 65.54493644181639
-          }, {
-            "x" : 89.13272577314638,
-            "y" : 66.58848180249333
-          }, {
-            "x" : 96.42007734673098,
-            "y" : 68.18985538370907
-          }, {
-            "x" : 95.10927839716896,
-            "y" : 76.4920084150508
-          }, {
-            "x" : 89.35749068367295,
-            "y" : 75.30627361126244
-          }, {
-            "x" : 87.20596769929398,
-            "y" : 74.85341081861407
-          }, {
-            "x" : 85.90539598313626,
-            "y" : 74.4657395388931
-          }, {
-            "x" : 85.74631206644699,
-            "y" : 75.3075139131397
-          }, {
-            "x" : 89.05023427389096,
-            "y" : 76.25571488495916
-          }, {
-            "x" : 89.15873572358396,
-            "y" : 76.06919563189149
-          }, {
-            "x" : 96.21244455350097,
-            "y" : 77.5870024068281
-          }, {
-            "x" : 97.55710265936796,
-            "y" : 68.46228522248566
-          }, {
-            "x" : 104.89780499739572,
-            "y" : 69.86468463297933
-          }, {
-            "x" : 108.59207844967023,
-            "y" : 70.72224595956504
-          }, {
-            "x" : 114.78818151867017,
-            "y" : 72.16359547525644
-          } ]
-        },
-        "id" : 5
-      }, {
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 106.07104889000861,
-            "y" : 64.49127800696948
-          }, {
-            "x" : 105.21778060447197,
-            "y" : 68.39921009861301
-          }, {
-            "x" : 79.01137869791366,
-            "y" : 62.67723461375009
-          }, {
-            "x" : 79.8646469834503,
-            "y" : 58.76930252210656
-          } ]
-        },
-        "id" : 6
-      }, {
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 75.4711619985368,
-            "y" : 64.41570299877458
+            "x" : 65.63905373204908,
+            "y" : 88.76830106629968
           }, {
             "x" : 65.47048324156403,
             "y" : 89.18582386909657
@@ -732,45 +822,168 @@
             "y" : 60.29754389936174
           } ]
         },
-        "id" : 7
+        "id" : 118
       }, {
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 55.238755773734894,
-            "y" : 50.268648160712004
-          }, {
-            "x" : 68.88427328535415,
-            "y" : 16.662956894093334
-          }, {
-            "x" : 81.85571968327102,
-            "y" : 21.92998436183733
-          }, {
-            "x" : 68.21020217165176,
-            "y" : 55.535675628456005
-          } ]
+          "x" : 124.8,
+          "y" : 17.2,
+          "width" : 5.7,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
         },
-        "id" : 8
+        "id" : 119
       }, {
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 73.67861628173702,
-            "y" : 50.87276719040627
-          }, {
-            "x" : 75.58434894525416,
-            "y" : 45.18346292580556
-          }, {
-            "x" : 99.68896774175082,
-            "y" : 53.25772952250283
-          }, {
-            "x" : 97.78323507823367,
-            "y" : 58.94703378710354
-          } ]
+          "x" : 2.5,
+          "y" : 0.1,
+          "width" : 5.2,
+          "height" : 3.0,
+          "type" : "RECTANGLE"
         },
-        "id" : 9
+        "id" : 120
+      }, {
+        "shape" : {
+          "x" : -0.4,
+          "y" : 86.0,
+          "width" : 2.9,
+          "height" : 5.0,
+          "type" : "RECTANGLE"
+        },
+        "id" : 121
+      }, {
+        "shape" : {
+          "x" : 83.8,
+          "y" : 106.0,
+          "width" : 5.8,
+          "height" : 4.7,
+          "type" : "RECTANGLE"
+        },
+        "id" : 122
       } ],
-      "measurementAreas" : [ ],
+      "measurementAreas" : [ {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 35.7,
+            "y" : 71.4
+          }, {
+            "x" : 40.9,
+            "y" : 72.4
+          }, {
+            "x" : 44.1,
+            "y" : 73.5
+          }, {
+            "x" : 46.6,
+            "y" : 67.4
+          }, {
+            "x" : 42.6,
+            "y" : 66.5
+          }, {
+            "x" : 37.4,
+            "y" : 65.4
+          } ]
+        },
+        "id" : 8001
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 79.2,
+            "y" : 28.4
+          }, {
+            "x" : 80.8,
+            "y" : 28.8
+          }, {
+            "x" : 78.7,
+            "y" : 33.3
+          }, {
+            "x" : 75.1,
+            "y" : 42.5
+          }, {
+            "x" : 76.1,
+            "y" : 43.8
+          }, {
+            "x" : 83.0,
+            "y" : 45.8
+          }, {
+            "x" : 92.8,
+            "y" : 49.2
+          }, {
+            "x" : 92.2,
+            "y" : 50.8
+          }, {
+            "x" : 75.5,
+            "y" : 45.2
+          }, {
+            "x" : 72.8,
+            "y" : 44.2
+          } ]
+        },
+        "id" : 8003
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 48.5,
+            "y" : 48.2
+          }, {
+            "x" : 55.3,
+            "y" : 50.3
+          }, {
+            "x" : 67.3,
+            "y" : 55.2
+          }, {
+            "x" : 65.3,
+            "y" : 60.4
+          }, {
+            "x" : 64.2,
+            "y" : 63.4
+          }, {
+            "x" : 45.7,
+            "y" : 56.5
+          } ]
+        },
+        "id" : 8002
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 70.5,
+            "y" : 76.7
+          }, {
+            "x" : 72.3,
+            "y" : 77.2
+          }, {
+            "x" : 76.8,
+            "y" : 65.0
+          }, {
+            "x" : 78.7,
+            "y" : 64.2
+          }, {
+            "x" : 89.2,
+            "y" : 66.6
+          }, {
+            "x" : 89.7,
+            "y" : 65.1
+          }, {
+            "x" : 79.0,
+            "y" : 62.7
+          }, {
+            "x" : 75.4,
+            "y" : 64.5
+          } ]
+        },
+        "id" : 8004
+      }, {
+        "shape" : {
+          "x" : 0.3,
+          "y" : 0.5,
+          "width" : 131.0,
+          "height" : 108.9,
+          "type" : "RECTANGLE"
+        },
+        "id" : 8000
+      } ],
       "stairs" : [ ],
       "targets" : [ {
         "id" : 1001,
@@ -821,7 +1034,7 @@
         "waitingTimeYellowPhase" : 0.0,
         "parallelWaiters" : 0,
         "individualWaiting" : true,
-        "deletionDistance" : 2.0,
+        "deletionDistance" : 0.1,
         "startingWithRedLight" : false,
         "nextSpeed" : -1.0
       }, {
@@ -847,7 +1060,7 @@
         "waitingTimeYellowPhase" : 0.0,
         "parallelWaiters" : 0,
         "individualWaiting" : true,
-        "deletionDistance" : 2.0,
+        "deletionDistance" : 0.1,
         "startingWithRedLight" : false,
         "nextSpeed" : -1.0
       }, {
@@ -873,7 +1086,7 @@
         "waitingTimeYellowPhase" : 0.0,
         "parallelWaiters" : 0,
         "individualWaiting" : true,
-        "deletionDistance" : 2.0,
+        "deletionDistance" : 0.1,
         "startingWithRedLight" : false,
         "nextSpeed" : -1.0
       } ],
@@ -965,72 +1178,6 @@
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1001, 1002, 1003 ],
         "probabilityToChangeTarget" : [ 10.0, 20.0, 30.0 ]
-      }, {
-        "id" : 10,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 25.1,
-            "y" : 69.6
-          }, {
-            "x" : 26.0,
-            "y" : 69.8
-          }, {
-            "x" : 27.8,
-            "y" : 63.0
-          }, {
-            "x" : 26.700000000000003,
-            "y" : 62.9
-          } ]
-        },
-        "reachDistance" : 0.0,
-        "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1003 ],
-        "probabilityToChangeTarget" : [ 1.0 ]
-      }, {
-        "id" : 11,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 57.2,
-            "y" : 18.5
-          }, {
-            "x" : 57.6,
-            "y" : 17.099999999999998
-          }, {
-            "x" : 84.2,
-            "y" : 21.9
-          }, {
-            "x" : 83.9,
-            "y" : 23.2
-          } ]
-        },
-        "reachDistance" : 0.0,
-        "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1002 ],
-        "probabilityToChangeTarget" : [ 1.0 ]
-      }, {
-        "id" : 12,
-        "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 111.19999999999999,
-            "y" : 54.9
-          }, {
-            "x" : 110.0,
-            "y" : 54.5
-          }, {
-            "x" : 107.3,
-            "y" : 71.8
-          }, {
-            "x" : 109.3,
-            "y" : 72.1
-          } ]
-        },
-        "reachDistance" : 0.0,
-        "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1003 ],
-        "probabilityToChangeTarget" : [ 1.0 ]
       } ],
       "absorbingAreas" : [ ],
       "aerosolClouds" : [ ],
