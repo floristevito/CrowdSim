@@ -17,10 +17,10 @@ def calculate_robustness_averted(results):
     r = results.copy()
 
     # evaluate per area per row if critical density is averted
-    r["boolean1"] = rp["meanDensityArea1"] <= 0.8
-    r["boolean2"] = rp["meanDensityArea2"] <= 0.8
-    r["boolean3"] = rp["meanDensityArea3"] <= 0.8
-    r["boolean4"] = rp["meanDensityArea4"] <= 0.8
+    r["boolean1"] = r["meanDensityArea1"] <= 0.8
+    r["boolean2"] = r["meanDensityArea2"] <= 0.8
+    r["boolean3"] = r["meanDensityArea3"] <= 0.8
+    r["boolean4"] = r["meanDensityArea4"] <= 0.8
 
     # cast booleans to int
     r = r.astype(
@@ -35,9 +35,9 @@ def calculate_robustness_averted(results):
     # make on total score, return absolute and mean averted density areas
     r["averted"] = r["boolean1"] + r["boolean2"] + r["boolean3"] + r["boolean4"]
     return {
-        "absolute_averted": r["averted"].sum(),
+        "number of averted areas": r["averted"].sum(),
         "mean_averted": r["averted"].sum() / len(r["averted"]),
-        "scenarios_averted": sum(r["averted"] == 4),
+        "complete scenarios averted": sum(r["averted"] == 4),
         "percentage_scenarios_averted": round(sum(r["averted"] == 4) / len(r), 2),
     }
 
@@ -86,15 +86,15 @@ def calculate_robustness_mean_variance(results):
 
     # return final scores in a dict
     return {
-        "r_meanSpeed": r_meanSpeed,
-        "r_meanDensityArea1": r_meanDensityArea1,
-        "r_maxDensityArea1": r_maxDensityArea1,
-        "r_meanDensityArea2": r_meanDensityArea2,
-        "r_maxDensityArea2": r_maxDensityArea2,
-        "r_meanDensityArea3": r_meanDensityArea3,
-        "r_maxDensityArea3": r_maxDensityArea3,
-        "r_meanDensityArea4": r_meanDensityArea4,
-        "r_maxDensityArea4": r_maxDensityArea4,
+        "meanSpeed": r_meanSpeed,
+        "meanDensityArea1": r_meanDensityArea1,
+        "maxDensityArea1": r_maxDensityArea1,
+        "meanDensityArea2": r_meanDensityArea2,
+        "maxDensityArea2": r_maxDensityArea2,
+        "meanDensityArea3": r_meanDensityArea3,
+        "maxDensityArea3": r_maxDensityArea3,
+        "meanDensityArea4": r_meanDensityArea4,
+        "maxDensityArea4": r_maxDensityArea4,
     }
 
 
