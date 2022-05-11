@@ -1,14 +1,14 @@
+import numpy as np
+import pandas as pd
 from ema_workbench import (
-    Samplers,
-    perform_experiments,
-    ema_logging,
     MultiprocessingEvaluator,
+    Samplers,
+    ema_logging,
+    perform_experiments,
     save_results,
 )
-import pandas as pd
-import numpy as np
-from vadere_ema_formulations import get_vadere_formulation
 
+from vadere_ema_formulations import get_vadere_formulation
 
 # enable EMA logging
 ema_logging.log_to_stderr(ema_logging.INFO)

@@ -1,6 +1,7 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 from ema_workbench import load_results
+
 from robustness import calculate_robustness_averted, calculate_robustness_mean_variance
 
 if __name__ == "__main__":
@@ -63,34 +64,80 @@ if __name__ == "__main__":
     raw_outcomes_av.to_csv("../data/output/intermediate/raw_outcomes_av.csv")
 
     # plotting raw outcomes
-    fig1, ax1 = plt.subplots(figsize=(12, 7))
-    raw_outcomes_av.plot.bar(ax=ax1, colormap="viridis")
-    fig1.suptitle("Control strategies \n raw density and speed outcomes", fontsize=20)
-    ax1.set(ylabel="average outcome \n in problematic scenarios")
-    fig1.savefig("../figures/controlStrategiesRaw.png")
+    fig1, ax1 = plt.subplots(figsize=(8, 6))
+    raw_outcomes_av.loc[
+        raw_outcomes_av.index.isin(
+            [
+                "meanDensityArea1",
+                "meanDensityArea2",
+                "meanDensityArea3",
+                "meanDensityArea4",
+            ]
+        )
+    ].plot.bar(ax=ax1, colormap="viridis", rot=0)
+    fig1.suptitle("Control strategies \n raw mean density", fontsize=20)
+    ax1.set(ylabel="average density [#/m²]")
+    fig1.savefig("../figures/controlStrategiesRawMeanDensity.png", bbox_inches="tight")
+
+    fig2, ax2 = plt.subplots(figsize=(8, 6))
+    raw_outcomes_av.loc[
+        raw_outcomes_av.index.isin(
+            [
+                "maxDensityArea1",
+                "maxDensityArea2",
+                "maxDensityArea3",
+                "maxDensityArea4",
+            ]
+        )
+    ].plot.bar(ax=ax2, colormap="viridis", rot=0)
+    fig2.suptitle("Control strategies \n raw max density", fontsize=20)
+    ax2.set(ylabel="max density [#/m²]")
+    fig2.savefig("../figures/controlStrategiesRawMaxDensity.png", bbox_inches="tight")
+
+    fig3, ax3 = plt.subplots(figsize=(12, 7))
+    raw_outcomes_av.loc[raw_outcomes_av.index == "meanSpeed"].plot.barh(
+        ax=ax3, colormap="viridis"
+    )
+    fig3.suptitle("Control strategies \n mean speed", fontsize=20)
+    ax3.set(xlabel="mean speed [m/s]")
+    fig3.savefig("../figures/controlStrategiesRawMeanSpeed.png", bbox_inches="tight")
 
     # plotting robustness averted
-    fig2, ax2 = plt.subplots(figsize=(12, 7))
+    fig4, ax4 = plt.subplots(figsize=(12, 7))
     r_averted[["complete scenarios averted", "number of averted areas"]].plot.barh(
-        ax=ax2, colormap="viridis", rot=0
-    )
-    fig2.suptitle("Control strategies \n robustness: total averted", fontsize=20)
-    ax2.set(xlabel="Total count", ylabel="Control strategy")
-    fig2.savefig("../figures/controlStrategiesAverted.png")
-
-    # plotting robustness mean variance
-    fig3, ax3 = plt.subplots(figsize=(12, 7))
-    r_mean_variance[["meanSpeed"]].plot.barh(ax=ax3, colormap="viridis", rot=0)
-    fig3.suptitle("Control strategies \n robustness: mean variance", fontsize=20)
-    ax3.set(
-        xlabel="Mean variance score \n (higher is better)", ylabel="Control strategy"
-    )
-    fig3.savefig("../figures/controlStrategiesMeanVarianceSpeed.png")
-
-    fig4, ax4 = plt.subplots(figsize=(8, 10))
-    r_mean_variance.drop(columns=["meanSpeed"], axis=1).T.plot.barh(
         ax=ax4, colormap="viridis", rot=0
     )
-    fig4.suptitle("Control strategies \n robustness: mean variance", fontsize=20)
-    ax4.set(xlabel="Mean variance score \n (lower is better)")
-    fig4.savefig("../figures/controlStrategiesMeanVarianceDensity.png")
+    fig4.suptitle("Control strategies \n robustness: total averted", fontsize=20)
+    ax4.set(xlabel="Total count", ylabel="Control strategy")
+    fig4.savefig("../figures/controlStrategiesAverted.png", bbox_inches="tight")
+
+    # plotting robustness mean variance
+    fig5, ax5 = plt.subplots(figsize=(12, 7))
+    r_mean_variance[["meanSpeed"]].plot.barh(ax=ax5, colormap="viridis", rot=0)
+    fig5.suptitle("Control strategies \n robustness: mean variance", fontsize=20)
+    ax5.set(
+        xlabel="Mean variance score \n (higher is better)", ylabel="Control strategy"
+    )
+    fig5.savefig(
+        "../figures/controlStrategiesMeanVarianceSpeed.png", bbox_inches="tight"
+    )
+
+    fig6, ax6 = plt.subplots(figsize=(8, 10))
+    r_mean_variance[
+        ["meanDensityArea1", "meanDensityArea2", "meanDensityArea3", "meanDensityArea4"]
+    ].T.plot.barh(ax=ax6, colormap="viridis", rot=0)
+    fig6.suptitle("Control strategies \n robustness: mean variance", fontsize=20)
+    ax6.set(xlabel="Mean variance score \n (lower is better)")
+    fig6.savefig(
+        "../figures/controlStrategiesMeanVarianceMeanDensity.png", bbox_inches="tight"
+    )
+
+    fig7, ax7 = plt.subplots(figsize=(8, 10))
+    r_mean_variance[
+        ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
+    ].T.plot.barh(ax=ax7, colormap="viridis", rot=0)
+    fig7.suptitle("Control strategies \n robustness: mean variance", fontsize=20)
+    ax7.set(xlabel="Mean variance score \n (lower is better)")
+    fig7.savefig(
+        "../figures/controlStrategiesMeanVarianceMaxDensity.png", bbox_inches="tight"
+    )
