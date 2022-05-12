@@ -1,5 +1,5 @@
 {
-  "name" : "controlGuidance100Visual",
+  "name" : "controlGuidance50Visual",
   "description" : "",
   "release" : "2.1",
   "processWriters" : {
@@ -986,7 +986,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1003 ],
-        "probabilityToChangeTarget" : [ 1.0 ]
+        "probabilityToChangeTarget" : [ 0.5 ]
       }, {
         "id" : 11,
         "shape" : {
@@ -1008,7 +1008,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1002 ],
-        "probabilityToChangeTarget" : [ 1.0 ]
+        "probabilityToChangeTarget" : [ 0.5 ]
       }, {
         "id" : 12,
         "shape" : {
@@ -1030,7 +1030,7 @@
         "reachDistance" : 0.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
         "nextTarget" : [ 1003 ],
-        "probabilityToChangeTarget" : [ 1.0 ]
+        "probabilityToChangeTarget" : [ 0.5 ]
       } ],
       "absorbingAreas" : [ ],
       "aerosolClouds" : [ ],

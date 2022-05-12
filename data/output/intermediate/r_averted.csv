@@ -1,0 +1,5 @@
+strategy,number of averted areas,mean_averted,complete scenarios averted,percentage_scenarios_averted
+zero,662,3.107981220657277,46,0.22
+guidance100,669,3.140845070422535,30,0.14
+objects,852,4.0,213,1.0
+regulators,852,4.0,213,1.0

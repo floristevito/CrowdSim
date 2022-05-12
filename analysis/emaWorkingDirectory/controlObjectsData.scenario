@@ -1,43 +1,136 @@
 {
-  "name" : "controlGuidance100Visual",
+  "name" : "controlObjectsData",
   "description" : "",
   "release" : "2.1",
   "processWriters" : {
     "files" : [ {
-      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.EventtimePedestrianIdOutputFile",
-      "filename" : "postvis.traj",
-      "processors" : [ 1, 2, 5, 6 ]
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.TimestepPedestrianIdOverlapOutputFile",
-      "filename" : "overlaps.csv",
-      "processors" : [ 3 ]
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
+      "filename" : "density.txt",
+      "processors" : [ 16, 6, 7, 9, 10, 12, 13, 15 ]
     }, {
       "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.NoDataKeyOutputFile",
-      "filename" : "overlapCount.txt",
+      "filename" : "speed.txt",
       "processors" : [ 4 ]
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.outputfile.TimestepOutputFile",
+      "filename" : "generated.csv",
+      "processors" : [ ]
     } ],
     "processors" : [ {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepProcessor",
-      "id" : 1
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepTargetIDProcessor",
-      "id" : 2
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianOverlapProcessor",
-      "id" : 3
-    }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.NumberOverlapsProcessor",
-      "id" : 4,
-      "attributesType" : "org.vadere.state.attributes.processor.AttributesNumberOverlapsProcessor",
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaSpeedProcessor",
+      "id" : 1,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaSpeedProcessor",
       "attributes" : {
-        "pedestrianOverlapProcessorId" : 3
+        "measurementAreaId" : 8000,
+        "pedestrianPositionProcessorId" : 2,
+        "pedestrianVelocityProcessorId" : 3
       }
     }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupIDProcessor",
-      "id" : 5
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianPositionProcessor",
+      "id" : 2,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesPedestrianPositionProcessor",
+      "attributes" : {
+        "interpolate" : true
+      }
     }, {
-      "type" : "org.vadere.simulator.projects.dataprocessing.processor.FootStepGroupSizeProcessor",
-      "id" : 6
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.PedestrianVelocityProcessor",
+      "id" : 3,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesPedestrianVelocityProcessor",
+      "attributes" : {
+        "pedestrianPositionProcessorId" : 2,
+        "backSteps" : 1
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaSpeedProcessor",
+      "id" : 4,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaSpeedProcessor",
+      "attributes" : {
+        "areaSpeedProcessorId" : 1
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
+      "id" : 5,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
+      "attributes" : {
+        "measurementAreaId" : 8001
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
+      "id" : 6,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 5
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
+      "id" : 7,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 5
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
+      "id" : 8,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
+      "attributes" : {
+        "measurementAreaId" : 8002
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
+      "id" : 9,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 8
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
+      "id" : 10,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 8
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
+      "id" : 11,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
+      "attributes" : {
+        "measurementAreaId" : 8003
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
+      "id" : 12,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 11
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
+      "id" : 13,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 11
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.AreaDensityCountingNormedProcessor",
+      "id" : 14,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesAreaDensityCountingProcessor",
+      "attributes" : {
+        "measurementAreaId" : 8004
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MeanAreaDensityCountingNormedProcessor",
+      "id" : 15,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMeanAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 14
+      }
+    }, {
+      "type" : "org.vadere.simulator.projects.dataprocessing.processor.MaxAreaDensityCountingNormedProcessor",
+      "id" : 16,
+      "attributesType" : "org.vadere.state.attributes.processor.AttributesMaxAreaDensityCountingNormedProcessor",
+      "attributes" : {
+        "areaDensityCountingNormedProcessorId" : 14
+      }
     } ],
     "isTimestamped" : true,
     "isWriteMetaData" : false
@@ -769,8 +862,224 @@
           } ]
         },
         "id" : 9
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 33.6,
+            "y" : 68.1
+          }, {
+            "x" : 41.3,
+            "y" : 69.7
+          }, {
+            "x" : 41.4,
+            "y" : 69.1
+          }, {
+            "x" : 27.0,
+            "y" : 66.4
+          }, {
+            "x" : 26.9,
+            "y" : 67.0
+          } ]
+        },
+        "id" : 10
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 53.6,
+            "y" : 80.1
+          }, {
+            "x" : 55.0,
+            "y" : 76.5
+          }, {
+            "x" : 54.2,
+            "y" : 76.3
+          }, {
+            "x" : 50.9,
+            "y" : 85.6
+          }, {
+            "x" : 51.8,
+            "y" : 85.8
+          } ]
+        },
+        "id" : 11
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 55.7,
+            "y" : 34.6
+          }, {
+            "x" : 50.9,
+            "y" : 49.0
+          }, {
+            "x" : 52.2,
+            "y" : 49.3
+          }, {
+            "x" : 56.9,
+            "y" : 34.6
+          }, {
+            "x" : 62.5,
+            "y" : 19.8
+          }, {
+            "x" : 61.3,
+            "y" : 19.6
+          } ]
+        },
+        "id" : 13
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 94.9,
+            "y" : 59.3
+          }, {
+            "x" : 106.7,
+            "y" : 61.4
+          }, {
+            "x" : 106.4,
+            "y" : 62.3
+          }, {
+            "x" : 92.5,
+            "y" : 59.3
+          }, {
+            "x" : 81.0,
+            "y" : 56.9
+          }, {
+            "x" : 81.2,
+            "y" : 56.1
+          }, {
+            "x" : 94.6,
+            "y" : 59.2
+          } ]
+        },
+        "id" : 12
       } ],
-      "measurementAreas" : [ ],
+      "measurementAreas" : [ {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 35.7,
+            "y" : 71.4
+          }, {
+            "x" : 40.9,
+            "y" : 72.4
+          }, {
+            "x" : 44.1,
+            "y" : 73.5
+          }, {
+            "x" : 46.6,
+            "y" : 67.4
+          }, {
+            "x" : 42.6,
+            "y" : 66.5
+          }, {
+            "x" : 37.4,
+            "y" : 65.4
+          } ]
+        },
+        "id" : 8001
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 79.2,
+            "y" : 28.4
+          }, {
+            "x" : 80.8,
+            "y" : 28.8
+          }, {
+            "x" : 78.7,
+            "y" : 33.3
+          }, {
+            "x" : 75.1,
+            "y" : 42.5
+          }, {
+            "x" : 76.1,
+            "y" : 43.8
+          }, {
+            "x" : 83.0,
+            "y" : 45.8
+          }, {
+            "x" : 92.8,
+            "y" : 49.2
+          }, {
+            "x" : 92.2,
+            "y" : 50.8
+          }, {
+            "x" : 75.5,
+            "y" : 45.2
+          }, {
+            "x" : 72.8,
+            "y" : 44.2
+          } ]
+        },
+        "id" : 8003
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 48.5,
+            "y" : 48.2
+          }, {
+            "x" : 55.3,
+            "y" : 50.3
+          }, {
+            "x" : 67.3,
+            "y" : 55.2
+          }, {
+            "x" : 65.3,
+            "y" : 60.4
+          }, {
+            "x" : 64.2,
+            "y" : 63.4
+          }, {
+            "x" : 45.7,
+            "y" : 56.5
+          } ]
+        },
+        "id" : 8002
+      }, {
+        "shape" : {
+          "type" : "POLYGON",
+          "points" : [ {
+            "x" : 70.5,
+            "y" : 76.7
+          }, {
+            "x" : 72.3,
+            "y" : 77.2
+          }, {
+            "x" : 76.8,
+            "y" : 65.0
+          }, {
+            "x" : 78.7,
+            "y" : 64.2
+          }, {
+            "x" : 89.2,
+            "y" : 66.6
+          }, {
+            "x" : 89.7,
+            "y" : 65.1
+          }, {
+            "x" : 79.0,
+            "y" : 62.7
+          }, {
+            "x" : 75.4,
+            "y" : 64.5
+          } ]
+        },
+        "id" : 8004
+      }, {
+        "shape" : {
+          "x" : 0.3,
+          "y" : 0.5,
+          "width" : 131.0,
+          "height" : 108.9,
+          "type" : "RECTANGLE"
+        },
+        "id" : 8000
+      } ],
       "stairs" : [ ],
       "targets" : [ {
         "id" : 1001,
@@ -821,7 +1130,7 @@
         "waitingTimeYellowPhase" : 0.0,
         "parallelWaiters" : 0,
         "individualWaiting" : true,
-        "deletionDistance" : 2.0,
+        "deletionDistance" : 0.1,
         "startingWithRedLight" : false,
         "nextSpeed" : -1.0
       }, {
@@ -847,7 +1156,7 @@
         "waitingTimeYellowPhase" : 0.0,
         "parallelWaiters" : 0,
         "individualWaiting" : true,
-        "deletionDistance" : 2.0,
+        "deletionDistance" : 0.1,
         "startingWithRedLight" : false,
         "nextSpeed" : -1.0
       }, {
@@ -873,163 +1182,249 @@
         "waitingTimeYellowPhase" : 0.0,
         "parallelWaiters" : 0,
         "individualWaiting" : true,
-        "deletionDistance" : 2.0,
+        "deletionDistance" : 0.1,
+        "startingWithRedLight" : false,
+        "nextSpeed" : -1.0
+      }, {
+        "id" : 1101,
+        "absorbing" : false,
+        "shape" : {
+          "x" : 53.4,
+          "y" : 81.0,
+          "width" : 2.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
+        },
+        "waitingTime" : 0.0,
+        "waitingTimeYellowPhase" : 0.0,
+        "parallelWaiters" : 0,
+        "individualWaiting" : true,
+        "deletionDistance" : 0.1,
+        "startingWithRedLight" : false,
+        "nextSpeed" : -1.0
+      }, {
+        "id" : 1201,
+        "absorbing" : false,
+        "shape" : {
+          "x" : 50.2,
+          "y" : 78.3,
+          "width" : 2.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
+        },
+        "waitingTime" : 0.0,
+        "waitingTimeYellowPhase" : 0.0,
+        "parallelWaiters" : 0,
+        "individualWaiting" : true,
+        "deletionDistance" : 0.1,
+        "startingWithRedLight" : false,
+        "nextSpeed" : -1.0
+      }, {
+        "id" : 1102,
+        "absorbing" : false,
+        "shape" : {
+          "x" : 29.0,
+          "y" : 68.0,
+          "width" : 2.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
+        },
+        "waitingTime" : 0.0,
+        "waitingTimeYellowPhase" : 0.0,
+        "parallelWaiters" : 0,
+        "individualWaiting" : true,
+        "deletionDistance" : 0.1,
+        "startingWithRedLight" : false,
+        "nextSpeed" : -1.0
+      }, {
+        "id" : 1202,
+        "absorbing" : false,
+        "shape" : {
+          "x" : 33.0,
+          "y" : 65.2,
+          "width" : 2.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
+        },
+        "waitingTime" : 0.0,
+        "waitingTimeYellowPhase" : 0.0,
+        "parallelWaiters" : 0,
+        "individualWaiting" : true,
+        "deletionDistance" : 0.1,
+        "startingWithRedLight" : false,
+        "nextSpeed" : -1.0
+      }, {
+        "id" : 1103,
+        "absorbing" : false,
+        "shape" : {
+          "x" : 54.7,
+          "y" : 28.7,
+          "width" : 2.0,
+          "height" : 2.5,
+          "type" : "RECTANGLE"
+        },
+        "waitingTime" : 0.0,
+        "waitingTimeYellowPhase" : 0.0,
+        "parallelWaiters" : 0,
+        "individualWaiting" : true,
+        "deletionDistance" : 0.1,
+        "startingWithRedLight" : false,
+        "nextSpeed" : -1.0
+      }, {
+        "id" : 1203,
+        "absorbing" : false,
+        "shape" : {
+          "x" : 57.8,
+          "y" : 32.7,
+          "width" : 3.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
+        },
+        "waitingTime" : 0.0,
+        "waitingTimeYellowPhase" : 0.0,
+        "parallelWaiters" : 0,
+        "individualWaiting" : true,
+        "deletionDistance" : 0.1,
+        "startingWithRedLight" : false,
+        "nextSpeed" : -1.0
+      }, {
+        "id" : 1104,
+        "absorbing" : false,
+        "shape" : {
+          "x" : 91.8,
+          "y" : 57.6,
+          "width" : 2.0,
+          "height" : 0.6,
+          "type" : "RECTANGLE"
+        },
+        "waitingTime" : 0.0,
+        "waitingTimeYellowPhase" : 0.0,
+        "parallelWaiters" : 0,
+        "individualWaiting" : true,
+        "deletionDistance" : 0.1,
+        "startingWithRedLight" : false,
+        "nextSpeed" : -1.0
+      }, {
+        "id" : 1204,
+        "absorbing" : false,
+        "shape" : {
+          "x" : 90.2,
+          "y" : 59.4,
+          "width" : 2.5,
+          "height" : 1.5,
+          "type" : "RECTANGLE"
+        },
+        "waitingTime" : 0.0,
+        "waitingTimeYellowPhase" : 0.0,
+        "parallelWaiters" : 0,
+        "individualWaiting" : true,
+        "deletionDistance" : 0.1,
         "startingWithRedLight" : false,
         "nextSpeed" : -1.0
       } ],
       "targetChangers" : [ {
         "id" : 6001,
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 37.55735825342475,
-            "y" : 83.13096624274738
-          }, {
-            "x" : 33.27686959641753,
-            "y" : 95.80059294926002
-          }, {
-            "x" : 62.229190244369676,
-            "y" : 100.1679459031485
-          }, {
-            "x" : 66.56539705439587,
-            "y" : 89.68055844551884
-          } ]
+          "x" : 50.2,
+          "y" : 78.3,
+          "width" : 2.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
         },
-        "reachDistance" : 0.0,
+        "reachDistance" : 1.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1002, 1003, 1004 ],
+        "nextTarget" : [ 1102, 1103, 1104 ],
         "probabilityToChangeTarget" : [ 10.0, 20.0, 30.0 ]
       }, {
         "id" : 6002,
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 25.9129993634487,
-            "y" : 69.53669809331744
-          }, {
-            "x" : 20.348875473131194,
-            "y" : 68.53338621582836
-          }, {
-            "x" : 19.835387819219612,
-            "y" : 61.98922844763845
-          }, {
-            "x" : 27.186936981421663,
-            "y" : 63.33311123842746
-          } ]
+          "x" : 33.0,
+          "y" : 65.2,
+          "width" : 2.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
         },
-        "reachDistance" : 0.0,
+        "reachDistance" : 1.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1003, 1004, 1001 ],
+        "nextTarget" : [ 1103, 1104, 1101 ],
         "probabilityToChangeTarget" : [ 20.0, 30.0, 10.0 ]
       }, {
         "id" : 6003,
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 58.070116051165385,
-            "y" : 18.2142923173029
-          }, {
-            "x" : 60.52063828599639,
-            "y" : 10.328711625486612
-          }, {
-            "x" : 86.78592136725783,
-            "y" : 12.362791960760951
-          }, {
-            "x" : 82.99122052717023,
-            "y" : 22.451076244330032
-          } ]
+          "x" : 57.8,
+          "y" : 32.7,
+          "width" : 3.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
         },
-        "reachDistance" : 0.0,
+        "reachDistance" : 1.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1004, 1001, 1002 ],
+        "nextTarget" : [ 1104, 1101, 1102 ],
         "probabilityToChangeTarget" : [ 30.0, 10.0, 20.0 ]
       }, {
         "id" : 6004,
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 108.60516074328567,
-            "y" : 70.56901335750706
-          }, {
-            "x" : 114.80353877493297,
-            "y" : 72.01943094546907
-          }, {
-            "x" : 116.30854988868697,
-            "y" : 57.891307026306166
-          }, {
-            "x" : 109.88722551759915,
-            "y" : 55.552218355825175
-          } ]
+          "x" : 90.2,
+          "y" : 59.4,
+          "width" : 2.5,
+          "height" : 1.5,
+          "type" : "RECTANGLE"
         },
-        "reachDistance" : 0.0,
+        "reachDistance" : 1.0,
         "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1001, 1002, 1003 ],
+        "nextTarget" : [ 1101, 1102, 1103 ],
         "probabilityToChangeTarget" : [ 10.0, 20.0, 30.0 ]
       }, {
-        "id" : 10,
+        "id" : 6101,
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 25.1,
-            "y" : 69.6
-          }, {
-            "x" : 26.0,
-            "y" : 69.8
-          }, {
-            "x" : 27.8,
-            "y" : 63.0
-          }, {
-            "x" : 26.700000000000003,
-            "y" : 62.9
-          } ]
+          "x" : 53.4,
+          "y" : 81.0,
+          "width" : 2.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
         },
-        "reachDistance" : 0.0,
-        "changeAlgorithmType" : "SELECT_ELEMENT",
-        "nextTarget" : [ 1003 ],
+        "reachDistance" : 1.0,
+        "changeAlgorithmType" : "SELECT_LIST",
+        "nextTarget" : [ 1001 ],
         "probabilityToChangeTarget" : [ 1.0 ]
       }, {
-        "id" : 11,
+        "id" : 6102,
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 57.2,
-            "y" : 18.5
-          }, {
-            "x" : 57.6,
-            "y" : 17.099999999999998
-          }, {
-            "x" : 84.2,
-            "y" : 21.9
-          }, {
-            "x" : 83.9,
-            "y" : 23.2
-          } ]
+          "x" : 29.0,
+          "y" : 68.0,
+          "width" : 2.5,
+          "height" : 2.0,
+          "type" : "RECTANGLE"
         },
-        "reachDistance" : 0.0,
-        "changeAlgorithmType" : "SELECT_ELEMENT",
+        "reachDistance" : 1.0,
+        "changeAlgorithmType" : "SELECT_LIST",
         "nextTarget" : [ 1002 ],
         "probabilityToChangeTarget" : [ 1.0 ]
       }, {
-        "id" : 12,
+        "id" : 6103,
         "shape" : {
-          "type" : "POLYGON",
-          "points" : [ {
-            "x" : 111.19999999999999,
-            "y" : 54.9
-          }, {
-            "x" : 110.0,
-            "y" : 54.5
-          }, {
-            "x" : 107.3,
-            "y" : 71.8
-          }, {
-            "x" : 109.3,
-            "y" : 72.1
-          } ]
+          "x" : 54.7,
+          "y" : 28.7,
+          "width" : 2.0,
+          "height" : 2.5,
+          "type" : "RECTANGLE"
         },
-        "reachDistance" : 0.0,
-        "changeAlgorithmType" : "SELECT_ELEMENT",
+        "reachDistance" : 1.0,
+        "changeAlgorithmType" : "SELECT_LIST",
         "nextTarget" : [ 1003 ],
+        "probabilityToChangeTarget" : [ 1.0 ]
+      }, {
+        "id" : 6104,
+        "shape" : {
+          "x" : 91.8,
+          "y" : 57.6,
+          "width" : 2.0,
+          "height" : 0.6,
+          "type" : "RECTANGLE"
+        },
+        "reachDistance" : 1.0,
+        "changeAlgorithmType" : "SELECT_LIST",
+        "nextTarget" : [ 1004 ],
         "probabilityToChangeTarget" : [ 1.0 ]
       } ],
       "absorbingAreas" : [ ],
@@ -1064,7 +1459,7 @@
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1002 ],
+        "targetIds" : [ 1201 ],
         "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
@@ -1097,7 +1492,7 @@
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1003 ],
+        "targetIds" : [ 1202 ],
         "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
@@ -1130,7 +1525,7 @@
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1004 ],
+        "targetIds" : [ 1203 ],
         "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
@@ -1163,7 +1558,7 @@
         "spawnAtRandomPositions" : true,
         "spawnAtGridPositionsCA" : false,
         "useFreeSpaceOnly" : true,
-        "targetIds" : [ 1001 ],
+        "targetIds" : [ 1204 ],
         "groupSizeDistribution" : [ 0.3, 0.58, 0.075, 0.03, 0.015 ],
         "dynamicElementType" : "PEDESTRIAN",
         "attributesPedestrian" : null
