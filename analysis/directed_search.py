@@ -1,15 +1,15 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 from ema_workbench import (
-    perform_experiments,
-    ema_logging,
     MultiprocessingEvaluator,
+    ema_logging,
+    perform_experiments,
     save_results,
 )
-from ema_workbench.em_framework.optimization import HyperVolume, EpsilonProgress
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from vadere_ema_formulations import get_vadere_formulation
+from ema_workbench.em_framework.optimization import EpsilonProgress, HyperVolume
 
+from vadere_ema_formulations import get_vadere_formulation
 
 # enable EMA logging
 ema_logging.log_to_stderr(ema_logging.INFO)
@@ -20,19 +20,17 @@ model = get_vadere_formulation(id=2, replications=1, model_file="baseCaseData.sc
 if __name__ == "__main__":
     # set convergence matrics
     convergence_metrics = [
-        HyperVolume(
-            minimum=[0, 0, 0, 0, 0, 0, 0, 0, 0], maximum=[2.2, 1, 1, 1, 1, 1, 1, 1, 1]
-        ),
+        HyperVolume.from_outcomes(model.outcomes),
         EpsilonProgress(),
     ]
 
     # search for worst cases(s)
     with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
         results, convergence = evaluator.optimize(
-            nfe=100000,
+            nfe=1000,
             searchover="uncertainties",
             epsilons=[
-                0.1,
+                0.25,
             ]
             * len(model.outcomes),
             convergence=convergence_metrics,
