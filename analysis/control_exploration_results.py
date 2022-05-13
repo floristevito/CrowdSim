@@ -37,7 +37,7 @@ if __name__ == "__main__":
                 rob_averted_regulators,
             ]
         )
-        .assign(strategy=["zero", "guidance100", "objects", "regulators"])
+        .assign(strategy=["zero", "guidance100", "guidance25", "objects", "regulators"])
         .set_index("strategy")
     )
     r_averted.to_csv("../data/output/intermediate/r_averted.csv")
@@ -50,7 +50,7 @@ if __name__ == "__main__":
                 rob_variance_regulators,
             ]
         )
-        .assign(strategy=["zero", "guidance100", "objects", "regulators"])
+        .assign(strategy=["zero", "guidance100", "guidance25", "objects", "regulators"])
         .set_index("strategy")
     )
     r_mean_variance.to_csv("../data/output/intermediate/r_mean_variance.csv")
