@@ -1,15 +1,15 @@
-from ema_workbench import (
-    Samplers,
-    perform_experiments,
-    ema_logging,
-    MultiprocessingEvaluator,
-    save_results,
-    Scenario,
-)
-import pandas as pd
 import numpy as np
-from vadere_ema_formulations import get_vadere_formulation
+import pandas as pd
+from ema_workbench import (
+    MultiprocessingEvaluator,
+    Samplers,
+    Scenario,
+    ema_logging,
+    perform_experiments,
+    save_results,
+)
 
+from vadere_ema_formulations import get_vadere_formulation
 
 """Template for doing EMA based model runs"""
 
@@ -48,18 +48,27 @@ def get_scenarios(scenarios):
 
 
 if __name__ == "__main__":
-    scenarios_prim = pd.read_csv("../data/output/EMA/scenariosPrim.csv")
+    # load sets of scenarios
+    scenarios_oe_bad = pd.read_csv("../data/output/EMA/scenariosOeBad.csv")
+    scenarios_oe_good = pd.read_csv("../data/output/EMA/scenariosOeGood.csv")
+    scenarios_opt = pd.read_csv("../data/output/EMA/directedSearch.csv")
+    scenarios = [scenarios_oe_bad, scenarios_oe_good, scenarios_opt]
 
-    strategies = ["controlGuidance100", "controlObjects", "controlRegulators"]
+    strategies = [
+        "controlGuidance100",
+        "controlGuidance25",
+        "controlObjects",
+        "controlRegulators",
+    ]
+    for se in scenarios:
+        for st in strategies:
+            # set the right vadere formulations
+            model = get_vadere_formulation(
+                id=1, replications=60, model_file=str(s) + "Data.scenario"
+            )
 
-    for s in strategies:
-        # set the right vadere formulations
-        model = get_vadere_formulation(
-            id=1, replications=1, model_file=str(s) + "Data.scenario"
-        )
+            with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
+                results = evaluator.perform_experiments(get_scenarios(se))
 
-        with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
-            results = evaluator.perform_experiments(get_scenarios(scenarios_prim))
-
-        # store results
-        save_results(results, "../data/output/EMA/{}.tar.gz".format(s))
+            # store results
+            save_results(results, "../data/output/EMA/{}.tar.gz".format(str(se) + st))

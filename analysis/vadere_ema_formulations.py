@@ -234,7 +234,7 @@ def get_vadere_formulation(id, replications, model_file):
 
     # id 2 describes a configuration to find the worst case(s)
     # with all 10 uncertainties and single
-    # speed outcome + 6 density based outcomes
+    # speed outcome + maximum density based outcomes
     elif id == 2:
         model.uncertainties = [
             IntegerParameter(
@@ -324,22 +324,10 @@ def get_vadere_formulation(id, replications, model_file):
                     expected_range=(0, 2.2),
                 ),
                 ScalarOutcome(
-                    name="meanDensityArea1",
-                    variable_name="mean_density_counting_normed_processor-PID6",
-                    kind=ScalarOutcome.MAXIMIZE,
-                    expected_range=(0, 2),
-                ),
-                ScalarOutcome(
                     name="maxDensityArea1",
                     variable_name="max_density_counting_normed_processor-PID7",
                     kind=ScalarOutcome.MAXIMIZE,
                     expected_range=(0, 4),
-                ),
-                ScalarOutcome(
-                    name="meanDensityArea2",
-                    variable_name="mean_density_counting_normed_processor-PID9",
-                    kind=ScalarOutcome.MAXIMIZE,
-                    expected_range=(0, 2),
                 ),
                 ScalarOutcome(
                     name="maxDensityArea2",
@@ -348,22 +336,10 @@ def get_vadere_formulation(id, replications, model_file):
                     expected_range=(0, 4),
                 ),
                 ScalarOutcome(
-                    name="meanDensityArea3",
-                    variable_name="mean_density_counting_normed_processor-PID12",
-                    kind=ScalarOutcome.MAXIMIZE,
-                    expected_range=(0, 2),
-                ),
-                ScalarOutcome(
                     name="maxDensityArea3",
                     variable_name="max_density_counting_normed_processor-PID13",
                     kind=ScalarOutcome.MAXIMIZE,
                     expected_range=(0, 4),
-                ),
-                ScalarOutcome(
-                    name="meanDensityArea4",
-                    variable_name="mean_density_counting_normed_processor-PID15",
-                    kind=ScalarOutcome.MAXIMIZE,
-                    expected_range=(0, 2),
                 ),
                 ScalarOutcome(
                     name="maxDensityArea4",
@@ -382,25 +358,11 @@ def get_vadere_formulation(id, replications, model_file):
                     expected_range=(0, 2.2),
                 ),
                 ScalarOutcome(
-                    name="meanDensityArea1",
-                    variable_name="mean_density_counting_normed_processor-PID6",
-                    function=np.mean,
-                    kind=ScalarOutcome.MAXIMIZE,
-                    expected_range=(0, 2),
-                ),
-                ScalarOutcome(
                     name="maxDensityArea1",
                     variable_name="max_density_counting_normed_processor-PID7",
                     function=np.mean,
                     kind=ScalarOutcome.MAXIMIZE,
                     expected_range=(0, 4),
-                ),
-                ScalarOutcome(
-                    name="meanDensityArea2",
-                    variable_name="mean_density_counting_normed_processor-PID9",
-                    function=np.mean,
-                    kind=ScalarOutcome.MAXIMIZE,
-                    expected_range=(0, 2),
                 ),
                 ScalarOutcome(
                     name="maxDensityArea2",
@@ -410,25 +372,11 @@ def get_vadere_formulation(id, replications, model_file):
                     expected_range=(0, 4),
                 ),
                 ScalarOutcome(
-                    name="meanDensityArea3",
-                    variable_name="mean_density_counting_normed_processor-PID12",
-                    function=np.mean,
-                    kind=ScalarOutcome.MAXIMIZE,
-                    expected_range=(0, 2),
-                ),
-                ScalarOutcome(
                     name="maxDensityArea3",
                     variable_name="max_density_counting_normed_processor-PID13",
                     function=np.mean,
                     kind=ScalarOutcome.MAXIMIZE,
                     expected_range=(0, 4),
-                ),
-                ScalarOutcome(
-                    name="meanDensityArea4",
-                    variable_name="mean_density_counting_normed_processor-PID15",
-                    function=np.mean,
-                    kind=ScalarOutcome.MAXIMIZE,
-                    expected_range=(0, 2),
                 ),
                 ScalarOutcome(
                     name="maxDensityArea4",
