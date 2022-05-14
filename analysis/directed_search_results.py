@@ -27,25 +27,12 @@ limits = parcoords.get_limits(data)
 limits.loc[
     0,
     [
-        "meanDensityArea1",
         "maxDensityArea1",
-        "meanDensityArea2",
         "maxDensityArea2",
-        "meanDensityArea3",
         "maxDensityArea3",
-        "meanDensityArea4",
         "maxDensityArea4",
     ],
 ] = 0
-limits.loc[
-    1,
-    [
-        "meanDensityArea1",
-        "meanDensityArea2",
-        "meanDensityArea3",
-        "meanDensityArea4",
-    ],
-] = 2
 limits.loc[
     1,
     [

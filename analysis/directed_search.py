@@ -25,12 +25,12 @@ if __name__ == "__main__":
     ]
 
     # search for worst cases(s)
-    with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
+    with MultiprocessingEvaluator(model, n_processes=10) as evaluator:
         results, convergence = evaluator.optimize(
-            nfe=100000,
+            nfe=10000,
             searchover="uncertainties",
             epsilons=[
-                0.1,
+                0.2,
             ]
             * len(model.outcomes),
             convergence=convergence_metrics,
