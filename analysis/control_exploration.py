@@ -49,11 +49,10 @@ def get_scenarios(scenarios):
 
 if __name__ == "__main__":
     # load sets of scenarios
-    scenarios_oe_bad = pd.read_csv("../data/output/EMA/scenariosOeBad.csv").sample(100)
-    scenarios_oe_good = pd.read_csv("../data/output/EMA/scenariosOeGood.csv").sample(
-        100
-    )
-    scenarios_opt = pd.read_csv("../data/output/EMA/directedSearch.csv")
+    scenarios_oe_bad = pd.read_csv("../data/output/EMA/scenariosOeBad.csv").sample(6)
+    scenarios_oe_good = pd.read_csv("../data/output/EMA/scenariosOeGood.csv").sample(6)
+    scenarios_opt = pd.read_csv("../data/output/EMA/directedSearch.csv").sample(6)
+    scenarios_opt["groupForming"] = scenarios_opt["groupForming"].str.slice(15, -1)
     scenarios = [scenarios_oe_bad, scenarios_oe_good, scenarios_opt]
 
     strategies = [
@@ -73,7 +72,7 @@ if __name__ == "__main__":
             print("at strategy {}".format(st))
             # set the right vadere formulations
             model = get_vadere_formulation(
-                id=1, replications=60, model_file=str(st) + "Data.scenario"
+                id=1, replications=1, model_file=str(st) + "Data.scenario"
             )
             if st == "controlObjects":
                 with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
@@ -83,4 +82,7 @@ if __name__ == "__main__":
                     results = evaluator.perform_experiments(get_scenarios(se))
 
             # store results
-            save_results(results, "../data/output/EMA/{}.tar.gz".format(str(se) + st))
+            save_results(
+                results,
+                "../data/output/EMA/scenarios{}.tar.gz".format(str(s_count) + st),
+            )
