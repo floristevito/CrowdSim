@@ -49,8 +49,10 @@ def get_scenarios(scenarios):
 
 if __name__ == "__main__":
     # load sets of scenarios
-    scenarios_oe_bad = pd.read_csv("../data/output/EMA/scenariosOeBad.csv")
-    scenarios_oe_good = pd.read_csv("../data/output/EMA/scenariosOeGood.csv")
+    scenarios_oe_bad = pd.read_csv("../data/output/EMA/scenariosOeBad.csv").sample(100)
+    scenarios_oe_good = pd.read_csv("../data/output/EMA/scenariosOeGood.csv").sample(
+        100
+    )
     scenarios_opt = pd.read_csv("../data/output/EMA/directedSearch.csv")
     scenarios = [scenarios_oe_bad, scenarios_oe_good, scenarios_opt]
 
@@ -60,8 +62,12 @@ if __name__ == "__main__":
         "controlObjects",
         "controlRegulators",
     ]
+
+    s_count = 0
+
     for se in scenarios:
-        print("at scenarios {}".format(se))
+        print("at scenarios {}".format(s_count))
+        s_count += 1
 
         for st in strategies:
             print("at strategy {}".format(st))
