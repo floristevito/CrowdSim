@@ -21,9 +21,9 @@ model = get_vadere_formulation(
 )
 
 if __name__ == "__main__":
-    with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
+    with MultiprocessingEvaluator(model) as evaluator:
         results = evaluator.perform_experiments(
-            scenarios=2000, uncertainty_sampling=Samplers.LHS
+            scenarios=1000, uncertainty_sampling=Samplers.LHS
         )
 
     # results = perform_experiments(
