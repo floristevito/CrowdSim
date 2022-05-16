@@ -69,9 +69,12 @@ if __name__ == "__main__":
             model = get_vadere_formulation(
                 id=1, replications=60, model_file=str(st) + "Data.scenario"
             )
-
-            with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
-                results = evaluator.perform_experiments(get_scenarios(se))
+            if st == "controlObjects":
+                with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
+                    results = evaluator.perform_experiments(get_scenarios(se))
+            else:
+                with MultiprocessingEvaluator(model) as evaluator:
+                    results = evaluator.perform_experiments(get_scenarios(se))
 
             # store results
             save_results(results, "../data/output/EMA/{}.tar.gz".format(str(se) + st))

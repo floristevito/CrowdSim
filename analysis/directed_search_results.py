@@ -22,7 +22,7 @@ ax2.set_xlabel("number of function evaluations")
 plt.show()
 
 # plot parallel coordinate plots
-data = worst_scenarios.loc[:, [o.name for o in model.outcomes]].sample(10)
+data = worst_scenarios.loc[:, [o.name for o in model.outcomes]]
 limits = parcoords.get_limits(data)
 limits.loc[
     0,
