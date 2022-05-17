@@ -74,13 +74,13 @@ if __name__ == "__main__":
             print("at strategy {}".format(st))
             # set the right vadere formulations
             model = get_vadere_formulation(
-                id=1, replications=1, model_file=str(st) + "Data.scenario"
+                id=1, replications=60, model_file=str(st) + "Data.scenario"
             )
             if st == "controlObjects":
-                with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
+                with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
                     results = evaluator.perform_experiments(get_scenarios(se))
             else:
-                with MultiprocessingEvaluator(model, n_processes=8) as evaluator:
+                with MultiprocessingEvaluator(model) as evaluator:
                     results = evaluator.perform_experiments(get_scenarios(se))
 
             # store results
