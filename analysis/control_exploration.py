@@ -49,9 +49,11 @@ def get_scenarios(scenarios):
 
 if __name__ == "__main__":
     # load sets of scenarios
-    scenarios_oe_bad = pd.read_csv("../data/output/EMA/scenariosOeBad.csv").sample(6)
-    scenarios_oe_good = pd.read_csv("../data/output/EMA/scenariosOeGood.csv").sample(6)
-    scenarios_opt = pd.read_csv("../data/output/EMA/directedSearch.csv").sample(6)
+    scenarios_oe_bad = pd.read_csv("../data/output/EMA/scenariosOeBad.csv").sample(100)
+    scenarios_oe_good = pd.read_csv("../data/output/EMA/scenariosOeGood.csv").sample(
+        100
+    )
+    scenarios_opt = pd.read_csv("../data/output/EMA/directedSearch.csv")
     scenarios_opt["groupForming"] = scenarios_opt["groupForming"].str.slice(15, -1)
     scenarios = [scenarios_oe_bad, scenarios_oe_good, scenarios_opt]
 
@@ -75,10 +77,10 @@ if __name__ == "__main__":
                 id=1, replications=1, model_file=str(st) + "Data.scenario"
             )
             if st == "controlObjects":
-                with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
+                with MultiprocessingEvaluator(model, n_processes=6) as evaluator:
                     results = evaluator.perform_experiments(get_scenarios(se))
             else:
-                with MultiprocessingEvaluator(model) as evaluator:
+                with MultiprocessingEvaluator(model, n_processes=8) as evaluator:
                     results = evaluator.perform_experiments(get_scenarios(se))
 
             # store results
