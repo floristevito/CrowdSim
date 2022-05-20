@@ -54,9 +54,9 @@ if __name__ == "__main__":
     )
 
     # calculate robustness scores
-    rob_averted_s1_zero = calculate_robustness_averted(s1_zero)
-    rob_averted_s2_zero = calculate_robustness_averted(s2_zero)
-    rob_averted_s3_zero = calculate_robustness_averted(s3_zero)
+    rob_averted_s1_zero = calculate_robustness_averted(s1_zero.head(100))
+    rob_averted_s2_zero = calculate_robustness_averted(s2_zero.head(100))
+    rob_averted_s3_zero = calculate_robustness_averted(s3_zero.head(100))
 
     rob_averted_s1_controlGuidance100 = calculate_robustness_averted(
         s1_controlGuidance100
@@ -315,7 +315,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s1[["complete scenarios averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
-    )
+    ).legend(loc="lower right")
     fig.suptitle("Problematic scenarios \n robustness: total averted", fontsize=20)
     ax.set(xlabel="Total count", ylabel="Control strategy")
     fig.savefig("../figures/controlStrategiesAvertedS1.png", bbox_inches="tight")
@@ -323,7 +323,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s2[["complete scenarios averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
-    )
+    ).legend(loc="lower right")
     fig.suptitle("Good scenarios \n robustness: total averted", fontsize=20)
     ax.set(xlabel="Total count", ylabel="Control strategy")
     fig.savefig("../figures/controlStrategiesAvertedS2.png", bbox_inches="tight")
@@ -331,7 +331,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s3[["complete scenarios averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
-    )
+    ).legend(loc="lower right")
     fig.suptitle("Worst case scenarios \n robustness: total averted", fontsize=20)
     ax.set(xlabel="Total count", ylabel="Control strategy")
     fig.savefig("../figures/controlStrategiesAvertedS3.png", bbox_inches="tight")
@@ -366,28 +366,28 @@ if __name__ == "__main__":
     )
 
     # plotting robustness mean variance density
-    fig, ax = plt.subplots(figsize=(8, 10))
+    fig, ax = plt.subplots(figsize=(12, 7))
     r_mean_variance_s1[
         ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
-    ].T.plot.barh(ax=ax, colormap="viridis", rot=0)
+    ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
     fig.suptitle("Problematic scenarios \n robustness: mean variance", fontsize=20)
     ax.set(xlabel="Mean variance score \n (lower is better)")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS1.png", bbox_inches="tight"
     )
-    fig, ax = plt.subplots(figsize=(8, 10))
+    fig, ax = plt.subplots(figsize=(12, 7))
     r_mean_variance_s2[
         ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
-    ].T.plot.barh(ax=ax, colormap="viridis", rot=0)
+    ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
     fig.suptitle("Good scenarios \n robustness: mean variance", fontsize=20)
     ax.set(xlabel="Mean variance score \n (lower is better)")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS2.png", bbox_inches="tight"
     )
-    fig, ax = plt.subplots(figsize=(8, 10))
+    fig, ax = plt.subplots(figsize=(12, 7))
     r_mean_variance_s3[
         ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
-    ].T.plot.barh(ax=ax, colormap="viridis", rot=0)
+    ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
     fig.suptitle("Worst case scenarios \n robustness: mean variance", fontsize=20)
     ax.set(xlabel="Mean variance score \n (lower is better)")
     fig.savefig(
