@@ -14,7 +14,9 @@ from vadere_ema_formulations import get_vadere_formulation
 ema_logging.log_to_stderr(ema_logging.INFO)
 
 # set the right vadere formulations
-model = get_vadere_formulation(id=1, replications=10, model_file="baseCaseData.scenario")
+model = get_vadere_formulation(
+    id=1, replications=10, model_file="baseCaseData.scenario"
+)
 
 if __name__ == "__main__":
     with MultiprocessingEvaluator(model) as evaluator:
