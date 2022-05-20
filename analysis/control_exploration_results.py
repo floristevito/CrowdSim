@@ -326,7 +326,7 @@ if __name__ == "__main__":
     )
     fig.suptitle("Good scenarios \n robustness: total averted", fontsize=20)
     ax.set(xlabel="Total count", ylabel="Control strategy")
-    fig.savefig("../figures/controlStrategiesAvertedS1.png", bbox_inches="tight")
+    fig.savefig("../figures/controlStrategiesAvertedS2.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s3[["complete scenarios averted", "number of averted areas"]].plot.barh(
@@ -336,23 +336,60 @@ if __name__ == "__main__":
     ax.set(xlabel="Total count", ylabel="Control strategy")
     fig.savefig("../figures/controlStrategiesAvertedS3.png", bbox_inches="tight")
 
-    # plotting robustness mean variance
-    fig5, ax5 = plt.subplots(figsize=(12, 7))
-    r_mean_variance[["meanSpeed"]].plot.barh(ax=ax5, colormap="viridis", rot=0)
-    fig5.suptitle("Control strategies \n robustness: mean variance", fontsize=20)
-    ax5.set(
-        xlabel="Mean variance score \n (higher is better)", ylabel="Control strategy"
+    # plotting robustness mean variance speed
+    fig, ax = plt.subplots(figsize=(12, 7))
+    r_mean_variance_s1[["meanSpeed"]].plot.barh(
+        ax=ax, colormap="viridis", rot=0, legend=False
     )
-    fig5.savefig(
-        "../figures/controlStrategiesMeanVarianceSpeed.png", bbox_inches="tight"
+    fig.suptitle("Problematic scenarios \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Mean variance score (higher is better)", ylabel="Control strategy")
+    fig.savefig(
+        "../figures/controlStrategiesMeanVarianceSpeedS1.png", bbox_inches="tight"
+    )
+    fig, ax = plt.subplots(figsize=(12, 7))
+    r_mean_variance_s2[["meanSpeed"]].plot.barh(
+        ax=ax, colormap="viridis", rot=0, legend=False
+    )
+    fig.suptitle("Good scenarios \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Mean variance score (higher is better)", ylabel="Control strategy")
+    fig.savefig(
+        "../figures/controlStrategiesMeanVarianceSpeedS2.png", bbox_inches="tight"
+    )
+    fig, ax = plt.subplots(figsize=(12, 7))
+    r_mean_variance_s3[["meanSpeed"]].plot.barh(
+        ax=ax, colormap="viridis", rot=0, legend=False
+    )
+    fig.suptitle("Worst case scenarios \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Mean variance score (higher is better)", ylabel="Control strategy")
+    fig.savefig(
+        "../figures/controlStrategiesMeanVarianceSpeedS3.png", bbox_inches="tight"
     )
 
-    fig7, ax7 = plt.subplots(figsize=(8, 10))
-    r_mean_variance[
+    # plotting robustness mean variance density
+    fig, ax = plt.subplots(figsize=(8, 10))
+    r_mean_variance_s1[
         ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
-    ].T.plot.barh(ax=ax7, colormap="viridis", rot=0)
-    fig7.suptitle("Control strategies \n robustness: mean variance", fontsize=20)
-    ax7.set(xlabel="Mean variance score \n (lower is better)")
-    fig7.savefig(
-        "../figures/controlStrategiesMeanVarianceMaxDensity.png", bbox_inches="tight"
+    ].T.plot.barh(ax=ax, colormap="viridis", rot=0)
+    fig.suptitle("Problematic scenarios \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Mean variance score \n (lower is better)")
+    fig.savefig(
+        "../figures/controlStrategiesMeanVarianceMaxDensityS1.png", bbox_inches="tight"
+    )
+    fig, ax = plt.subplots(figsize=(8, 10))
+    r_mean_variance_s2[
+        ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
+    ].T.plot.barh(ax=ax, colormap="viridis", rot=0)
+    fig.suptitle("Good scenarios \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Mean variance score \n (lower is better)")
+    fig.savefig(
+        "../figures/controlStrategiesMeanVarianceMaxDensityS2.png", bbox_inches="tight"
+    )
+    fig, ax = plt.subplots(figsize=(8, 10))
+    r_mean_variance_s3[
+        ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
+    ].T.plot.barh(ax=ax, colormap="viridis", rot=0)
+    fig.suptitle("Worst case scenarios \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Mean variance score \n (lower is better)")
+    fig.savefig(
+        "../figures/controlStrategiesMeanVarianceMaxDensityS3.png", bbox_inches="tight"
     )
