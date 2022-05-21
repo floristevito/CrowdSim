@@ -21,7 +21,7 @@ model = get_vadere_formulation(
 if __name__ == "__main__":
     with MultiprocessingEvaluator(model, n_processes=32) as evaluator:
         sa_results = evaluator.perform_experiments(
-            scenarios=10, uncertainty_sampling=Samplers.SOBOL
+            scenarios=1000, uncertainty_sampling=Samplers.SOBOL
         )
 
     # store results
