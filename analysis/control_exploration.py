@@ -86,5 +86,5 @@ if __name__ == "__main__":
             # store results
             save_results(
                 results,
-                "../data/output/EMA/scenarios{}.tar.gz".format(str(s_count) + st),
+                "../data/output/EMA/scenarios2{}.tar.gz".format(str(s_count) + st),
             )
