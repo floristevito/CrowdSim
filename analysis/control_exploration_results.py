@@ -6,51 +6,51 @@ from robustness import calculate_robustness_averted, calculate_robustness_mean_v
 
 if __name__ == "__main__":
 
-    # load results as DataFrame for each control strategy and set of scenarios
-    s1_zero = pd.read_csv("../data/output/EMA/resultsScenariosOeBad.csv").drop(
+    # load results as DataFrame for each control strategy and set of cases
+    s1_zero = pd.read_csv("../data/output/EMA/resultsCasesOeBad.csv").drop(
         columns=["Unnamed: 0"], axis=1
     )
     s1_controlGuidance100 = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios1controlGuidance100.tar.gz")[1]
+        load_results("../data/output/EMA/cases1controlGuidance100.tar.gz")[1]
     )
     s1_controlGuidance25 = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios1controlGuidance25.tar.gz")[1]
+        load_results("../data/output/EMA/cases1controlGuidance25.tar.gz")[1]
     )
     s1_controlObjects = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios1controlObjects.tar.gz")[1]
+        load_results("../data/output/EMA/cases1controlObjects.tar.gz")[1]
     )
     s1_controlRegulators = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios1controlRegulators.tar.gz")[1]
+        load_results("../data/output/EMA/cases1controlRegulators.tar.gz")[1]
     )
 
-    s2_zero = pd.read_csv("../data/output/EMA/resultsScenariosOeGood.csv").drop(
+    s2_zero = pd.read_csv("../data/output/EMA/resultsCasesOeGood.csv").drop(
         columns=["Unnamed: 0"], axis=1
     )
     s2_controlGuidance100 = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios2controlGuidance100.tar.gz")[1]
+        load_results("../data/output/EMA/cases2controlGuidance100.tar.gz")[1]
     )
     s2_controlGuidance25 = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios2controlGuidance25.tar.gz")[1]
+        load_results("../data/output/EMA/cases2controlGuidance25.tar.gz")[1]
     )
     s2_controlObjects = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios2controlObjects.tar.gz")[1]
+        load_results("../data/output/EMA/cases2controlObjects.tar.gz")[1]
     )
     s2_controlRegulators = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios2controlRegulators.tar.gz")[1]
+        load_results("../data/output/EMA/cases2controlRegulators.tar.gz")[1]
     )
 
     s3_zero = pd.read_csv("../data/output/EMA/directedSearch.csv")
     s3_controlGuidance100 = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios3controlGuidance100.tar.gz")[1]
+        load_results("../data/output/EMA/cases3controlGuidance100.tar.gz")[1]
     )
     s3_controlGuidance25 = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios3controlGuidance25.tar.gz")[1]
+        load_results("../data/output/EMA/cases3controlGuidance25.tar.gz")[1]
     )
     s3_controlObjects = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios3controlObjects.tar.gz")[1]
+        load_results("../data/output/EMA/cases3controlObjects.tar.gz")[1]
     )
     s3_controlRegulators = pd.DataFrame(
-        load_results("../data/output/EMA/scenarios3controlRegulators.tar.gz")[1]
+        load_results("../data/output/EMA/cases3controlRegulators.tar.gz")[1]
     )
 
     # calculate robustness scores
@@ -252,7 +252,7 @@ if __name__ == "__main__":
             ]
         )
     ].plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Problematic scenarios \n raw max density", fontsize=20)
+    fig.suptitle("Problematic cases \n raw max density", fontsize=20)
     ax.set(ylabel="max density [#/m²]")
     fig.savefig("../figures/controlStrategiesRawMaxDensityS1.png", bbox_inches="tight")
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
             ]
         )
     ].plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Good scenarios \n raw max density", fontsize=20)
+    fig.suptitle("Good cases \n raw max density", fontsize=20)
     ax.set(ylabel="max density [#/m²]")
     fig.savefig("../figures/controlStrategiesRawMaxDensityS2.png", bbox_inches="tight")
 
@@ -282,7 +282,7 @@ if __name__ == "__main__":
             ]
         )
     ].plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Worst case scenarios \n raw max density", fontsize=20)
+    fig.suptitle("worst cases \n raw max density", fontsize=20)
     ax.set(ylabel="max density [#/m²]")
     fig.savefig("../figures/controlStrategiesRawMaxDensityS3.png", bbox_inches="tight")
 
@@ -291,7 +291,7 @@ if __name__ == "__main__":
     raw_outcomes_s1.loc[raw_outcomes_s1.index == "meanSpeed"].plot.barh(
         ax=ax, colormap="viridis"
     )
-    fig.suptitle("Problematic scenarios \n raw mean speed", fontsize=20)
+    fig.suptitle("Problematic cases \n raw mean speed", fontsize=20)
     ax.set(xlabel="mean speed [m/s]")
     fig.savefig("../figures/controlStrategiesRawMeanSpeedS1.png", bbox_inches="tight")
 
@@ -299,7 +299,7 @@ if __name__ == "__main__":
     raw_outcomes_s2.loc[raw_outcomes_s2.index == "meanSpeed"].plot.barh(
         ax=ax, colormap="viridis"
     )
-    fig.suptitle("Good scenarios \n raw mean speed", fontsize=20)
+    fig.suptitle("Good cases \n raw mean speed", fontsize=20)
     ax.set(xlabel="mean speed [m/s]")
     fig.savefig("../figures/controlStrategiesRawMeanSpeedS2.png", bbox_inches="tight")
 
@@ -307,32 +307,32 @@ if __name__ == "__main__":
     raw_outcomes_s1.loc[raw_outcomes_s1.index == "meanSpeed"].plot.barh(
         ax=ax, colormap="viridis"
     )
-    fig.suptitle("Worst case scenarios \n raw mean speed", fontsize=20)
+    fig.suptitle("worst cases \n raw mean speed", fontsize=20)
     ax.set(xlabel="mean speed [m/s]")
     fig.savefig("../figures/controlStrategiesRawMeanSpeedS3.png", bbox_inches="tight")
 
     # plotting robustness averted scores
     fig, ax = plt.subplots(figsize=(12, 7))
-    r_averted_s1[["complete scenarios averted", "number of averted areas"]].plot.barh(
+    r_averted_s1[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
     ).legend(loc="lower right")
-    fig.suptitle("Problematic scenarios \n robustness: total averted", fontsize=20)
+    fig.suptitle("Problematic cases \n robustness: total averted", fontsize=20)
     ax.set(xlabel="Total count", ylabel="Control strategy")
     fig.savefig("../figures/controlStrategiesAvertedS1.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(12, 7))
-    r_averted_s2[["complete scenarios averted", "number of averted areas"]].plot.barh(
+    r_averted_s2[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
     ).legend(loc="lower right")
-    fig.suptitle("Good scenarios \n robustness: total averted", fontsize=20)
+    fig.suptitle("Good cases \n robustness: total averted", fontsize=20)
     ax.set(xlabel="Total count", ylabel="Control strategy")
     fig.savefig("../figures/controlStrategiesAvertedS2.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(12, 7))
-    r_averted_s3[["complete scenarios averted", "number of averted areas"]].plot.barh(
+    r_averted_s3[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
     ).legend(loc="lower right")
-    fig.suptitle("Worst case scenarios \n robustness: total averted", fontsize=20)
+    fig.suptitle("worst cases \n robustness: total averted", fontsize=20)
     ax.set(xlabel="Total count", ylabel="Control strategy")
     fig.savefig("../figures/controlStrategiesAvertedS3.png", bbox_inches="tight")
 
@@ -341,7 +341,7 @@ if __name__ == "__main__":
     r_mean_variance_s1[["meanSpeed"]].plot.barh(
         ax=ax, colormap="viridis", rot=0, legend=False
     )
-    fig.suptitle("Problematic scenarios \n robustness: mean variance", fontsize=20)
+    fig.suptitle("Problematic cases \n robustness: mean variance", fontsize=20)
     ax.set(xlabel="Mean variance score (higher is better)", ylabel="Control strategy")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS1.png", bbox_inches="tight"
@@ -350,7 +350,7 @@ if __name__ == "__main__":
     r_mean_variance_s2[["meanSpeed"]].plot.barh(
         ax=ax, colormap="viridis", rot=0, legend=False
     )
-    fig.suptitle("Good scenarios \n robustness: mean variance", fontsize=20)
+    fig.suptitle("Good cases \n robustness: mean variance", fontsize=20)
     ax.set(xlabel="Mean variance score (higher is better)", ylabel="Control strategy")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS2.png", bbox_inches="tight"
@@ -359,7 +359,7 @@ if __name__ == "__main__":
     r_mean_variance_s3[["meanSpeed"]].plot.barh(
         ax=ax, colormap="viridis", rot=0, legend=False
     )
-    fig.suptitle("Worst case scenarios \n robustness: mean variance", fontsize=20)
+    fig.suptitle("worst cases \n robustness: mean variance", fontsize=20)
     ax.set(xlabel="Mean variance score (higher is better)", ylabel="Control strategy")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS3.png", bbox_inches="tight"
@@ -370,8 +370,8 @@ if __name__ == "__main__":
     r_mean_variance_s1[
         ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
     ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Problematic scenarios \n robustness: mean variance", fontsize=20)
-    ax.set(xlabel="Mean variance score \n (lower is better)")
+    fig.suptitle("Problematic cases \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Control strategy", ylabel="Mean variance score \n (lower is better)")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS1.png", bbox_inches="tight"
     )
@@ -379,8 +379,8 @@ if __name__ == "__main__":
     r_mean_variance_s2[
         ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
     ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Good scenarios \n robustness: mean variance", fontsize=20)
-    ax.set(xlabel="Mean variance score \n (lower is better)")
+    fig.suptitle("Good cases \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Control strategy", ylabel="Mean variance score \n (lower is better)")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS2.png", bbox_inches="tight"
     )
@@ -388,8 +388,8 @@ if __name__ == "__main__":
     r_mean_variance_s3[
         ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
     ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Worst case scenarios \n robustness: mean variance", fontsize=20)
-    ax.set(xlabel="Mean variance score \n (lower is better)")
+    fig.suptitle("Worst cases \n robustness: mean variance", fontsize=20)
+    ax.set(xlabel="Control strategy", ylabel="Mean variance score \n (lower is better)")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS3.png", bbox_inches="tight"
     )
