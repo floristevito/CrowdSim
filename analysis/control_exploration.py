@@ -80,7 +80,7 @@ if __name__ == "__main__":
                 with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
                     results = evaluator.perform_experiments(get_scenarios(se))
             else:
-                with MultiprocessingEvaluator(model) as evaluator:
+                with MultiprocessingEvaluator(model, n_processes=20) as evaluator:
                     results = evaluator.perform_experiments(get_scenarios(se))
 
             # store results
