@@ -10,7 +10,7 @@ def calculate_robustness_averted(results):
 
     Returns:
         dict: absolute and mean averted density areas,
-            absolute and percentage completly averted scenarios
+            absolute and percentage completly averted cases
     """
 
     # make copy of original results
@@ -37,8 +37,8 @@ def calculate_robustness_averted(results):
     return {
         "number of averted areas": r["averted"].sum(),
         "mean_averted": r["averted"].sum() / len(r["averted"]),
-        "complete scenarios averted": sum(r["averted"] == 4),
-        "percentage_scenarios_averted": round(sum(r["averted"] == 4) / len(r), 2),
+        "complete cases averted": sum(r["averted"] == 4),
+        "percentage_cases_averted": round(sum(r["averted"] == 4) / len(r), 2),
     }
 
 
@@ -83,9 +83,9 @@ def calculate_robustness_mean_variance(results):
 
 
 if __name__ == "__main__":
-    # load results PRIM problematic scenarios
-    scenarios_prim = pd.read_csv("../data/output/EMA/scenariosPrim.csv")
-    rp = pd.read_csv("../data/output/EMA/resultsScenariosPrim.csv")
+    # load results PRIM problematic cases
+    cases_prim = pd.read_csv("../data/output/EMA/casesPrim.csv")
+    rp = pd.read_csv("../data/output/EMA/resultscasesPrim.csv")
 
     print(calculate_robustness_averted(rp))
     print(calculate_robustness_mean_variance(rp))
