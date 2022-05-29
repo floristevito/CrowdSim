@@ -65,7 +65,7 @@ if __name__ == "__main__":
     s_count = 0
 
     for se in scenarios:
-        print("at scenarios {}".format(s_count))
+        print("at cases {}".format(s_count))
         s_count += 1
 
         for st in strategies:
@@ -84,5 +84,5 @@ if __name__ == "__main__":
             # store results
             save_results(
                 results,
-                "../data/output/EMA/scenarios2{}.tar.gz".format(str(s_count) + st),
+                "../data/output/EMA/cases2{}.tar.gz".format(str(s_count) + st),
             )
