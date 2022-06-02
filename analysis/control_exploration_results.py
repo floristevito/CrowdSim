@@ -347,7 +347,7 @@ if __name__ == "__main__":
     fig.suptitle("Problematic cases \n robustness: mean variance", fontsize=24)
     ax.set_xlabel("Mean variance score (higher is better)", fontsize=23)
     ax.set_ylabel("Measure", fontsize=23)
-    plt.yticks(fontsize=17, weight="bold")
+    plt.yticks(fontsize=22, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS1.png", bbox_inches="tight"
     )
@@ -358,7 +358,7 @@ if __name__ == "__main__":
     fig.suptitle("Good cases \n robustness: mean variance", fontsize=24)
     ax.set_xlabel("Mean variance score (higher is better)", fontsize=23)
     ax.set_ylabel("Measure", fontsize=23)
-    plt.yticks(fontsize=17, weight="bold")
+    plt.yticks(fontsize=22, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS2.png", bbox_inches="tight"
     )
@@ -369,42 +369,60 @@ if __name__ == "__main__":
     fig.suptitle("worst cases \n robustness: mean variance", fontsize=24)
     ax.set_xlabel("Mean variance score (higher is better)", fontsize=23)
     ax.set_ylabel("Measure", fontsize=23)
-    plt.yticks(fontsize=17, weight="bold")
+    plt.yticks(fontsize=22, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS3.png", bbox_inches="tight"
     )
 
     # plotting robustness mean variance density
     fig, ax = plt.subplots(figsize=(14, 7))
-    r_mean_variance_s1[
-        ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
-    ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
+    d1 = r_mean_variance_s1.T.rename(
+        index={
+            "maxDensityArea1": "area 1",
+            "maxDensityArea2": "area 2",
+            "maxDensityArea3": "area 3",
+            "maxDensityArea4": "area 4",
+        }
+    ).drop("meanSpeed")
+    d1.plot.bar(ax=ax, colormap="viridis", rot=0)
     fig.suptitle("Problematic cases \n robustness: mean variance", fontsize=24)
     ax.set_xlabel("Measure", fontsize=23)
     ax.set_ylabel("Mean variance score (higher is better)", fontsize=23)
-    plt.xticks(fontsize=17, weight="bold")
+    plt.xticks(fontsize=22, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS1.png", bbox_inches="tight"
     )
     fig, ax = plt.subplots(figsize=(14, 7))
-    r_mean_variance_s2[
-        ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
-    ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
+    d2 = r_mean_variance_s2.T.rename(
+        index={
+            "maxDensityArea1": "area 1",
+            "maxDensityArea2": "area 2",
+            "maxDensityArea3": "area 3",
+            "maxDensityArea4": "area 4",
+        }
+    ).drop("meanSpeed")
+    d2.plot.bar(ax=ax, colormap="viridis", rot=0)
     fig.suptitle("Good cases \n robustness: mean variance", fontsize=24)
     ax.set_xlabel("Measure", fontsize=23)
     ax.set_ylabel("Mean variance score (higher is better)", fontsize=23)
-    plt.xticks(fontsize=17, weight="bold")
+    plt.xticks(fontsize=22, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS2.png", bbox_inches="tight"
     )
     fig, ax = plt.subplots(figsize=(14, 7))
-    r_mean_variance_s3[
-        ["maxDensityArea1", "maxDensityArea2", "maxDensityArea3", "maxDensityArea4"]
-    ].T.plot.bar(ax=ax, colormap="viridis", rot=0)
+    d3 = r_mean_variance_s3.T.rename(
+        index={
+            "maxDensityArea1": "area 1",
+            "maxDensityArea2": "area 2",
+            "maxDensityArea3": "area 3",
+            "maxDensityArea4": "area 4",
+        }
+    ).drop("meanSpeed")
+    d3.plot.bar(ax=ax, colormap="viridis", rot=0)
     fig.suptitle("Worst cases \n robustness: mean variance", fontsize=24)
     ax.set_xlabel("Measure", fontsize=23)
     ax.set_ylabel("Mean variance score (higher is better)", fontsize=23)
-    plt.xticks(fontsize=17, weight="bold")
+    plt.xticks(fontsize=22, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS3.png", bbox_inches="tight"
     )
