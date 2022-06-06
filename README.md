@@ -19,9 +19,11 @@ CrowdSim is the name of this repository holding all the contents in regard to th
 
 
 # Requirements
-All Python related instances are tested with Python version 3.10.0. An overview of all requirements can be found in the requirements.txt file in the root of this repository. It is recommended to install them in an Python 3.10.0 environments using:
+All Python related instances are tested with Python version 3.10.0. An overview of all requirements can be found in the requirements.txt file in the root of this repository. It is recommended to install them in a Python 3.10.0 environments using:
 
 `pip install -r requirements.txt`
+
+Note that an EMA Workbench installation with the newly added Vadere model connector is needed to run the experimentation scripts included in this repository. See **related works** for more information on how to acquire the right EMA Workbench installation.
 
 # Related work
 To reproduce the work of this research in its full extent, related software is needed:
