@@ -334,7 +334,7 @@ if __name__ == "__main__":
     r_averted_s3[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
     ).legend(loc="lower right")
-    fig.suptitle("worst cases \n robustness: total averted", fontsize=24)
+    fig.suptitle("worst cases", fontsize=24)
     ax.set_xlabel("Total count", fontsize=23)
     ax.set_ylabel(ylabel="Measure", fontsize=23)
     fig.savefig("../figures/controlStrategiesAvertedS3.png", bbox_inches="tight")
@@ -344,10 +344,10 @@ if __name__ == "__main__":
     r_mean_variance_s1[["meanSpeed"]].plot.barh(
         ax=ax, colormap="viridis", rot=0, legend=False
     )
-    fig.suptitle("Problematic cases \n robustness: mean variance", fontsize=24)
-    ax.set_xlabel("Mean variance score (higher is better)", fontsize=23)
-    ax.set_ylabel("Measure", fontsize=23)
-    plt.yticks(fontsize=22, weight="bold")
+    fig.suptitle("Problematic cases", fontsize=28)
+    ax.set_xlabel("Mean variance score", fontsize=28)
+    ax.set_ylabel("Measure", fontsize=28)
+    plt.yticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS1.png", bbox_inches="tight"
     )
@@ -355,10 +355,10 @@ if __name__ == "__main__":
     r_mean_variance_s2[["meanSpeed"]].plot.barh(
         ax=ax, colormap="viridis", rot=0, legend=False
     )
-    fig.suptitle("Good cases \n robustness: mean variance", fontsize=24)
-    ax.set_xlabel("Mean variance score (higher is better)", fontsize=23)
-    ax.set_ylabel("Measure", fontsize=23)
-    plt.yticks(fontsize=22, weight="bold")
+    fig.suptitle("Good cases", fontsize=28)
+    ax.set_xlabel("Mean variance score", fontsize=28)
+    ax.set_ylabel("Measure", fontsize=28)
+    plt.yticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS2.png", bbox_inches="tight"
     )
@@ -366,10 +366,10 @@ if __name__ == "__main__":
     r_mean_variance_s3[["meanSpeed"]].plot.barh(
         ax=ax, colormap="viridis", rot=0, legend=False
     )
-    fig.suptitle("worst cases \n robustness: mean variance", fontsize=24)
-    ax.set_xlabel("Mean variance score (higher is better)", fontsize=23)
-    ax.set_ylabel("Measure", fontsize=23)
-    plt.yticks(fontsize=22, weight="bold")
+    fig.suptitle("worst cases", fontsize=28)
+    ax.set_xlabel("Mean variance score", fontsize=28)
+    ax.set_ylabel("Measure", fontsize=28)
+    plt.yticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceSpeedS3.png", bbox_inches="tight"
     )
@@ -385,10 +385,10 @@ if __name__ == "__main__":
         }
     ).drop("meanSpeed")
     d1.plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Problematic cases \n robustness: mean variance", fontsize=24)
-    ax.set_xlabel("Measure", fontsize=23)
-    ax.set_ylabel("Mean variance score (higher is better)", fontsize=23)
-    plt.xticks(fontsize=22, weight="bold")
+    fig.suptitle("Problematic cases", fontsize=28)
+    ax.set_xlabel("Measure", fontsize=28)
+    ax.set_ylabel("Mean variance score", fontsize=28)
+    plt.xticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS1.png", bbox_inches="tight"
     )
@@ -402,10 +402,10 @@ if __name__ == "__main__":
         }
     ).drop("meanSpeed")
     d2.plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Good cases \n robustness: mean variance", fontsize=24)
-    ax.set_xlabel("Measure", fontsize=23)
-    ax.set_ylabel("Mean variance score (higher is better)", fontsize=23)
-    plt.xticks(fontsize=22, weight="bold")
+    fig.suptitle("Good cases", fontsize=28)
+    ax.set_xlabel("Measure", fontsize=28)
+    ax.set_ylabel("Mean variance score", fontsize=28)
+    plt.xticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS2.png", bbox_inches="tight"
     )
@@ -419,10 +419,10 @@ if __name__ == "__main__":
         }
     ).drop("meanSpeed")
     d3.plot.bar(ax=ax, colormap="viridis", rot=0)
-    fig.suptitle("Worst cases \n robustness: mean variance", fontsize=24)
-    ax.set_xlabel("Measure", fontsize=23)
-    ax.set_ylabel("Mean variance score (higher is better)", fontsize=23)
-    plt.xticks(fontsize=22, weight="bold")
+    fig.suptitle("Worst cases", fontsize=28)
+    ax.set_xlabel("Measure", fontsize=28)
+    ax.set_ylabel("Mean variance score", fontsize=28)
+    plt.xticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS3.png", bbox_inches="tight"
     )
