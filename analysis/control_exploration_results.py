@@ -251,9 +251,19 @@ if __name__ == "__main__":
                 "maxDensityArea4",
             ]
         )
-    ].plot.bar(ax=ax, colormap="viridis", rot=0)
+    ].rename(
+        index={
+            "maxDensityArea1": "area 1",
+            "maxDensityArea2": "area 2",
+            "maxDensityArea3": "area 3",
+            "maxDensityArea4": "area 4",
+        }
+    ).plot.bar(
+        ax=ax, colormap="viridis", rot=0
+    )
     fig.suptitle("Problematic cases \n raw max density", fontsize=22)
-    ax.set_ylabel("max density [#/m²]", fontsize=23)
+    ax.set_ylabel("max density [#/m²]", fontsize=22)
+    plt.xticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesRawMaxDensityS1.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -266,9 +276,19 @@ if __name__ == "__main__":
                 "maxDensityArea4",
             ]
         )
-    ].plot.bar(ax=ax, colormap="viridis", rot=0)
+    ].rename(
+        index={
+            "maxDensityArea1": "area 1",
+            "maxDensityArea2": "area 2",
+            "maxDensityArea3": "area 3",
+            "maxDensityArea4": "area 4",
+        }
+    ).plot.bar(
+        ax=ax, colormap="viridis", rot=0
+    )
     fig.suptitle("Good cases \n raw max density", fontsize=22)
-    ax.set_ylabel("max density [#/m²]", fontsize=23)
+    ax.set_ylabel("max density [#/m²]", fontsize=22)
+    plt.xticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesRawMaxDensityS2.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -281,9 +301,19 @@ if __name__ == "__main__":
                 "maxDensityArea4",
             ]
         )
-    ].plot.bar(ax=ax, colormap="viridis", rot=0)
+    ].rename(
+        index={
+            "maxDensityArea1": "area 1",
+            "maxDensityArea2": "area 2",
+            "maxDensityArea3": "area 3",
+            "maxDensityArea4": "area 4",
+        }
+    ).plot.bar(
+        ax=ax, colormap="viridis", rot=0
+    )
     fig.suptitle("worst cases \n raw max density", fontsize=22)
-    ax.set_ylabel("max density [#/m²]", fontsize=23)
+    ax.set_ylabel("max density [#/m²]", fontsize=22)
+    plt.xticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesRawMaxDensityS3.png", bbox_inches="tight")
 
     # plotting raw mean speed scores
@@ -291,24 +321,27 @@ if __name__ == "__main__":
     raw_outcomes_s1.loc[raw_outcomes_s1.index == "meanSpeed"].plot.barh(
         ax=ax, colormap="viridis"
     )
-    fig.suptitle("Problematic cases \n raw mean speed", fontsize=24)
-    ax.set_xlabel("mean speed [m/s]", fontsize=23)
+    fig.suptitle("Problematic cases \n raw mean speed", fontsize=22)
+    ax.set_xlabel("mean speed [m/s]", fontsize=22)
+    plt.yticks([])
     fig.savefig("../figures/controlStrategiesRawMeanSpeedS1.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(12, 7))
     raw_outcomes_s2.loc[raw_outcomes_s2.index == "meanSpeed"].plot.barh(
         ax=ax, colormap="viridis"
     )
-    fig.suptitle("Good cases \n raw mean speed", fontsize=24)
-    ax.set_xlabel("mean speed [m/s]", fontsize=23)
+    fig.suptitle("Good cases \n raw mean speed", fontsize=22)
+    ax.set_xlabel("mean speed [m/s]", fontsize=22)
+    plt.yticks([])
     fig.savefig("../figures/controlStrategiesRawMeanSpeedS2.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(12, 7))
     raw_outcomes_s1.loc[raw_outcomes_s1.index == "meanSpeed"].plot.barh(
         ax=ax, colormap="viridis"
     )
-    fig.suptitle("worst cases \n raw mean speed", fontsize=24)
-    ax.set_xlabel("mean speed [m/s]", fontsize=23)
+    fig.suptitle("worst cases \n raw mean speed", fontsize=22)
+    ax.set_xlabel("mean speed [m/s]", fontsize=22)
+    plt.yticks([])
     fig.savefig("../figures/controlStrategiesRawMeanSpeedS3.png", bbox_inches="tight")
 
     # plotting robustness averted scores
@@ -316,27 +349,30 @@ if __name__ == "__main__":
     r_averted_s1[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
     ).legend(loc="lower right")
-    fig.suptitle("Problematic cases \n robustness: total averted", fontsize=24)
-    ax.set_xlabel("Total count", fontsize=23)
-    ax.set_ylabel(ylabel="Measure", fontsize=23)
+    fig.suptitle("Problematic cases \n robustness: total averted", fontsize=22)
+    ax.set_xlabel("Total count", fontsize=22)
+    ax.set_ylabel(ylabel="Measure", fontsize=22)
+    plt.yticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesAvertedS1.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s2[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
     ).legend(loc="lower right")
-    fig.suptitle("Good cases \n robustness: total averted", fontsize=24)
-    ax.set_xlabel("Total count", fontsize=23)
-    ax.set_ylabel(ylabel="Measure", fontsize=23)
+    fig.suptitle("Good cases \n robustness: total averted", fontsize=22)
+    ax.set_xlabel("Total count", fontsize=22)
+    ax.set_ylabel(ylabel="Measure", fontsize=22)
+    plt.yticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesAvertedS2.png", bbox_inches="tight")
 
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s3[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
     ).legend(loc="lower right")
-    fig.suptitle("worst cases", fontsize=24)
-    ax.set_xlabel("Total count", fontsize=23)
-    ax.set_ylabel(ylabel="Measure", fontsize=23)
+    fig.suptitle("worst cases", fontsize=22)
+    ax.set_xlabel("Total count", fontsize=22)
+    ax.set_ylabel(ylabel="Measure", fontsize=22)
+    plt.yticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesAvertedS3.png", bbox_inches="tight")
 
     # plotting robustness mean variance speed
