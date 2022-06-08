@@ -260,6 +260,8 @@ if __name__ == "__main__":
         }
     ).plot.bar(
         ax=ax, colormap="viridis", rot=0
+    ).legend(
+        prop={"size": 20}
     )
     fig.suptitle("Problematic cases \n raw max density", fontsize=22)
     ax.set_ylabel("max density [#/m²]", fontsize=22)
@@ -285,6 +287,8 @@ if __name__ == "__main__":
         }
     ).plot.bar(
         ax=ax, colormap="viridis", rot=0
+    ).legend(
+        prop={"size": 20}
     )
     fig.suptitle("Good cases \n raw max density", fontsize=22)
     ax.set_ylabel("max density [#/m²]", fontsize=22)
@@ -310,6 +314,8 @@ if __name__ == "__main__":
         }
     ).plot.bar(
         ax=ax, colormap="viridis", rot=0
+    ).legend(
+        prop={"size": 20}
     )
     fig.suptitle("worst cases \n raw max density", fontsize=22)
     ax.set_ylabel("max density [#/m²]", fontsize=22)
@@ -348,7 +354,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s1[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
-    ).legend(loc="lower right")
+    ).legend(bbox_to_anchor=(0.25, 1.25), prop={"size": 20})
     fig.suptitle("Problematic cases \n robustness: total averted", fontsize=22)
     ax.set_xlabel("Total count", fontsize=22)
     ax.set_ylabel(ylabel="Measure", fontsize=22)
@@ -358,7 +364,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s2[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
-    ).legend(loc="lower right")
+    ).legend(bbox_to_anchor=(0.25, 1.25), prop={"size": 20})
     fig.suptitle("Good cases \n robustness: total averted", fontsize=22)
     ax.set_xlabel("Total count", fontsize=22)
     ax.set_ylabel(ylabel="Measure", fontsize=22)
@@ -368,7 +374,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots(figsize=(12, 7))
     r_averted_s3[["complete cases averted", "number of averted areas"]].plot.barh(
         ax=ax, colormap="viridis", rot=0
-    ).legend(loc="lower right")
+    ).legend(bbox_to_anchor=(0.25, 1.25), prop={"size": 20})
     fig.suptitle("worst cases", fontsize=22)
     ax.set_xlabel("Total count", fontsize=22)
     ax.set_ylabel(ylabel="Measure", fontsize=22)
@@ -420,7 +426,7 @@ if __name__ == "__main__":
             "maxDensityArea4": "area 4",
         }
     ).drop("meanSpeed")
-    d1.plot.bar(ax=ax, colormap="viridis", rot=0)
+    d1.plot.bar(ax=ax, colormap="viridis", rot=0).legend(prop={"size": 20})
     fig.suptitle("Problematic cases", fontsize=28)
     ax.set_xlabel("Measure", fontsize=28)
     ax.set_ylabel("Mean variance score", fontsize=28)
@@ -437,7 +443,7 @@ if __name__ == "__main__":
             "maxDensityArea4": "area 4",
         }
     ).drop("meanSpeed")
-    d2.plot.bar(ax=ax, colormap="viridis", rot=0)
+    d2.plot.bar(ax=ax, colormap="viridis", rot=0).legend(prop={"size": 20})
     fig.suptitle("Good cases", fontsize=28)
     ax.set_xlabel("Measure", fontsize=28)
     ax.set_ylabel("Mean variance score", fontsize=28)
@@ -454,7 +460,7 @@ if __name__ == "__main__":
             "maxDensityArea4": "area 4",
         }
     ).drop("meanSpeed")
-    d3.plot.bar(ax=ax, colormap="viridis", rot=0)
+    d3.plot.bar(ax=ax, colormap="viridis", rot=0).legend(prop={"size": 20})
     fig.suptitle("Worst cases", fontsize=28)
     ax.set_xlabel("Measure", fontsize=28)
     ax.set_ylabel("Mean variance score", fontsize=28)
