@@ -2,8 +2,8 @@
 This repository acts as a digital appendix in regard to thesis work for a Master of Science in Engineering and Policy Analysis at the Delft University of Technology. It includes:
 
 - `analysis`: all Python utilities used for the analysis
- - Python scripts for running EMA Workbench based experiments
- - Python notebook files and scripts for exploring data and generating figures and graphs 
+  - Python scripts for running EMA Workbench based experiments
+  - Python notebook files and scripts for exploring data and generating figures and graphs 
 - `data`: all used data files and other resources in the  directory:
   - GIS based images and data files
   - Input datasets
