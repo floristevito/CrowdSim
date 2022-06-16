@@ -34,4 +34,4 @@ To reproduce the work of this research in its full extent, related software is n
 - [The EMA Workbench](https://github.com/quaquel/EMAworkbench): This research includes the construction of a Vadere/EMA Workbench connector. Although the connector is additionally made available directly within this repository, a complete copy of the workbench including the newly constructed connector can be acquired here. In case the new connector is not yet available on the latest release, please refer to [this forked and publicly hosted version of the EMA workbench](https://github.com/floristevito/EMAworkbench), and check out the branch named "vadere_model_connector". 
 
 ## Vadere
-This repository is released under the same license as the Vadere library. All orginal, Vadere related software can be found in the [Vadere repository](https://gitlab.lrz.de/vadere/vadere). 
+This repository is released under the same license as the Vadere library. All orginal Vadere related software can be found in the [Vadere repository](https://gitlab.lrz.de/vadere/vadere). 
