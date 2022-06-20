@@ -1,5 +1,5 @@
 # CrowdSim
-This repository acts as a digital appendix in regard to thesis work for a Master of Science in Engineering and Policy Analysis at the Delft University of Technology. It includes:
+This repository acts as a digital appendix in regard to thesis work for a Master of Science in Engineering and Policy Analysis at the Delft University of Technology. This includes:
 
 - `analysis`: All Python utilities used for the analysis.
   - Python scripts for running EMA Workbench based experiments.
