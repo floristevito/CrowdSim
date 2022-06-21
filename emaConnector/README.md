@@ -19,6 +19,6 @@ After installation, the Vadere model class can be used just like any other model
 - **vadere_jar**: a relative path from the working directory to the Vadere console jar file
 - **processor_files**: list of output file names stored by Vadere, depending on set processors. **Note** a .csv file is assumed for timeseries output, and a .txt for a scalar output.
 - **model_file**: a relative path from the working directory to the model scenario file
-- **wd**: absolute path to working directory. **Note: this path needs to be to an absolute path to a separate directory from the one that holds the Python file initializing the model. Otherwise, the Vadere console version will not work, and parallelization problems arise. All other paths need to be specified relative to this one.**
+- **wd**: path to working directory. 
 
 A demo on how to use the Vadere model connector can be found in the `vadere_connector_demo.ipynb` file, located in this directory. 
