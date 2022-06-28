@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from ema_workbench import load_results
 
-from robustness import calculate_robustness_averted, calculate_robustness_mean_variance
+from robustness import (calculate_robustness_averted,
+                        calculate_robustness_mean_variance)
 
 if __name__ == "__main__":
 
@@ -356,7 +357,7 @@ if __name__ == "__main__":
         ax=ax, colormap="viridis", rot=0
     ).legend(bbox_to_anchor=(0.25, 1.25), prop={"size": 20})
     fig.suptitle("Problematic cases \n robustness: total averted", fontsize=22)
-    ax.set_xlabel("Total count", fontsize=22)
+    ax.set_xlabel("Total count (out of 100 cases)", fontsize=22)
     ax.set_ylabel(ylabel="Measure", fontsize=22)
     plt.yticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesAvertedS1.png", bbox_inches="tight")
@@ -366,7 +367,7 @@ if __name__ == "__main__":
         ax=ax, colormap="viridis", rot=0
     ).legend(bbox_to_anchor=(0.25, 1.25), prop={"size": 20})
     fig.suptitle("Good cases \n robustness: total averted", fontsize=22)
-    ax.set_xlabel("Total count", fontsize=22)
+    ax.set_xlabel("Total count (out of 100 cases)", fontsize=22)
     ax.set_ylabel(ylabel="Measure", fontsize=22)
     plt.yticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesAvertedS2.png", bbox_inches="tight")
@@ -376,7 +377,7 @@ if __name__ == "__main__":
         ax=ax, colormap="viridis", rot=0
     ).legend(bbox_to_anchor=(0.25, 1.25), prop={"size": 20})
     fig.suptitle("worst cases", fontsize=22)
-    ax.set_xlabel("Total count", fontsize=22)
+    ax.set_xlabel("Total count (out of 10 cases)", fontsize=22)
     ax.set_ylabel(ylabel="Measure", fontsize=22)
     plt.yticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesAvertedS3.png", bbox_inches="tight")
@@ -387,7 +388,7 @@ if __name__ == "__main__":
         ax=ax, colormap="viridis", rot=0, legend=False
     )
     fig.suptitle("Problematic cases", fontsize=28)
-    ax.set_xlabel("Mean variance score", fontsize=28)
+    ax.set_xlabel("Mean speed adjusted by\nthe introduced variance", fontsize=28)
     ax.set_ylabel("Measure", fontsize=28)
     plt.yticks(fontsize=28, weight="bold")
     fig.savefig(
@@ -398,7 +399,7 @@ if __name__ == "__main__":
         ax=ax, colormap="viridis", rot=0, legend=False
     )
     fig.suptitle("Good cases", fontsize=28)
-    ax.set_xlabel("Mean variance score", fontsize=28)
+    ax.set_xlabel("Mean speed adjusted by\nthe introduced variance", fontsize=28)
     ax.set_ylabel("Measure", fontsize=28)
     plt.yticks(fontsize=28, weight="bold")
     fig.savefig(
@@ -409,7 +410,7 @@ if __name__ == "__main__":
         ax=ax, colormap="viridis", rot=0, legend=False
     )
     fig.suptitle("worst cases", fontsize=28)
-    ax.set_xlabel("Mean variance score", fontsize=28)
+    ax.set_xlabel("Mean speed adjusted by\nthe introduced variance", fontsize=28)
     ax.set_ylabel("Measure", fontsize=28)
     plt.yticks(fontsize=28, weight="bold")
     fig.savefig(
@@ -429,7 +430,7 @@ if __name__ == "__main__":
     d1.plot.bar(ax=ax, colormap="viridis", rot=0).legend(prop={"size": 20})
     fig.suptitle("Problematic cases", fontsize=28)
     ax.set_xlabel("Measure", fontsize=28)
-    ax.set_ylabel("Mean variance score", fontsize=28)
+    ax.set_ylabel("Mean density adjusted by\nthe introduced variance", fontsize=28)
     plt.xticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS1.png", bbox_inches="tight"
@@ -446,7 +447,7 @@ if __name__ == "__main__":
     d2.plot.bar(ax=ax, colormap="viridis", rot=0).legend(prop={"size": 20})
     fig.suptitle("Good cases", fontsize=28)
     ax.set_xlabel("Measure", fontsize=28)
-    ax.set_ylabel("Mean variance score", fontsize=28)
+    ax.set_ylabel("Mean density adjusted by\nthe introduced variance", fontsize=28)
     plt.xticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS2.png", bbox_inches="tight"
@@ -463,7 +464,7 @@ if __name__ == "__main__":
     d3.plot.bar(ax=ax, colormap="viridis", rot=0).legend(prop={"size": 20})
     fig.suptitle("Worst cases", fontsize=28)
     ax.set_xlabel("Measure", fontsize=28)
-    ax.set_ylabel("Mean variance score", fontsize=28)
+    ax.set_ylabel("Mean density adjusted by\nthe introduced variance", fontsize=28)
     plt.xticks(fontsize=28, weight="bold")
     fig.savefig(
         "../figures/controlStrategiesMeanVarianceMaxDensityS3.png", bbox_inches="tight"
