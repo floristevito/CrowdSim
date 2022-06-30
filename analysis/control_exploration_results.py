@@ -2,8 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from ema_workbench import load_results
 
-from robustness import (calculate_robustness_averted,
-                        calculate_robustness_mean_variance)
+from robustness import calculate_robustness_averted, calculate_robustness_mean_variance
 
 if __name__ == "__main__":
 
@@ -318,7 +317,7 @@ if __name__ == "__main__":
     ).legend(
         prop={"size": 20}
     )
-    fig.suptitle("worst cases \n raw max density", fontsize=22)
+    fig.suptitle("Worst cases \n raw max density", fontsize=22)
     ax.set_ylabel("max density [#/m²]", fontsize=22)
     plt.xticks(fontsize=22, weight="bold")
     fig.savefig("../figures/controlStrategiesRawMaxDensityS3.png", bbox_inches="tight")
@@ -346,7 +345,7 @@ if __name__ == "__main__":
     raw_outcomes_s1.loc[raw_outcomes_s1.index == "meanSpeed"].plot.barh(
         ax=ax, colormap="viridis"
     )
-    fig.suptitle("worst cases \n raw mean speed", fontsize=22)
+    fig.suptitle("Worst cases \n raw mean speed", fontsize=22)
     ax.set_xlabel("mean speed [m/s]", fontsize=22)
     plt.yticks([])
     fig.savefig("../figures/controlStrategiesRawMeanSpeedS3.png", bbox_inches="tight")
