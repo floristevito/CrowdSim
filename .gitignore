@@ -8,7 +8,8 @@ model/*/output/*
 # jar files
 .jar
 
-/source
+# ignore builds
+/src
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
