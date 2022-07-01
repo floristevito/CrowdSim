@@ -21,11 +21,21 @@ This repository acts as a digital appendix in regard to thesis work for a Master
   - The script used for converting OSM data to Vadere objects. 
 
 # Requirements
-All Python related instances are tested with Python version 3.10.0. An overview of all requirements can be found in the requirements.txt file in the root of this repository. It is recommended to install them in a Python 3.10.0 environments using:
+All Python related instances are tested with Python version 3.10.0. An overview of all requirements can be found in the requirements.txt file in the root of this repository. 
+
+Note that an EMA Workbench installation with the newly added Vadere model connector is needed to run the experimentation scripts included in this repository. To reproduce this work, Please first install the specific EMA Workbench version used via [this forked and publicly hosted version of the EMA workbench](https://github.com/floristevito/EMAworkbench). This can be done by:
+
+`pip install -e git+https://github.com/floristevito/EMAworkbench@vadere_model_connector#egg=ema-workbench`
+
+Afterwards, please install the specified optional dependencies for the EMA Workbench. Installation instructions [can be found here](https://emaworkbench.readthedocs.io/en/latest/installation.html). Most importantly, install the following via conda:
+
+`conda install altair ipyparallel`
+
+After the full EMA Workbench installation, it is recommended to install the dependencies of this work in a Python 3.10.0 environments using:
 
 `pip install -r requirements.txt`
 
-Note that an EMA Workbench installation with the newly added Vadere model connector is needed to run the experimentation scripts included in this repository. See **related works** for more information on how to acquire the right EMA Workbench installation.
+If any of the dependencies is not available via pip, please refer to conda or conda-forge.
 
 # Related work
 To reproduce the work of this research in its full extent, related software is needed:
